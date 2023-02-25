@@ -1,0 +1,16 @@
+GET http://localhost:3001/patients
+
+###
+
+POST http://localhost:3001/patient/new
+Content-Type: application/json
+
+{
+    "firstName": "Tarik",
+    "lastName": "Ozturk",
+    "diagnosis": "Headache"
+}
+
+###
+DELETE http://localhost:3001/patient/delete/63fa8e36f0e7ba5d901e1325
+
