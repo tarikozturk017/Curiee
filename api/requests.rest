@@ -7,31 +7,38 @@ Content-Type: application/json
 
 {
     "firstName": "Test",
-    "lastName": "Surname1",
+    "lastName": "Exercs",
     "diagnosis": "None",
+    "exercises": []
 }
 
 ###
-DELETE http://localhost:3001/patient/delete/63fa8e36f0e7ba5d901e1325
+DELETE http://localhost:3001/patient/delete/63faa96e91dcdc6e2f013096
 
 ###
-PUT http://localhost:3001/patient/edit/63faa96e91dcdc6e2f013096
+PUT http://localhost:3001/patient/edit/63faa98891dcdc6e2f013098
 Content-Type: application/json
 
 {
-    "exerciseId" : 63fb9fa3e1beba9a5f24bb48
+    "exerciseId" : "63fb9fa3e1beba9a5f24bb48"
 }
 
 ### Exercises ###
 GET http://localhost:3001/exercises
 
 
-###
+### Create new exercise
 
 POST http://localhost:3001/exercise/new
 Content-Type: application/json
 
 {
-    "title": "squad",
-    "description": "Helps to improve gluts"
+    "title": "ex to deleted",
+    "description": "this is to be deleted"
 }
+
+### Get all the exercises of the Patient w/:id
+GET http://localhost:3001/patient/63faa98891dcdc6e2f013098/exercises
+
+### Delete exercise by id
+DELETE http://localhost:3001/exercise/63fbb608637e0adc2b5818ff

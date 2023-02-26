@@ -21,6 +21,31 @@ const Model = require('./models/Patient');
 const Patient = Model.Patient
 const Exercise = Model.Exercise
 
+// check the password when a patient signs in
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+  
+    // find the patient by their email address
+    const patient = await Patient.findOne({ email });
+  
+    if (!patient) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+  
+    // compare the hashed password with the plaintext password
+    const match = await bcrypt.compare(password, patient.password);
+  
+    if (!match) {
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+  
+    // generate a JWT token and return it to the client
+    const token = jwt.sign({ patientId: patient._id }, secretKey);
+  
+    res.status(200).json({ token });
+  });
+  
+
 // get all the patients
 app.get('/patients', async (req, res) => {
     const patients = await Patient.find();
@@ -45,7 +70,15 @@ app.post('/patient/new', (req, res) => {
 app.put('/patient/edit/:id', async (req, res) => {
     const result = await Patient.findById(req.params.id); // get the patient
 
-    result.exercises.push(req.body.exerciseId);
+    const exercise = await Exercise.findById(req.body.exerciseId);
+    
+    if(result.exercises.includes(exercise)){
+        console.log('Exercise is already added to the Patient')
+    } else {
+        result.exercises.push(exercise)
+    }
+    
+    res.json(result)
     result.save();
 })
 
@@ -62,6 +95,18 @@ app.get('/exercises', async (req, res) => {
     res.json(exercises);
 })
 
+// get all exercises of the patient
+app.get('/patient/:id/exercises', async (req, res) => {
+    try {
+      const exercises = await Patient.findById(req.params.id).populate('exercises');
+  
+      if(exercises)  res.status(200).json(exercises.exercises);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: 'An error occurred' });
+    }
+  });
+
 // create a new exercise
 app.post('/exercise/new', (req, res) => {
     console.log(req.body);
@@ -73,5 +118,13 @@ app.post('/exercise/new', (req, res) => {
     exercise.save()
     res.json(exercise)
 })
+
+// delete exercise
+app.delete('/exercise/:id', async (req, res) => {
+    const result = await Exercise.findByIdAndDelete(req.params.id);
+
+    res.json(result)
+})
+
 
 app.listen(3001, () => console.log("Server started on port 3001"))
