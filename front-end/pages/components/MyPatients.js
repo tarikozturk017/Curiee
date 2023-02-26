@@ -20,7 +20,7 @@ const MyPatients = (props) => {
 
     const patientsList = patients.map((patient) => {
         return (
-            <li className=' ' key={patient.id}>
+            <li className=' ' key={patient._id}>
                 {patient.firstName} {patient.lastName} - {patient.diagnosis}
             </li>
         )

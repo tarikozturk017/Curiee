@@ -1,9 +1,29 @@
+import { useState, useEffect } from 'react'
+
 import Head from 'next/head'
 import SideBar from './components/SideBar'
 
 import TherapistPanel from './components/TherapistPanel'
+import MyPatients from './components/MyPatients'
+import MyTreatmentModels from './components/MyTreatmentModels'
+import NewTreatment from './components/NewTreatment'
+import ExploreTreatment from './components/ExploreTreatments'
+import MyAppointments from './components/MyAppointments'
 
 export default function Home() {
+  const [mainContent, setMainContent] = useState('Homepage')
+  const [contentSelection, setContentSelection] = useState(<TherapistPanel />)
+
+  // 'My Patients', 'My Treatment Models', 'Create New Treatment Model', 'Explore Treatments', 'My Appointments'
+  useEffect(() => {
+    if (mainContent == 'Homepage') setContentSelection(<TherapistPanel />)
+    else if (mainContent == 'My Patients') setContentSelection(<MyPatients />)
+    else if (mainContent == 'My Treatment Models') setContentSelection(<MyTreatmentModels />)
+    else if (mainContent == 'Create New Treatment Model') setContentSelection(<NewTreatment />)
+    else if (mainContent == 'Explore Treatments') setContentSelection(<ExploreTreatment />)
+    else if (mainContent == 'My Appointments') setContentSelection(<MyAppointments />)
+  }, [mainContent])
+
   return (
     <>
       <Head>
@@ -13,8 +33,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=' h-screen bg-gradient-to-tr from-cyan-300 to-blue-300'>
-        <SideBar />
-        <TherapistPanel />
+        <SideBar setMainContent={setMainContent} />
+        {contentSelection}
       </main>
     </>
   )
