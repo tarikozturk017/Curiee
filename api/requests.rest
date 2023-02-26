@@ -8,9 +8,30 @@ Content-Type: application/json
 {
     "firstName": "Test",
     "lastName": "Surname1",
-    "diagnosis": "None"
+    "diagnosis": "None",
 }
 
 ###
 DELETE http://localhost:3001/patient/delete/63fa8e36f0e7ba5d901e1325
 
+###
+PUT http://localhost:3001/patient/edit/63faa96e91dcdc6e2f013096
+Content-Type: application/json
+
+{
+    "exerciseId" : 63fb9fa3e1beba9a5f24bb48
+}
+
+### Exercises ###
+GET http://localhost:3001/exercises
+
+
+###
+
+POST http://localhost:3001/exercise/new
+Content-Type: application/json
+
+{
+    "title": "squad",
+    "description": "Helps to improve gluts"
+}
