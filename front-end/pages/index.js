@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 import Head from 'next/head'
 import SideBar from './components/SideBar'
+import Footer from './components/Footer'
 
 import TherapistPanel from './components/TherapistPanel'
 import MyPatients from './components/MyPatients'
@@ -36,6 +37,7 @@ export default function Home() {
         <SideBar setMainContent={setMainContent} />
         {contentSelection}
       </main>
+      <Footer />
     </>
   )
 }
