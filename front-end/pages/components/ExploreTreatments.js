@@ -9,11 +9,8 @@ function ExploreTreatment() {
         const response = await fetch('http://localhost:3001/exercises');
         const data = await response.json();
 
-        if (response.ok) {
-          setExercises(data);
-        } else {
-          console.log('Error fetching exercises');
-        }
+        if (response.ok) setExercises(data); 
+        else console.log('Error fetching exercises');
       } catch (error) {
         console.log(error);
       }
