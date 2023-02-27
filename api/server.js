@@ -20,6 +20,7 @@ mongoose.connect(uri, {
 const Model = require('./models/Patient');
 const Patient = Model.Patient
 const Exercise = Model.Exercise
+const Therapist = Model.Therapist
 
 // check the password when a patient signs in
 app.post('/login', async (req, res) => {
@@ -124,6 +125,40 @@ app.delete('/exercise/:id', async (req, res) => {
     const result = await Exercise.findByIdAndDelete(req.params.id);
 
     res.json(result)
+})
+
+// get all therapists
+app.get('/therapists', async (req, res) => {
+    const therapists = await Therapist.find();
+    res.json(therapists);
+})
+
+// create therapist
+app.post('/therapist/new', (req, res) => {
+    const therapist = new Therapist({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        occupation: req.body.occupation
+    })
+
+    therapist.save();
+    res.json(therapist)
+})
+
+// update therapist
+app.put('/therapist/edit/:id', async (req, res) => {
+    const result = await Therapist.findById(req.params.id); // get the patient
+
+    const patient = await Patient.findById(req.body.patientId);
+    
+    if(result.patients.includes(patient)){
+        console.log('Patient is already added to the Therapist')
+    } else {
+        result.patients.push(patient)
+    }
+    
+    res.json(result)
+    result.save();
 })
 
 
