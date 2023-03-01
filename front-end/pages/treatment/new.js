@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function NewTreatment() {
+function New() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [diseaseTreatment, setDiseaseTreatment] = useState('');
@@ -67,4 +67,4 @@ function NewTreatment() {
   );
 }
 
-export default NewTreatment;
+export default New;

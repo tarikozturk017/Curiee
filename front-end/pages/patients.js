@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import useSWR from 'swr'
 
 // getStaticProps is a Next.js function that is used to pre-render static pages at build time. 
@@ -16,11 +17,13 @@ const Patients = () => {
   if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
 
   return (
-    <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
-      <h1>My Patients</h1>
+    <div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
+      <h1 className=' underline'>My Patients</h1>
+      <br />
       <ul>
         {patients.map((patient) => (
-          <li key={patient._id}>{patient.firstName} {patient.lastName}</li>
+          // instead of id, one time token can be created to avoid insecurity
+          <li key={patient._id}><Link href={"/patient/" + patient._id}>{patient.firstName} {patient.lastName}</Link></li>
         ))}
       </ul>
     </div>

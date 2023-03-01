@@ -12,9 +12,10 @@ const SideBar = ({ setMainContent }) => {
                 {/* {listItems} */}
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/patients">My Patients</Link></li>
-                <li><Link href="/patient/new">Create New Patient</Link></li>
+                <li><Link href="/patient/register">Create New Patient</Link></li>
                 <li><Link href="/treatments">Explore Treatments</Link></li>
-                <li><Link href="/appointments">My Appointments</Link></li>
+                <li><Link href="/treatment/new">Create New Treatment</Link></li>
+                {/* <li><Link href="/appointments">My Appointments</Link></li> */}
             </ul>
         </div>
     )
