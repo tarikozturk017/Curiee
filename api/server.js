@@ -54,6 +54,18 @@ app.get('/patients', async (req, res) => {
     res.json(patients);
 })
 
+// get patient by id
+app.get('/patient/:id', async (req, res) => {
+    try {
+        const patient = await Patient.findById(req.params.id); // get the patient
+    
+        if(patient)  res.status(200).json(patient);
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: 'An error occurred' });
+      }
+})
+
 // Create new patient
 app.post('/patient/new', (req, res) => {
     console.log(req.body)
@@ -96,6 +108,18 @@ app.get('/exercises', async (req, res) => {
     res.json(exercises);
 })
 
+// exercise by id
+app.get('/exercise/:id', async (req, res) => {
+    try {
+      const exercise = await Exercise.findById(req.params.id);
+  
+      if(exercise)  res.status(200).json(exercise);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: 'An error occurred' });
+    }
+  });
+
 // get all exercises of the patient
 app.get('/patient/:id/exercises', async (req, res) => {
     try {
@@ -114,6 +138,7 @@ app.post('/exercise/new', (req, res) => {
     const exercise = new Exercise({
         title: req.body.title,
         description: req.body.description,
+        diseaseTreatment: req.body.diseaseTreatment
     })
 
     exercise.save()

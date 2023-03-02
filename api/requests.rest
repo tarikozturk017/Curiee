@@ -1,5 +1,8 @@
 GET http://localhost:3001/patients
 
+### GET patient by id
+GET http://localhost:3001/patient/63fa8ea8cf8e38bfc50fc7d0
+
 ###
 
 POST http://localhost:3001/patient/new
@@ -26,6 +29,8 @@ Content-Type: application/json
 ### Exercises ###
 GET http://localhost:3001/exercises
 
+### Get exercise by id
+GET http://localhost:3001/exercise/63fbb47b0f9ed3b1e643613f
 
 ### Create new exercise
 

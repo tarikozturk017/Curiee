@@ -1,4 +1,5 @@
 import {useRouter} from 'next/router';
+import Link from 'next/link';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 
@@ -31,7 +32,11 @@ const Patient = () => {
                 {data.exercises.length > 0 ? (
                     <>
                     {data.exercises.map((exerciseId) => (
-                        <li key={exerciseId}><Exercise exerciseId={exerciseId} /></li>
+                        <li key={exerciseId}>
+                            <Link href={"/treatment/" + exerciseId}>
+                                <Exercise exerciseId={exerciseId} />
+                            </Link>
+                        </li>
                     ))}
                     </>
                 ) : (
