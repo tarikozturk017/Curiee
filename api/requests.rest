@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3001/patient/delete/63faa96e91dcdc6e2f013096
+DELETE http://localhost:3001/patient/delete/6400d239282ec0554022db89
 
 ###
 PUT http://localhost:3001/patient/edit/63faa98891dcdc6e2f013098

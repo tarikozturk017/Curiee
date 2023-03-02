@@ -3,10 +3,18 @@ import React, { useState } from 'react';
 const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:3001/patient/new', {
@@ -17,12 +25,14 @@ const Register = () => {
         body: JSON.stringify({
           firstName,
           lastName,
-          diagnosis
+          email,
+          diagnosis,
+          password
         })
       });
 
-      if (response.ok)    console.log('Exercise created successfully');
-      else    console.log('Error creating exercise');
+      if (response.ok)    console.log('Patient created successfully');
+      else    console.log('Error creating patient');
     } catch (error) {
       console.log(error);
     }
@@ -50,12 +60,38 @@ const Register = () => {
           />
         </div>
         <div>
+          <label htmlFor="email">Email address</label>
+          <textarea
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div>
           <label htmlFor="diagnosis">Diagnosis</label>
           <input
             type="text"
             id="diagnosis"
             value={diagnosis}
             onChange={(event) => setDiagnosis(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
           />
         </div>
         <button type="submit">Register</button>

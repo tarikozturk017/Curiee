@@ -1,4 +1,5 @@
 const express = require('express');
+const authRoutes = require('./routes/auth');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -21,6 +22,9 @@ const Model = require('./models/Patient');
 const Patient = Model.Patient
 const Exercise = Model.Exercise
 const Therapist = Model.Therapist
+
+// app.use('/api/auth', authRoutes);
+    
 
 // check the password when a patient signs in
 app.post('/login', async (req, res) => {
@@ -72,7 +76,10 @@ app.post('/patient/new', (req, res) => {
     const patient = new Patient({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        diagnosis: req.body.diagnosis
+        email: req.body.email,
+        diagnosis: req.body.diagnosis,
+        passwordHash: req.body.password
+
     })
 
     patient.save();

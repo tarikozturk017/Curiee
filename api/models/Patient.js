@@ -57,6 +57,14 @@ const PatientSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        // required: true,
+        // unique: true,
+        // lowercase: true,
+        // trim: true,
+        // match: [/.+@.+\..+/, 'Please enter a valid email address'],
+    },
     diagnosis: {
         type: String,
         required: true
@@ -98,9 +106,9 @@ PatientSchema.pre('save', async function (next) {
 });
 
 // Define a method on the Therapist and Patient models to compare a password with its hashed version
-TherapistSchema.methods.comparePassword = async function (password) {
-    return bcrypt.compare(password, this.passwordHash);
-  };
+// TherapistSchema.methods.comparePassword = async function (password) {
+//     return bcrypt.compare(password, this.passwordHash);
+//   };
   
 //The comparePassword method is a function that we're adding to the PatientSchema using the methods object.
 //This function takes a password as its argument and compares it with the hashed version of the password stored in the database.
