@@ -115,9 +115,9 @@ PatientSchema.pre('save', async function (next) {
 //bcrypt.compare() function to compare the plain text password with the hashed password stored in the database.
 //We're returning this promise from the comparePassword() function, so 
 //we can use await to wait for the result of the comparison in our login function.
-PatientSchema.methods.comparePassword = async function (password) {
-    return bcrypt.compare(password, this.passwordHash);
-};
+// PatientSchema.methods.comparePassword = async function (password) {
+//     return bcrypt.compare(password, this.passwordHash);
+// };
 
 const Patient = mongoose.model("Patient", PatientSchema);
 const Exercise = mongoose.model("Exercise", ExerciseSchema);

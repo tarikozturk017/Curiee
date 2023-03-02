@@ -2,6 +2,9 @@ const express = require('express');
 const authRoutes = require('./routes/auth');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
 
 const app = express();
 
@@ -30,26 +33,38 @@ const Therapist = Model.Therapist
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
   
-    // find the patient by their email address
-    const patient = await Patient.findOne({ email });
+    try {
+      // find the patient by their email address
+      const patient = await Patient.findOne({ email });
   
-    if (!patient) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      if (!patient) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+  
+      // compare the hashed password with the plaintext password
+      const match = await bcrypt.compare(password, patient.passwordHash);
+  
+      if (!match) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+      }
+  
+      /**
+       * In JWT, when a user logs in, a token is generated with some user-specific data and a secret key. 
+       * This token is then sent back to the client-side, where it can be stored in 
+       * local storage or a cookie. Every subsequent request that requires authorization from the user will 
+       * require that the token be included in the request header.
+       */
+      const secretKey = 'mysecretkey';
+
+      // generate a JWT token and return it to the client
+      const token = jwt.sign({ patientId: patient._id }, secretKey);
+      console.log('logged in create succesfully, token is' + token);
+      res.status(200).json({ token });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
     }
-  
-    // compare the hashed password with the plaintext password
-    const match = await bcrypt.compare(password, patient.password);
-  
-    if (!match) {
-      return res.status(401).json({ message: 'Invalid email or password' });
-    }
-  
-    // generate a JWT token and return it to the client
-    const token = jwt.sign({ patientId: patient._id }, secretKey);
-  
-    res.status(200).json({ token });
   });
-  
 
 // get all the patients
 app.get('/patients', async (req, res) => {
@@ -69,6 +84,34 @@ app.get('/patient/:id', async (req, res) => {
         res.status(500).json({ message: 'An error occurred' });
       }
 })
+
+// get patient by email
+// app.get('/patient/:email', async (req, res) => {
+
+//     console.log(`email: ${req.params.email}`)
+//     try {
+//         const patient = await Patient.findOne({email: req.params.email}); // get the patient
+    
+//         if(patient)  res.status(200).json(patient);
+//       } catch (err) {
+//         console.log(err);
+//         res.status(500).json({ message: 'An error occurred' });
+//       }
+// })
+app.get('/patient', async (req, res) => {
+    const { email } = req.query;
+    try {
+      const patient = await Patient.findOne({ email }).populate('exercises');
+      if (!patient) {
+        return res.status(404).json({ message: 'Patient not found' });
+      }
+      res.json(patient);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+  
 
 // Create new patient
 app.post('/patient/new', (req, res) => {
