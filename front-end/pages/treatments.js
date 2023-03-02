@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import useSWR from 'swr'
 
 const Treatments = () => {
@@ -14,7 +15,7 @@ const Treatments = () => {
         <h1>Exercises</h1>
         <ul>
           {exercises.map((exercise) => (
-            <li key={exercise._id}>{exercise.title}</li>
+            <li key={exercise._id}><Link href={"/treatment/" + exercise._id}>{exercise.title}</Link></li>
           ))}
         </ul>
       </div>
