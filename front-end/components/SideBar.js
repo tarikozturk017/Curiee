@@ -16,6 +16,7 @@ const SideBar = ({ setMainContent }) => {
                 <li><Link href="/treatments">Explore Treatments</Link></li>
                 <li><Link href="/treatment/new">Create New Treatment</Link></li>
                 <li><Link href="/patient/login">patient-login</Link></li>
+                <li><Link href="/therapist/login">therapist-login</Link></li>
                 {/* <li><Link href="/appointments">My Appointments</Link></li> */}
             </ul>
         </div>
