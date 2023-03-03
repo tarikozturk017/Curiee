@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Therapist = require('../models/Therapist');
 const Patient = require('../models/Patient');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // get all therapists
 router.get('/all', async (req, res) => {
@@ -39,23 +41,25 @@ router.post('/login', async (req, res) => {
     }
   });
 
-
-
-// create therapist
+// Create/register new therapist
 router.post('/new', (req, res) => {
-    const therapist = new Therapist({
+    console.log(req.body)
+    const patient = new Therapist({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        occupation: req.body.occupation
+        email: req.body.email,
+        occupation: req.body.occupation,
+        passwordHash: req.body.password
     })
 
-    therapist.save();
-    res.json(therapist)
+    patient.save();
+    res.json(patient)
 })
+
 
 // update therapist
 router.put('/edit/:id', async (req, res) => {
-    const result = await Therapist.findById(req.params.id); // get the patient
+    const result = await Therapist.findById(req.params.id); // get the therapist
 
     const patient = await Patient.findById(req.body.patientId);
     
@@ -68,5 +72,13 @@ router.put('/edit/:id', async (req, res) => {
     res.json(result)
     result.save();
 })
+
+// Delete therapist by id
+router.delete('/delete/:id', async (req, res) => {
+    const result = await Therapist.findByIdAndDelete(req.params.id);
+
+    res.json(result);
+})
+
 
 module.exports = router;

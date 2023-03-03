@@ -71,7 +71,7 @@ router.get('/:id', async (req, res) => {
       }
 })
 
-// Create new patient
+// Create/register new patient
 router.post('/new', (req, res) => {
     console.log(req.body)
     const patient = new Patient({

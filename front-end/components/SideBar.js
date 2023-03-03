@@ -13,6 +13,7 @@ const SideBar = ({ setMainContent }) => {
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/patients">My Patients</Link></li>
                 <li><Link href="/patient/register">Create New Patient</Link></li>
+                <li><Link href="/therapist/register">Create New Therapist</Link></li>
                 <li><Link href="/treatments">Explore Treatments</Link></li>
                 <li><Link href="/treatment/new">Create New Treatment</Link></li>
                 <li><Link href="/patient/login">patient-login</Link></li>

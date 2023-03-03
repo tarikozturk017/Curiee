@@ -11,9 +11,21 @@ const TherapistSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        // required: true,
+        // unique: true,
+        // lowercase: true,
+        // trim: true,
+        // match: [/.+@.+\..+/, 'Please enter a valid email address'],
+    },
     occupation: {
         type: String,
         // required: true
+    },
+    passwordHash: {
+        type: String,
+        // required: true,
     },
     favExercises: [{ 
         type: Schema.Types.ObjectId,
@@ -29,7 +41,7 @@ const TherapistSchema = new Schema({
     },
 })
   
-// Before saving the Therapist or Patient document, hash the password
+// Before saving the Therapist or Therapist document, hash the password
 TherapistSchema.pre('save', async function (next) {
     const therapist = this;
     if (!therapist.isModified('passwordHash')) {
