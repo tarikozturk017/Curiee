@@ -8,7 +8,7 @@ import useSWR from 'swr'
 
 
 const Patients = () => {
-  const { data: patients, error } = useSWR('http://localhost:3001/patients', async (url) => {
+  const { data: patients, error } = useSWR('http://localhost:3001/patient/all', async (url) => {
     const res = await fetch(url)
     return res.json()
   })

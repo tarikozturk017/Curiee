@@ -2,7 +2,7 @@ import Link from 'next/link'
 import useSWR from 'swr'
 
 const Treatments = () => {
-    const { data: exercises, error } = useSWR('http://localhost:3001/exercises', async (url) => {
+    const { data: exercises, error } = useSWR('http://localhost:3001/exercise/all', async (url) => {
       const res = await fetch(url)
       return res.json()
     })

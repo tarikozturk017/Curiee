@@ -22,7 +22,7 @@ const PatientSchema = new Schema({
     },
     diagnosis: {
         type: String,
-        required: true
+        // required: true
     },
     exercises: [{ 
         type: Schema.Types.ObjectId, 
