@@ -4,6 +4,7 @@ import { useState } from 'react';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
 
   //useSWR is more useful when we want to continuously fetch data from an API 
   //endpoint and update our UI with the latest data. It provides an easy way to 
@@ -11,7 +12,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
   
-    const response = await fetch('http://localhost:3001/login', {
+    const response = await fetch('http://localhost:3001/patient/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,6 +21,8 @@ const Login = () => {
     });
   
     if (response.ok) {
+      const data = await response.json();
+      setToken(data.token); // Save the JWT token returned by the server
       console.log('Logged in successfully');
     } else if (response.status === 401) {
       console.log('Incorrect password');
@@ -53,6 +56,10 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+
+      {/* // Render the PatientInfo component if the token exists */}
+      {/* {token && <PatientInfo token={token} />}  */}
+      {token && <p>{token}</p>} 
     </div>
   );
 };

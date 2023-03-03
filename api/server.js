@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const authRoutes = require('./routes/auth');
 const mongoose = require('mongoose');
@@ -11,7 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // avoid cross origin errors
 
-const uri = 'mongodb+srv://tarikozturkk1:Takomac.1995@hc-managemenet-system.fzpqavf.mongodb.net/?retryWrites=true&w=majority'
+// replace -> API_URI
+const uri = process.env.API_URI
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -20,33 +22,25 @@ mongoose.connect(uri, {
     () => console.log("Connected to DB")
     ).catch(console.error)
 
-// import Patient model
-const Model = require('./models/Patient');
-const Patient = Model.Patient
-const Exercise = Model.Exercise
-const Therapist = Model.Therapist
+// import models
+const Patient = require('./models/Patient');
+const Exercise = require('./models/Exercise');
+const Therapist = require('./models/Therapist');
 
 // app.use('/api/auth', authRoutes);
     
 
 // check the password when a patient signs in
-app.post('/login', async (req, res) => {
+app.post('/patient/login', async (req, res) => {
     const { email, password } = req.body;
   
     try {
-      // find the patient by their email address
       const patient = await Patient.findOne({ email });
-  
-      if (!patient) {
-        return res.status(401).json({ message: 'Invalid email or password' });
-      }
+      if (!patient) return res.status(401).json({ message: 'Invalid email or password' });
   
       // compare the hashed password with the plaintext password
       const match = await bcrypt.compare(password, patient.passwordHash);
-  
-      if (!match) {
-        return res.status(401).json({ message: 'Invalid email or password' });
-      }
+      if (!match) return res.status(401).json({ message: 'Invalid email or password' });
   
       /**
        * In JWT, when a user logs in, a token is generated with some user-specific data and a secret key. 
@@ -54,11 +48,11 @@ app.post('/login', async (req, res) => {
        * local storage or a cookie. Every subsequent request that requires authorization from the user will 
        * require that the token be included in the request header.
        */
-      const secretKey = 'mysecretkey';
+      const secretKey = process.env.SECRET_KEY;
 
       // generate a JWT token and return it to the client
       const token = jwt.sign({ patientId: patient._id }, secretKey);
-      console.log('logged in create succesfully, token is' + token);
+
       res.status(200).json({ token });
     } catch (error) {
       console.error(error);
