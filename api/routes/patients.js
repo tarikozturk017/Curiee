@@ -61,15 +61,17 @@ router.post('/login', async (req, res) => {
 
 // get patient by id
 router.get('/:id', async (req, res) => {
-    try {
-        const patient = await Patient.findById(req.params.id); // get the patient
-    
-        if(patient)  res.status(200).json(patient);
-      } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: 'An error occurred' });
-      }
-})
+  try {
+    const patient = await Patient.findById(req.params.id).populate('exercises');
+    if (!patient) {
+      return res.status(404).json({ message: 'Patient not found' });
+    }
+    res.json(patient);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 // Create/register new patient
 router.post('/new', (req, res) => {

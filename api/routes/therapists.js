@@ -11,6 +11,22 @@ router.get('/all', async (req, res) => {
     res.json(therapists);
 })
 
+// get therapist by id
+router.get('/:id', async (req, res) => {
+  try {
+    const therapist = await Therapist.findById(req.params.id)
+        .populate('favExercises')
+        .populate('patients');
+    if (!therapist) {
+      return res.status(404).json({ message: 'Therapist not found' });
+    }
+    res.json(therapist);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // therapist login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;

@@ -1,7 +1,7 @@
 GET http://localhost:3001/patient/all
 
 ### GET patient by id
-GET http://localhost:3001/patient/6400d2a31cacd90770c48ed1
+GET http://localhost:3001/patient/64026c5890b3d644733e1f3e
 
 ### GET patient by email
 # GET http://localhost:3001/patient/1@2.com
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3001/patient/delete/6401561d6ff9ae67b0dec954
+DELETE http://localhost:3001/patient/delete/64026c5890b3d644733e1f3e
 
 ###
 PUT http://localhost:3001/patient/edit/63faa98891dcdc6e2f013098
@@ -66,6 +66,10 @@ Content-Type: application/json
 
 ### Get therapists
 GET http://localhost:3001/therapist/all
+
+### Get therapist by id
+GET http://localhost:3001/therapist/640252d527c6008a2970e6a9
+
 
 ### Update therapist
 PUT http://localhost:3001/therapist/edit/63fc0c154641ff9b50083f90
