@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import useSWR from 'swr'
+import { useAtom } from 'jotai'
+import { userIdAtom } from '@/components/Layout'
 
 // getStaticProps is a Next.js function that is used to pre-render static pages at build time. 
 // It is typically used for pages that do not require frequently changing data, such as blog posts or 
@@ -8,10 +10,16 @@ import useSWR from 'swr'
 
 
 const Patients = () => {
+  const [patientId] = useAtom(userIdAtom);
+
+  console.log(patientId);
+
   const { data: patients, error } = useSWR('http://localhost:3001/patient/all', async (url) => {
     const res = await fetch(url)
     return res.json()
   })
+
+  
 
   if (error) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Failed to load patients</div>
   if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>

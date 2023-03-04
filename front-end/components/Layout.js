@@ -1,8 +1,52 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { atom, useAtom } from 'jotai';
+const jwt = require('jsonwebtoken');
+
 import Head from 'next/head'
 import SideBar from "./SideBar";
 import Footer from "./Footer";
 
+// create the atom
+const userIdAtom = atom('');
+
 const Layout = (props) => {
+  const [userId, setUserId] = useAtom(userIdAtom);
+  const router = useRouter();
+
+  useEffect(() => {
+  const token = localStorage.getItem('token');
+
+    if (token) {
+      try {
+          const decodedToken = jwt.decode(token);
+          const patientId = decodedToken.patientId;
+          if (patientId) {
+            console.log(`patient ID: ${patientId}`);
+            setUserId(patientId);
+          } else {
+            const therapistId = decodedToken.therapistId
+            console.log(`therapist ID: ${therapistId}`);
+            setUserId(therapistId);
+          }
+      } catch (error) {
+          console.log('Invalid token', error);
+      }
+      } else {
+          console.log('No token found');
+      }
+    
+  }, [setUserId]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+    //   router.push('/login');
+    console.log('not logged in')
+    }
+  }, [router]);
+
+
     return (
         <>
             <Head>
@@ -20,4 +64,5 @@ const Layout = (props) => {
     )
 }
 
-export default Layout
+export default Layout;
+export { userIdAtom };
