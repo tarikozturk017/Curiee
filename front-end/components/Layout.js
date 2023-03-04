@@ -5,10 +5,13 @@ const jwt = require('jsonwebtoken');
 
 import Head from 'next/head'
 import SideBar from "./SideBar";
+import Navbar from './Navbar';
 import Footer from "./Footer";
 
 // create the atom
 const userIdAtom = atom('');
+
+const protectedRoutes = ['/patients'];
 
 const Layout = (props) => {
   const [userId, setUserId] = useAtom(userIdAtom);
@@ -40,9 +43,9 @@ const Layout = (props) => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) {
-    //   router.push('/login');
-    console.log('not logged in')
+    if (!token && protectedRoutes.includes(router.pathname)) {
+      console.log('not logged in')
+      router.push('/login');
     }
   }, [router]);
 
@@ -55,6 +58,7 @@ const Layout = (props) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <Navbar/>
             <SideBar />
                 <div className=" h-screen bg-gradient-to-tr from-cyan-300 to-blue-300">
                     {props.children}
