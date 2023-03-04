@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3001/patient/delete/6400d239282ec0554022db89
+DELETE http://localhost:3001/patient/delete/6401561d6ff9ae67b0dec954
 
 ###
 PUT http://localhost:3001/patient/edit/63faa98891dcdc6e2f013098
@@ -74,3 +74,6 @@ Content-Type: application/json
 {
     "patientId" : "63faa98891dcdc6e2f013098"
 }
+
+### Delete therapist
+DELETE http://localhost:3001/therapist/delete/63fc0c154641ff9b50083f90
