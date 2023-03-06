@@ -10,37 +10,42 @@ import Footer from "./Footer";
 
 // create the atom
 const userIdAtom = atom('');
+const userTypeAtom = atom('');
+const userTokenAtom = atom('');
 
 const protectedRoutes = ['/patients'];
 
 const Layout = (props) => {
   const [userId, setUserId] = useAtom(userIdAtom);
+  const [userType, seUserType] = useAtom(userTypeAtom);
+  const [userToken, seUserToken] = useAtom(userTokenAtom);
   const router = useRouter();
 
   useEffect(() => {
-  const token = localStorage.getItem('token');
-
-    if (token) {
+    if(userToken !== '') {
       try {
-          const decodedToken = jwt.decode(token);
-          const patientId = decodedToken.patientId;
-          if (patientId) {
-            console.log(`patient ID: ${patientId}`);
-            setUserId(patientId);
-          } else {
-            const therapistId = decodedToken.therapistId
-            console.log(`therapist ID: ${therapistId}`);
-            setUserId(therapistId);
-          }
+        const decodedToken = jwt.decode(userToken);
+        const patientId = decodedToken.patientId;
+        if (patientId) {
+          console.log(`patient ID: ${patientId}`);
+          setUserId(patientId);
+          seUserType('patient');       
+        } else {
+          const therapistId = decodedToken.therapistId
+          console.log(`therapist ID: ${therapistId}`);
+          setUserId(therapistId);
+          seUserType('therapist');
+        }
       } catch (error) {
-          console.log('Invalid token', error);
+        console.log(error)
       }
-      } else {
-          console.log('No token found');
-      }
+    }
     
-  }, [setUserId]);
-
+  }, [userToken]);
+  
+  // useEffect(() => {
+  //   console.log(`userToken: ${userToken}`)
+  // }, [userToken]);
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token && protectedRoutes.includes(router.pathname)) {
@@ -58,15 +63,16 @@ const Layout = (props) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navbar/>
-            <SideBar />
-                <div className=" h-screen bg-gradient-to-tr from-cyan-300 to-blue-300">
-                    {props.children}
-                </div>
+            <Navbar />
+            {/* if user logged in, display sidebar */}
+            {userToken !== '' && <SideBar />}
+            <div className=" h-screen bg-gradient-to-tr from-cyan-300 to-blue-300">
+                {props.children}
+            </div>
             <Footer />
         </>
     )
 }
 
 export default Layout;
-export { userIdAtom };
+export { userIdAtom, userTypeAtom, userTokenAtom };

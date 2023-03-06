@@ -47,12 +47,14 @@ router.post('/login', async (req, res) => {
        * local storage or a cookie. Every subsequent request that requires authorization from the user will 
        * require that the token be included in the request header.
        */
-      const secretKey = process.env.SECRET_KEY;
+      // const secretKey = process.env.SECRET_KEY;
 
       // generate a JWT token and return it to the client
-      const token = jwt.sign({ patientId: patient._id }, secretKey);
+      const token = jwt.sign({ patientId: patient._id }, process.env.SECRET_KEY);
 
-      res.status(200).json({ token });
+      delete patient.passwordHash // make sure not sent to front-end
+
+      res.status(200).json({ token, patient });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server Error' });
@@ -84,9 +86,9 @@ router.post('/new', (req, res) => {
         passwordHash: req.body.password
 
     })
-
     patient.save();
-    res.json(patient)
+    delete patient.passwordHash
+    res.status(201).json(patient)
 })
 
 // update patient

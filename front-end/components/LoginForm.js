@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router'
+import { useAtom, useSetAtom } from 'jotai';
+import { userTokenAtom } from './Layout';
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter()
 
+  const setUserToken = useSetAtom(userTokenAtom)
 
   //useSWR is more useful when we want to continuously fetch data from an API 
   //endpoint and update our UI with the latest data. It provides an easy way to 
@@ -24,6 +27,8 @@ const LoginForm = (props) => {
     if (response.ok) {
       const data = await response.json();
       // Store the token securely on the client side (e.g., in local storage)
+      console.log(`login data: ${data.token}`)
+      setUserToken(data.token)
       localStorage.setItem('token', data.token);
       router.push('/');
       // router.push('/dashboard');

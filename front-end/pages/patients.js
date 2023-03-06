@@ -11,9 +11,9 @@ import { userIdAtom } from '@/components/Layout'
 
 
 const Patients = () => {
-  const [patientId] = useAtom(userIdAtom);
+  const [userId] = useAtom(userIdAtom);
 
-  // console.log(`patientpage patient id: ${patientId}`);
+  console.log(`patientpage user id: ${userId}`);
   // console.log(patientId.constructor.name)
 
 

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Logout from "../logout"
-const SideBar = () => {
+const PatientSideBar = () => {
     return (
         <div className="  p-10 text-white bg-slate-900 h-screen absolute min-w-min w-1/6 pt-5" >
             <p className=" m-5 text-center text-xl">FirstName LastName</p>
@@ -23,4 +23,4 @@ const SideBar = () => {
     )
 }
 
-export default SideBar
+export default PatientSideBar

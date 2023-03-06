@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-const SideBar = ({ setMainContent }) => {
+const TherapistSideBar = ({ setMainContent }) => {
 
    
     return (
@@ -26,4 +26,4 @@ const SideBar = ({ setMainContent }) => {
     )
 }
 
-export default SideBar
+export default TherapistSideBar

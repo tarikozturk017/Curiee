@@ -1,10 +1,10 @@
-import { useState } from "react";
+import Link from "next/link";
 
 const Login = () => {
     return (
         <div className=" text-center">
-            <button onClick={() => console.log('Patient Login')}>Patient Login</button>
-            <button  onClick={() => console.log('Therapist Login')}>Therapist Login</button>
+            <Link href="/patient/login">Patient Login</Link>
+            <Link href="/therapist/login">Therapist Login</Link>
         </div>
     )
 } 
