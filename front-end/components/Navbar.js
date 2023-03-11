@@ -14,9 +14,9 @@ const Navbar = () => {
                 <ul className="container flex flex-wrap items-center justify-evenly mx-auto">
                     <li><Link href="/treatments">Explore Treatments</Link></li>
                     <li><Link href="/treatments">Explore Therapists (TODO)</Link></li>
-                    {token !== '' ? <li><Logout /></li>  
+                    {token ? <li><Logout /></li>  
                     :<li><Link href="/login">Login</Link></li>}
-                    {token !== '' ? <li>Profile</li> 
+                    {token ? <li>Profile</li> 
                     :<li>Register</li>}
                 </ul>
             </nav>

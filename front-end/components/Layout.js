@@ -14,6 +14,7 @@ const userTypeAtom = atom('');
 const userTokenAtom = atom('');
 
 const protectedRoutes = ['/patients'];
+const patientsOnlyRoutes = ['/patients'];
 
 const Layout = (props) => {
   const [userId, setUserId] = useAtom(userIdAtom);
@@ -25,20 +26,23 @@ const Layout = (props) => {
     if(userToken !== '') {
       try {
         const decodedToken = jwt.decode(userToken);
-        const patientId = decodedToken.patientId;
-        if (patientId) {
-          setUserId(patientId);
-          seUserType('patient');       
-        } else {
-          const therapistId = decodedToken.therapistId
-          setUserId(therapistId);
-          seUserType('therapist');
-        }
+        let patientId;
+        if(decodedToken){
+          patientId = decodedToken.patientId;
+
+          if (patientId) {
+            setUserId(patientId);
+            seUserType('patient');       
+          } else {
+            const therapistId = decodedToken.therapistId
+            setUserId(therapistId);
+            seUserType('therapist');
+          }
+        } 
       } catch (error) {
         console.log(error)
       }
     }
-    
   }, [userToken]);
 
   useEffect(() => {
@@ -49,6 +53,10 @@ const Layout = (props) => {
       console.log('not logged in')
       router.push('/login');
     }
+    if (userType != 'therapist' && patientsOnlyRoutes.includes(router.pathname)) {
+      console.log('only patients can see')
+      router.push('/');
+    }
   }, []);
 
   useEffect(() => {
@@ -56,6 +64,10 @@ const Layout = (props) => {
     if (!token && protectedRoutes.includes(router.pathname)) {
       console.log('not logged in')
       router.push('/login');
+    }
+    if (userType != 'therapist' && patientsOnlyRoutes.includes(router.pathname)) {
+      console.log('only patients can see')
+      router.push('/');
     }
   }, [router]);
 
@@ -69,7 +81,7 @@ const Layout = (props) => {
             </Head>
             <Navbar />
             {/* if user logged in, display sidebar */}
-            {userToken !== '' && <SideBar />}
+            {userToken && <SideBar />}
             <div className=" h-screen bg-gradient-to-tr from-cyan-300 to-blue-300">
                 {props.children}
             </div>

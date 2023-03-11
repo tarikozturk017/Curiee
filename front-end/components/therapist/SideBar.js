@@ -9,7 +9,6 @@ const PatientSideBar = () => {
     const [therapist, setTherapist] = useAtom(userAtom)
     // console.log(userId)
     
-    
     const { data: t, error } = useSWR(`http://localhost:3001/therapist/${userId}`, async (url) => {
         const res = await fetch(url)
         // console.log(res)

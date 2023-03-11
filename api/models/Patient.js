@@ -24,6 +24,14 @@ const PatientSchema = new Schema({
         type: String,
         // required: true
     },
+    pendingTherapists: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: 'Therapist' 
+    }],
+    therapists: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: 'Therapist' 
+    }],
     exercises: [{ 
         type: Schema.Types.ObjectId, 
         ref: 'Exercise' 

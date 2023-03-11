@@ -81,3 +81,21 @@ Content-Type: application/json
 
 ### Delete therapist
 DELETE http://localhost:3001/therapist/delete/63fc0c154641ff9b50083f90
+
+### Send add therapist to patient request
+POST http://localhost:3001/patient/sendTherapistRequest
+Content-Type: application/json
+
+{
+    "patientId": "64026e5f90b3d644733e1f50",
+    "therapistId": "640252d527c6008a2970e6a9"
+}
+
+### Accept therapist to patient request
+PUT http://localhost:3001/patient/acceptTherapistRequest
+Content-Type: application/json
+
+{
+    "patientId": "64026e5f90b3d644733e1f50",
+    "therapistId": "640252d527c6008a2970e6a9"
+}
