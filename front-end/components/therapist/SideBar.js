@@ -1,29 +1,39 @@
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { userIdAtom } from "../Layout";
+import { atom, useAtom } from 'jotai';
+import useSWR from 'swr';
 
-const TherapistSideBar = ({ setMainContent }) => {
+const userAtom = atom({});
+const PatientSideBar = () => {
+    const [userId] = useAtom(userIdAtom)
+    const [therapist, setTherapist] = useAtom(userAtom)
+    // console.log(userId)
+    
+    
+    const { data: t, error } = useSWR(`http://localhost:3001/therapist/${userId}`, async (url) => {
+        const res = await fetch(url)
+        // console.log(res)
+        return res.json()
+    })
+    setTherapist(t)
+    // console.log(p)
 
-   
     return (
-        <div className="  p-10 text-white bg-slate-900 h-screen absolute min-w-min w-1/6 pt-5" >
-            <p className=" m-5 text-center text-xl">FirstName LastName</p>
+        <>
+        { t && (<div className="  p-10 text-white bg-slate-900 h-screen absolute min-w-min w-1/6 pt-5" >
+            <p className=" m-5 text-center text-xl">{t.firstName + ' ' + t.lastName}</p>
             <hr />
             <ul className=" mt-10 flex flex-col gap-5">
-                {/* {listItems} */}
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/patients">All Patients</Link></li>
-                {/* <li><Link href="/patients">My Patients</Link></li> */}
-                <li><Link href="/patient/register">Create New Patient</Link></li>
-                <li><Link href="/therapist/register">Create New Therapist</Link></li>
+                <li><Link href="/therapist/dashboard">Dashboard</Link></li>
+                <li><Link href="/patients">My Patients</Link></li>
                 <li><Link href="/treatments">Explore Treatments</Link></li>
                 <li><Link href="/treatment/new">Create New Treatment</Link></li>
-                <li><Link href="/patient/login">patient-login</Link></li>
-                <li><Link href="/therapist/login">therapist-login</Link></li>
-                <li><Link href="/logout">logout patient</Link></li>
-                {/* <li><Link href="/appointments">My Appointments</Link></li> */}
             </ul>
-        </div>
+        </div>)
+        }
+        </>
     )
 }
 
-export default TherapistSideBar
+export default PatientSideBar
+export { userAtom };

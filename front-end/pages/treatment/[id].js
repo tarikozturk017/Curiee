@@ -19,14 +19,12 @@ const Treatment = () => {
             <p><strong>Description: </strong> {data.description}</p>
             <p>
                 <strong>Treatment use diseases: </strong>
-                {data.diseaseTreatment.length > 0 ? (
+                {data.diseaseTreatment && (
                     <>
                     {data.diseaseTreatment.map((disease) => (
                         <li key={disease}>{disease}</li>
                     ))}
                     </>
-                ) : (
-                <span>No disease treatment assigned to {data.title}</span>
                 )}
             </p>
         </div>

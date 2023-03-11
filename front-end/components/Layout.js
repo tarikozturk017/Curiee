@@ -27,12 +27,10 @@ const Layout = (props) => {
         const decodedToken = jwt.decode(userToken);
         const patientId = decodedToken.patientId;
         if (patientId) {
-          console.log(`patient ID: ${patientId}`);
           setUserId(patientId);
           seUserType('patient');       
         } else {
           const therapistId = decodedToken.therapistId
-          console.log(`therapist ID: ${therapistId}`);
           setUserId(therapistId);
           seUserType('therapist');
         }
@@ -42,10 +40,17 @@ const Layout = (props) => {
     }
     
   }, [userToken]);
-  
-  // useEffect(() => {
-  //   console.log(`userToken: ${userToken}`)
-  // }, [userToken]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    // console.log(`token: ${token}`)
+    seUserToken(token)
+    if (!token && protectedRoutes.includes(router.pathname)) {
+      console.log('not logged in')
+      router.push('/login');
+    }
+  }, []);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token && protectedRoutes.includes(router.pathname)) {
@@ -53,7 +58,6 @@ const Layout = (props) => {
       router.push('/login');
     }
   }, [router]);
-
 
     return (
         <>

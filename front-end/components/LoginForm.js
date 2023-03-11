@@ -30,8 +30,8 @@ const LoginForm = (props) => {
       console.log(`login data: ${data.token}`)
       setUserToken(data.token)
       localStorage.setItem('token', data.token);
-      router.push('/');
-      // router.push('/dashboard');
+      // router.push('/');
+      router.push(`/${props.modelType}/dashboard`);
       console.log('Logged in successfully');
     } else if (response.status === 401) {
       console.log('Incorrect password');

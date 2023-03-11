@@ -1,7 +1,7 @@
 GET http://localhost:3001/patient/all
 
 ### GET patient by id
-GET http://localhost:3001/patient/64026c5890b3d644733e1f3e
+GET http://localhost:3001/patient/640270c990b3d644733e1f5b
 
 ### GET patient by email
 # GET http://localhost:3001/patient/1@2.com

@@ -13,16 +13,10 @@ import { userIdAtom } from '@/components/Layout'
 const Patients = () => {
   const [userId] = useAtom(userIdAtom);
 
-  console.log(`patientpage user id: ${userId}`);
-  // console.log(patientId.constructor.name)
-
-
   const { data: patients, error } = useSWR('http://localhost:3001/patient/all', async (url) => {
     const res = await fetch(url)
     return res.json()
   })
-
-  
 
   if (error) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Failed to load patients</div>
   if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
