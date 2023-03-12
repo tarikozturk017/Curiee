@@ -26,7 +26,7 @@ const PatientSideBar = () => {
                 <li><Link href="/patient/dashboard">Home</Link></li>
                 <li><Link href="/my-treatment/">My Treatment</Link></li>
                 <li><Link href="/treatments">Explore Treatments</Link></li>
-                <li><Link href="/treatments">Explore Therapists (TODO)</Link></li>
+                <li><Link href="/patient/myTherapist">My Therapist</Link></li>
             </ul>
         </div>)
         }

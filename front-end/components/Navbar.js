@@ -17,7 +17,7 @@ const Navbar = () => {
                     {token ? <li><Logout /></li>  
                     :<li><Link href="/login">Login</Link></li>}
                     {token ? <li>Profile</li> 
-                    :<li>Register</li>}
+                    :<li><Link href="/register">Register</Link></li>}
                 </ul>
             </nav>
         </>    
