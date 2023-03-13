@@ -193,7 +193,13 @@ router.put('/acceptTherapistRequest', async (req, res) => {
 
   patient.therapists.push(therapist);
   patient.pendingTherapists = patient.pendingTherapists.filter((t) => t._id.toString() !== therapistId.toString());
+  
+  
   await patient.save();
+  // once patient accept the therapist, add the patient to the therapist's patient list
+  therapist.patients.push(patient)
+  await therapist.save()
+
   return res.status(200).json(patient);
 });
 

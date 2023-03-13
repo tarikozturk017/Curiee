@@ -1,16 +1,7 @@
 import {useRouter} from 'next/router';
-import Link from 'next/link';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 
-// const Exercise = ({ exerciseId }) => {
-//     const { data, error } = useSWR(`http://localhost:3001/exercise/${exerciseId}`);
-  
-//     if (error) return <>Error loading exercise details</>;
-//     if (!data) return <>Loading exercise details...</>;
-
-//     return <span>{data.title}</span>;
-//   };
 
 const Therapist = () => {
     const router = useRouter();

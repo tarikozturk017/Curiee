@@ -11,8 +11,6 @@ const Therapists = () => {
 
     if (error) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Failed to load patients</div>
     if (!therapists) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
-  
-    console.log(therapists)
 
     return (
         <>
