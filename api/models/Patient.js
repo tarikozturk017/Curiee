@@ -33,9 +33,17 @@ const PatientSchema = new Schema({
         ref: 'Therapist' 
     }],
     exercises: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Exercise' 
-    }],
+        exercise: {
+          type: Schema.Types.ObjectId, 
+          ref: 'Exercise' 
+        },
+        repetition: {
+          type: Number,
+        },
+        note: {
+          type: String
+        }
+      }],
     passwordHash: {
         type: String,
         // required: true,

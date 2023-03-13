@@ -3,14 +3,14 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 
-const Exercise = ({ exerciseId }) => {
-    const { data, error } = useSWR(`http://localhost:3001/exercise/${exerciseId}`);
+// const Exercise = ({ exerciseId }) => {
+//     const { data, error } = useSWR(`http://localhost:3001/exercise/${exerciseId}`);
   
-    if (error) return <>Error loading exercise details</>;
-    if (!data) return <>Loading exercise details...</>;
+//     if (error) return <>Error loading exercise details</>;
+//     if (!data) return <>Loading exercise details...</>;
 
-    return <span>{data.title}</span>;
-  };
+//     return <span>{data.title}</span>;
+//   };
 
 const Patient = () => {
     const router = useRouter();
@@ -31,11 +31,13 @@ const Patient = () => {
                 <strong>Exercises: </strong>
                 {data.exercises.length > 0 ? (
                     <>
-                    {data.exercises.map((exerciseId) => (
-                        <li key={exerciseId}>
-                            <Link href={"/treatment/" + exerciseId}>
-                                <Exercise exerciseId={exerciseId} />
+                    {data.exercises.map((exercise) => (
+                        <li key={exercise.exercise}>
+                            <Link href={"/treatment/" + exercise.exercise}>
+                                <Exercise exerciseId={exercise.exercise} />
                             </Link>
+                            {exercise.repetition && <p>Repetition: {exercise.repetition}</p>}
+                            {exercise.repetition && <p>Note: {exercise.repetition}</p>}
                         </li>
                     ))}
                     </>

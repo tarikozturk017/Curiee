@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Therapist = require('../models/Therapist');
 const Patient = require('../models/Patient');
+const Exercise = require('../models/Exercise');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -70,6 +71,28 @@ router.post('/new', (req, res) => {
 
     patient.save();
     res.json(patient)
+})
+
+// Assign exercise to
+router.post('/assignExerciseToPatient', async (req, res) => {
+  const patient = await Patient.findById(req.body.patientId);
+  const therapist = await Therapist.findById(req.body.therapistId);
+  const exercise = await Exercise.findById(req.body.exerciseId);
+  const repetition = req.body.repetition ? req.body.repetition : 0;
+  const note = req.body.note ? req.body.note : 'No notes assigned';
+
+  // This code checks if at least one Therapist instance in patient.therapists 
+  // has the same _id as the therapist object. If the condition is true handles rest.
+  if (patient.therapists.some(t => t._id.toString() === therapist._id.toString())) {
+    patient.exercises.push({
+      exercise: exercise,
+      repetition: repetition,
+      note: note
+    })
+  }
+  
+  patient.save();
+  res.json(patient)
 })
 
 
