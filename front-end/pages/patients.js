@@ -11,9 +11,9 @@ import { userIdAtom } from '@/components/Layout'
 
 
 const Patients = () => {
-  const [userId] = useAtom(userIdAtom);
+  const [therapistId] = useAtom(userIdAtom);
 
-  const { data: patients, error } = useSWR('http://localhost:3001/patient/all', async (url) => {
+  const { data: patients, error } = useSWR(`http://localhost:3001/patient/myPatients?therapistId=${therapistId}`, async (url) => {
     const res = await fetch(url)
     return res.json()
   })
