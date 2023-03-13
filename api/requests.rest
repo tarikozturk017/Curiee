@@ -3,6 +3,10 @@ GET http://localhost:3001/patient/all
 ### GET patient by id
 GET http://localhost:3001/patient/640270c990b3d644733e1f5b
 
+### GET my patients w/ therapist ID
+GET http://localhost:3001/patient/myPatients?therapistId=640252d527c6008a2970e6a9
+
+
 ### GET patient by email
 # GET http://localhost:3001/patient/1@2.com
 GET http://localhost:3001/patient?email=1@2.com

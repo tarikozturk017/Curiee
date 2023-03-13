@@ -16,6 +16,20 @@ router.get('/all', async (req, res) => {
       }
 })
 
+router.get('/myPatients', async (req, res) => {
+  const { therapistId } = req.query;
+  try {
+    // returns patients that has 'therapistId' in their 'therapists'
+    const patients = await Patient.find({ therapists: { $in: [therapistId] } }).populate('exercises').populate('therapists').populate('pendingTherapists');
+    res.json(patients);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+// get patient by email
 router.get('/', async (req, res) => {
     const { email } = req.query;
     try {
@@ -65,7 +79,7 @@ router.post('/login', async (req, res) => {
 // get patient by id
 router.get('/:id', async (req, res) => {
   try {
-    const patient = await Patient.findById(req.params.id).populate('exercises').populate('therapists');
+    const patient = await Patient.findById(req.params.id).populate('exercises').populate('therapists').populate('pendingTherapists');
     if (!patient) {
       return res.status(404).json({ message: 'Patient not found' });
     }
@@ -159,7 +173,7 @@ router.post('/sendTherapistRequest', async (req, res) => {
 
   const acceptedTherapist = patient.therapists.find(p => p._id.toString() === therapist._id.toString());
   if (acceptedTherapist) {
-    return res.status(400).json({ message: 'Therapist is already added to the patient' });
+    return res.status(402).json({ message: 'Therapist is already added to the patient' });
   }
 
   patient.pendingTherapists.push(therapist);
@@ -180,7 +194,7 @@ router.put('/acceptTherapistRequest', async (req, res) => {
   patient.therapists.push(therapist);
   patient.pendingTherapists = patient.pendingTherapists.filter((t) => t._id.toString() !== therapistId.toString());
   await patient.save();
-  return res.status(200).json({ message: 'Therapist added successfully' });
+  return res.status(200).json(patient);
 });
 
 
