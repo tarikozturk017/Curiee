@@ -21,6 +21,7 @@ const Patient = () => {
     if (data == undefined || data == null)  return null
     if (data.length==0)  return(<Error statusCode={404} /> )
     
+    // console.log(data)
     return (
         <>
         <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
@@ -32,14 +33,19 @@ const Patient = () => {
                 {data.exercises.length > 0 ? (
                     <>
                     {data.exercises.map((exercise) => (
-                        <li key={exercise.exercise}>
-                            <Link href={"/treatment/" + exercise.exercise}>
-                                <Exercise exerciseId={exercise.exercise} />
-                            </Link>
-                            {exercise.repetition && <p>Repetition: {exercise.repetition}</p>}
-                            {exercise.repetition && <p>Note: {exercise.repetition}</p>}
-                        </li>
+                    <li key={exercise._id}>
+                        {exercise.exercise ? (
+                        <Link href={"/treatment/" + exercise.exercise._id}>
+                            <span>{exercise.exercise.title}</span>
+                        </Link>
+                        ) : (
+                        <p>No exercise assigned</p>
+                        )}
+                        {exercise.repetition && <p>Repetition: {exercise.repetition}</p>}
+                        {exercise.note && <p>Note: {exercise.note}</p>}
+                    </li>
                     ))}
+
                     </>
                 ) : (
                 <span>No exercises assigned to {data.firstName} {data.lastName}</span>

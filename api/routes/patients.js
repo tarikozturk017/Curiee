@@ -79,7 +79,10 @@ router.post('/login', async (req, res) => {
 // get patient by id
 router.get('/:id', async (req, res) => {
   try {
-    const patient = await Patient.findById(req.params.id).populate('exercises').populate('therapists').populate('pendingTherapists');
+    const patient = await Patient.findById(req.params.id)
+      .populate({ path: 'exercises.exercise', model: 'Exercise' })
+      .populate('therapists')
+      .populate('pendingTherapists');
     if (!patient) {
       return res.status(404).json({ message: 'Patient not found' });
     }
