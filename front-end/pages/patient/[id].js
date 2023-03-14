@@ -2,47 +2,52 @@ import {useRouter} from 'next/router';
 import Link from 'next/link';
 import useSWR from 'swr';
 import Error from 'next/error'; 
-
-// const Exercise = ({ exerciseId }) => {
-//     const { data, error } = useSWR(`http://localhost:3001/exercise/${exerciseId}`);
-  
-//     if (error) return <>Error loading exercise details</>;
-//     if (!data) return <>Loading exercise details...</>;
-
-//     return <span>{data.title}</span>;
-//   };
+import { useState, useEffect } from 'react';
+import AssignTreatment from '@/components/therapist/AssignTreatment';
 
 const Patient = () => {
+    const [displayForm, setDisplayForm] = useState(false);
+    const [data, setData] = useState()
+
+    const handleNewTreatment = () => {
+        setDisplayForm(true)
+    }
+
     const router = useRouter();
     const { id } = router.query;
 
-    const { data, error } = useSWR(`http://localhost:3001/patient/${id}`);
-
-    if (data == undefined || data == null)  return null
-    if (data.length==0)  return(<Error statusCode={404} /> )
+    useEffect(() => {
+        if (displayForm == false) {
+            const fetchPatients = async () => {
+                const res = await fetch(`http://localhost:3001/patient/${id}`);
+                const data = await res.json();
+                setData(data);
+            };
     
-    // console.log(data)
+            fetchPatients();
+        }
+      }, [displayForm]);
+    
+    if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
     return (
         <>
         <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
             <h1>{data.firstName} {data.lastName}</h1>
             <hr className=' border-black'/>
             <p><strong>Diagnosis: </strong> {data.diagnosis}</p>
-            <p>
+            <div>
                 <strong>Exercises: </strong>
                 {data.exercises.length > 0 ? (
                     <>
                     {data.exercises.map((exercise) => (
                     <li key={exercise._id}>
-                        {exercise.exercise ? (
+                        {exercise.exercise && (
                         <Link href={"/treatment/" + exercise.exercise._id}>
                             <span>{exercise.exercise.title}</span>
                         </Link>
-                        ) : (
-                        <p>No exercise assigned</p>
-                        )}
-                        {exercise.repetition && <p>Repetition: {exercise.repetition}</p>}
-                        {exercise.note && <p>Note: {exercise.note}</p>}
+                        ) }
+                        {exercise.repetition && <span>Repetition: {exercise.repetition}</span>}
+                        {exercise.note && <span>Note: {exercise.note}</span>}
                     </li>
                     ))}
 
@@ -50,7 +55,12 @@ const Patient = () => {
                 ) : (
                 <span>No exercises assigned to {data.firstName} {data.lastName}</span>
                 )}
-            </p>
+                <br />
+                {!displayForm ? 
+                    <button onClick={handleNewTreatment}>Assign New Treatment</button>
+                    : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
+                }
+            </div>
         </div>
         </>
     )

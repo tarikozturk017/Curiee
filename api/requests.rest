@@ -1,7 +1,8 @@
 GET http://localhost:3001/patient/all
 
 ### GET patient by id
-GET http://localhost:3001/patient/640270c990b3d644733e1f5b
+GET http://localhost:3001/patient/64026e5f90b3d644733e1f50
+
 
 ### GET my patients w/ therapist ID
 GET http://localhost:3001/patient/myPatients?therapistId=640252d527c6008a2970e6a9
@@ -112,6 +113,6 @@ Content-Type: application/json
     "patientId": "64026e5f90b3d644733e1f50",
     "therapistId": "640252d527c6008a2970e6a9",
     "exerciseId": "63fb9fa3e1beba9a5f24bb48",
-    "repetition": 10,
-    "note": "Do it twice a day."
+    "repetition": 5,
+    "note": "Do it once a day."
 }
