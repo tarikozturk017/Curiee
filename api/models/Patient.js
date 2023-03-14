@@ -32,6 +32,10 @@ const PatientSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Therapist' 
     }],
+    previousTherapists: [{ 
+        type: Schema.Types.ObjectId, 
+        ref: 'Therapist' 
+    }],
     exercises: [{ 
         exercise: {
           type: Schema.Types.ObjectId, 

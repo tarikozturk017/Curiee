@@ -112,6 +112,15 @@ Content-Type: application/json
     "therapistId": "640252d527c6008a2970e6a9"
 }
 
+### Deactivate patient
+PUT http://localhost:3001/therapist/deactivatePatient
+Content-Type: application/json
+
+{
+    "patientId": "64026e5f90b3d644733e1f50",
+    "therapistId": "640252d527c6008a2970e6a9"
+}
+
 ### Assign treatment to patient
 POST http://localhost:3001/therapist/assignExerciseToPatient
 Content-Type: application/json

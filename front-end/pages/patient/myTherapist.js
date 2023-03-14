@@ -13,8 +13,6 @@ function MyTherapist() {
     return res.json()
   })
 
-  if(patient) console.log(`patient: ${patient.firstName}`)
-
   // Update the `patient` state with the fetched data
   useEffect(() => {
     if (fetchedPatient) {

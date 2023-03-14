@@ -119,5 +119,33 @@ router.delete('/delete/:id', async (req, res) => {
     res.json(result);
 })
 
+// deactivate patient
+router.put('/deactivatePatient', async (req, res) => {
+  const therapist = await Therapist.findById(req.body.therapistId).populate('patients').populate('deactivatedPatients').lean()
+  const patient = await Patient.findById(req.body.patientId).populate('therapists').populate('previousTherapists').lean()
+
+  // Remove patient from therapist's patients array
+  const index = therapist.patients.findIndex(p => p._id.equals(req.body.patientId))
+  if (index > -1) {
+    therapist.patients.splice(index, 1)
+    // Add patient to therapist's deactivatedPatients array
+    therapist.deactivatedPatients.push(patient)
+  }
+
+  // Remove therapist from patient's therapists array
+  const therapistIndex = patient.therapists.findIndex(t => t._id.equals(req.body.therapistId))
+  if (therapistIndex > -1) {
+    patient.therapists.splice(therapistIndex, 1)
+    patient.previousTherapists.push(therapist)
+  }
+
+  // Save therapist and patient documents
+  await Therapist.findByIdAndUpdate(req.body.therapistId, therapist)
+  await Patient.findByIdAndUpdate(req.body.patientId, patient)
+
+  res.json({ success: true })
+})
+
+
 
 module.exports = router;

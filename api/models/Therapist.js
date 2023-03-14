@@ -35,6 +35,10 @@ const TherapistSchema = new Schema({
         type: Schema.Types.ObjectId, 
         ref: 'Patient'
     }],
+    deactivatedPatients: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Patient'
+    }],
     timeStamp: {
         type: String,
         default: Date.now()

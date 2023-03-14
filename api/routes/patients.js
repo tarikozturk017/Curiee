@@ -20,7 +20,7 @@ router.get('/myPatients', async (req, res) => {
   const { therapistId } = req.query;
   try {
     // returns patients that has 'therapistId' in their 'therapists'
-    const patients = await Patient.find({ therapists: { $in: [therapistId] } }).populate('exercises').populate('therapists').populate('pendingTherapists');
+    const patients = await Patient.find({ therapists: { $in: [therapistId] } }).populate('exercises').populate('therapists').populate('pendingTherapists').populate('previousTherapists');
     res.json(patients);
   } catch (err) {
     console.error(err);
@@ -28,6 +28,18 @@ router.get('/myPatients', async (req, res) => {
   }
 });
 
+// Get deactivated therapists
+router.get('/myPreviousPatients', async (req, res) => {
+  const { therapistId } = req.query;
+  try {
+    // returns patients that has 'therapistId' in their 'therapists'
+    const patients = await Patient.find({ previousTherapists: { $in: [therapistId] } }).populate('exercises').populate('therapists').populate('pendingTherapists').populate('previousTherapists');
+    res.json(patients);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
 
 // get patient by email
 router.get('/', async (req, res) => {

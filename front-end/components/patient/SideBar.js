@@ -7,16 +7,6 @@ const userAtom = atom({});
 const PatientSideBar = () => {
     const [patient, setPatient] = useAtom(userAtom)
     const [userId] = useAtom(userIdAtom)
-    
-    // const { data: p, error } = useSWR(`http://localhost:3001/patient/${userId}`, async (url) => {
-    //     const res = await fetch(url)
-    //     // console.log(res)
-    //     const jsonData = await res.json();
-    //     // setPatient(p)
-    //     const { data, error } = jsonData
-    //     console.log(`data in fetch swr: ${jsonData}`)
-    //     return res.json()
-    // })
 
     const { data: p, error } = useSWR(`http://localhost:3001/patient/${userId}`, async (url) => {
         const res = await fetch(url)
