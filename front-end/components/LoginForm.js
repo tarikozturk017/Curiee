@@ -27,7 +27,7 @@ const LoginForm = (props) => {
     if (response.ok) {
       const data = await response.json();
       // Store the token securely on the client side (e.g., in local storage)
-      console.log(`login data: ${data.token}`)
+      // console.log(`login data: ${data.token}`)
       setUserToken(data.token)
       localStorage.setItem('token', data.token);
       // router.push('/');

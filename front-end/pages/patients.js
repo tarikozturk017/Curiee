@@ -22,7 +22,8 @@ const Patients = () => {
   if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
 
   return (
-    <div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
+    <>
+    {patients  && (<div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
       <h1 className=' underline'>My Patients</h1>
       <br />
       <ul>
@@ -31,7 +32,8 @@ const Patients = () => {
           <li key={patient._id}><Link href={"/patient/" + patient._id}>{patient.firstName} {patient.lastName}</Link></li>
         ))}
       </ul>
-    </div>
+    </div>)}
+    </>
   );
 }
 

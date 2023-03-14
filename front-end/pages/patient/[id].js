@@ -13,11 +13,16 @@ const Patient = () => {
         setDisplayForm(true)
     }
 
+    
     const router = useRouter();
-    const { id } = router.query;
+    // console.log(router.query.id)
+    let id;
+    if(router) {id = router.query.id;}
 
+    console.log(`id ${id}`)
     useEffect(() => {
-        if (displayForm == false) {
+        if (displayForm == false && id !== undefined) {
+            console.log('fetching')
             const fetchPatients = async () => {
                 const res = await fetch(`http://localhost:3001/patient/${id}`);
                 const data = await res.json();
@@ -26,7 +31,18 @@ const Patient = () => {
     
             fetchPatients();
         }
-      }, [displayForm]);
+      }, [displayForm, id]);
+
+    //   if (displayForm == false && id !== undefined) {
+    //     console.log('fetching')
+    //     const fetchPatients = async () => {
+    //         const res = await fetch(`http://localhost:3001/patient/${id}`);
+    //         const data = await res.json();
+    //         setData(data);
+    //     };
+
+    //     fetchPatients();
+    // }
     
     if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
     return (
