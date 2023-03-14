@@ -44,6 +44,29 @@ router.get('/', async (req, res) => {
     }
   });
   
+
+  router.put('/deleteExercise', async (req, res) => {
+    try {
+      const patient = await Patient.findById(req.body.patientId)
+        .populate({ path: 'exercises.exercise', model: 'Exercise' })
+        .populate('therapists')
+        .populate('pendingTherapists');
+      if (!patient) {
+        return res.status(404).json({ message: 'Patient not found' });
+      }
+      
+      patient.exercises = patient.exercises.filter(exercise => exercise.exercise !== null);
+  
+      await patient.save();
+  
+      res.json(patient);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
+  
+
 // check the password when a patient signs in
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
