@@ -129,6 +129,10 @@ router.put('/deactivatePatient', async (req, res) => {
   if (index > -1) {
     therapist.patients.splice(index, 1)
     // Add patient to therapist's deactivatedPatients array
+    const dPatient = patient.deactivatedPatients.find(p => p._id.toString() === req.body.patientId);
+    if (dPatient) {
+      return res.status(400).json({ message: 'Patient already deactivated' });
+    }
     therapist.deactivatedPatients.push(patient)
   }
 
@@ -136,6 +140,10 @@ router.put('/deactivatePatient', async (req, res) => {
   const therapistIndex = patient.therapists.findIndex(t => t._id.equals(req.body.therapistId))
   if (therapistIndex > -1) {
     patient.therapists.splice(therapistIndex, 1)
+    const pTherapist = patient.previousTherapists.find(p => p._id.toString() === req.body.therapistId);
+    if (pTherapist) {
+      return res.status(402).json({ message: 'Therapist is already in the previous patient' });
+    }
     patient.previousTherapists.push(therapist)
   }
 
@@ -146,6 +154,43 @@ router.put('/deactivatePatient', async (req, res) => {
   res.json({ success: true })
 })
 
+// const patient = await Patient.findById(req.body.patientId)
+//         .populate({ path: 'exercises.exercise', model: 'Exercise' })
+//         .populate('therapists')
+//         .populate('pendingTherapists');
+
+// activate patient
+router.put('/activatePatient', async (req, res) => {
+  const therapist = await Therapist.findOne({ _id: req.body.therapistId })
+    .populate('patients')
+    .populate('deactivatedPatients')
+
+  const patient = await Patient.findOne({ _id: req.body.patientId })
+    .populate('therapists')
+    .populate('previousTherapists')
+
+  // Remove patient from therapist's deactivatedPatients array
+  const index = therapist.deactivatedPatients.findIndex(p => p._id.equals(req.body.patientId))
+  if (index > -1) {
+    therapist.deactivatedPatients.splice(index, 1)
+
+    therapist.patients.push(patient)
+  }
+
+  // Remove therapist from patient's previousTherapists array
+  const therapistIndex = patient.previousTherapists.findIndex(t => t._id.equals(req.body.therapistId))
+  if (therapistIndex > -1) {
+    patient.previousTherapists.splice(therapistIndex, 1)
+
+    patient.therapists.push(therapist)
+  }
+
+  // Save therapist and patient documents
+  await therapist.save()
+  await patient.save()
+
+  res.json({ success: true })
+})
 
 
 module.exports = router;

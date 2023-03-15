@@ -117,7 +117,8 @@ router.get('/:id', async (req, res) => {
     const patient = await Patient.findById(req.params.id)
       .populate({ path: 'exercises.exercise', model: 'Exercise' })
       .populate('therapists')
-      .populate('pendingTherapists');
+      .populate('pendingTherapists')
+      .populate('previousTherapists');
     if (!patient) {
       return res.status(404).json({ message: 'Patient not found' });
     }
