@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import useSWR from 'swr'
+// import useSWR from 'swr'
 import { useAtom } from 'jotai'
-import { userIdAtom } from '@/components/Layout'
+// import { userIdAtom } from '@/components/Layout'
+import { userAtom } from '@/components/therapist/SideBar'
 // import Auth from '@/utils/auth'
 
 // getStaticProps is a Next.js function that is used to pre-render static pages at build time. 
@@ -11,23 +12,25 @@ import { userIdAtom } from '@/components/Layout'
 
 
 const Patients = () => {
-  const [therapistId] = useAtom(userIdAtom);
+  // const [therapistId] = useAtom(userIdAtom);
+  const [therapist] = useAtom(userAtom);
 
-  const { data: patients, error } = useSWR(`http://localhost:3001/patient/myPatients?therapistId=${therapistId}`, async (url) => {
-    const res = await fetch(url)
-    return res.json()
-  })
+  // console.log(`sidebar therapist retrieved by atom ${therapist.patients[0].firstName}`)
+  // const { data: patients, error } = useSWR(`http://localhost:3001/patient/myPatients?therapistId=${therapistId}`, async (url) => {
+  //   const res = await fetch(url)
+  //   return res.json()
+  // })
 
-  if (error) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Failed to load patients</div>
-  if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
+  // if (error) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Failed to load patients</div>
+  // if (!patients) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
 
   return (
     <>
-    {patients  && (<div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
+    {therapist.patients  && (<div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
       <h1 className=' underline'>My Patients</h1>
       <br />
       <ul>
-        {patients.map((patient) => (
+        {therapist.patients.map((patient) => (
           // instead of id, one time token can be created to avoid insecurity
           <li key={patient._id}><Link href={"/patient/" + patient._id}>{patient.firstName} {patient.lastName}</Link></li>
         ))}
