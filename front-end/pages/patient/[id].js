@@ -5,6 +5,7 @@ import Error from 'next/error';
 import { useState, useEffect } from 'react';
 import AssignTreatment from '@/components/therapist/AssignTreatment';
 import DeactivatePatient from '@/components/therapist/DeactivatePatient';
+import ActivatePatient from '@/components/therapist/ActivatePatient';
 
 
 const Patient = () => {
@@ -64,6 +65,8 @@ const Patient = () => {
                     : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
                 }
                 <DeactivatePatient patientData={data}/>
+                <ActivatePatient patientData={data}/>
+                
             </div>
         </div>
         </>
