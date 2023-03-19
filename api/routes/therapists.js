@@ -17,7 +17,8 @@ router.get('/:id', async (req, res) => {
   try {
     const therapist = await Therapist.findById(req.params.id)
         .populate('favExercises')
-        .populate('patients');
+        .populate('patients')
+        .populate('deactivatedPatients');
     if (!therapist) {
       return res.status(404).json({ message: 'Therapist not found' });
     }
