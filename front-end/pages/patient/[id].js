@@ -6,9 +6,11 @@ import { useState, useEffect } from 'react';
 import AssignTreatment from '@/components/therapist/AssignTreatment';
 import DeactivatePatient from '@/components/therapist/DeactivatePatient';
 import ActivatePatient from '@/components/therapist/ActivatePatient';
-
+import { useAtom } from 'jotai';
+import { userAtom } from '@/components/therapist/SideBar';
 
 const Patient = () => {
+    const [therapistData] = useAtom(userAtom)
     const [displayForm, setDisplayForm] = useState(false);
     const [data, setData] = useState()
 
@@ -31,6 +33,10 @@ const Patient = () => {
             fetchPatients();
         }
       }, [displayForm, id]);
+
+
+
+    if(data)  {console.log(`patient id: ${data._id}, therapistID: ${therapistData._id}`)}
 
     if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
     return (
@@ -64,9 +70,10 @@ const Patient = () => {
                     <button onClick={handleNewTreatment}>Assign New Treatment</button>
                     : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
                 }
+                {data.therapists.find(p => p._id.toString() === therapistData._id.toString()) ?
                 <DeactivatePatient patientData={data}/>
-                <ActivatePatient patientData={data}/>
-                
+                : <ActivatePatient patientData={data}/>
+                }                
             </div>
         </div>
         </>
