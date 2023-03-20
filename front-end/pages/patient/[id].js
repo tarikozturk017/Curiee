@@ -36,7 +36,7 @@ const Patient = () => {
 
 
 
-    if(data)  {console.log(`patient id: ${data._id}, therapistID: ${therapistData._id}`)}
+    // if(data)  {console.log(`patient id: ${data._id}, therapistID: ${therapistData._id}`)}
 
     if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
     return (
@@ -67,7 +67,7 @@ const Patient = () => {
                 )}
                 <br />
                 {!displayForm ? 
-                    <button onClick={handleNewTreatment}>Assign New Treatment</button>
+                    <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
                     : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
                 }
                 {data.therapists.find(p => p._id.toString() === therapistData._id.toString()) ?
