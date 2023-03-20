@@ -36,7 +36,7 @@ const Home = () => {
 
   return (
     <>
-      <main className=' h-screen bg-gradient-to-tr from-cyan-300 to-blue-300'>
+      <main className=' h-screen bg-gradient-to-tr from-violet-100 to-blue-100'>
       </main>
     </>
   )
