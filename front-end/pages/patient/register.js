@@ -31,11 +31,16 @@ const Register = () => {
         })
       });
 
-      if (response.ok)    console.log('Patient created successfully');
+      if (response.ok)    {
+        console.log('Patient created successfully');
+        history.push('/patient/login')
+      }
       else    console.log('Error creating patient');
     } catch (error) {
-      console.log(error);
+      console.log('Error occurred during fetch:', error);
     }
+
+    console.log('asdasdadadadad asd asd ad ad a dad addadadadadad') //http://localhost:3000/patient/login
   };
 
   return (

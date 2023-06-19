@@ -131,7 +131,7 @@ router.get('/:id', async (req, res) => {
 
 // Create/register new patient
 router.post('/new', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const patient = new Patient({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -142,7 +142,9 @@ router.post('/new', (req, res) => {
     })
     patient.save();
     delete patient.passwordHash
+    console.log('status sucess1')
     res.status(201).json(patient)
+    console.log('status sucess2')
 })
 
 // update patient

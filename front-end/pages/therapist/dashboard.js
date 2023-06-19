@@ -27,7 +27,7 @@ const Dashboard = () => {
                     <p>You treated <span>{therapist.deactivatedPatients.length}</span> patients so far.</p>
                 </Card>
                 <Card>
-                    <h1 className=' text-2xl underline mb-3'>Patients Chart</h1>
+                    <h1 className=' text-2xl underline mb-3'>Exercise Chart</h1>
                     <p>You created <span>{therapist.patients.length}</span> treatment model.</p>
                     <p>You have <span>{therapist.patients.length}</span> favorite treatment model.</p>
                 </Card>
