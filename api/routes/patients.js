@@ -182,24 +182,6 @@ router.get('/:id/exercises', async (req, res) => {
     }
   });
 
-// // add therapist, body will send patientId that will have the therapist w/ therapistId
-// router.put('/add/therapist/', async (req, res) => {
-//   const result = await Patient.findById(req.body.patientId); // get the patient
-
-//   const therapist = await Therapist.findById(req.body.therapistId);
-  
-//   if(result.therapists.includes(therapist)){
-//       console.log('Therapist is already added to the Patient')
-//   } else {
-//       result.therapists.push(therapist)
-//   }
-  
-//   res.json(result)
-//   result.save();
-//   // console.log(req.body)
-//   // console.log(req.body.patientId)
-// })
-
 
 router.post('/sendTherapistRequest', async (req, res) => {
   const { patientId, therapistId } = req.body;

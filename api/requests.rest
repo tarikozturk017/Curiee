@@ -28,8 +28,9 @@ Content-Type: application/json
 {
     "firstName": "Test",
     "lastName": "Exercs",
+    "email": "5@5.com",
     "diagnosis": "None",
-    "exercises": []
+    "password": "123"
 }
 
 ###
