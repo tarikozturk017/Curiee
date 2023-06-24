@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { TiTick } from 'react-icons/ti'
+import { TiTick, TiTimes } from 'react-icons/ti'
 import { useAtom } from 'jotai';
 import { userIdAtom } from '@/components/Layout';
 import useSWR from 'swr';
@@ -24,6 +24,25 @@ function MyTherapist() {
     try {
       //sendTherapistRequest
       const response = await fetch(`http://localhost:3001/patient/acceptTherapistRequest`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ patientId, therapistId })
+
+      });
+      if (response.status === 200) {
+        const data = await response.json();
+        setPatient(data)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  const handleDecline = async (therapistId) => {
+    try {
+      //sendTherapistRequest
+      const response = await fetch(`http://localhost:3001/patient/declineTherapistRequest`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +84,9 @@ function MyTherapist() {
             <ul>
               {patient.pendingTherapists.map((therapist) => (
                 <li className=' flex justify-around' key={therapist._id}>
-                  {therapist.firstName} {therapist.lastName} <span onClick={() => handleAccept(therapist._id)}><TiTick /></span>
+                  {therapist.firstName} {therapist.lastName} 
+                  <span onClick={() => handleAccept(therapist._id)}><TiTick /></span>
+                  <span onClick={() => handleDecline(therapist._id)}><TiTimes /></span>
                 </li>
               ))}
             </ul>

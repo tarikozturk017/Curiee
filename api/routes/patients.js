@@ -226,5 +226,23 @@ router.put('/acceptTherapistRequest', async (req, res) => {
   return res.status(200).json(patient);
 });
 
+router.put('/declineTherapistRequest', async (req, res) => {
+  const { patientId, therapistId } = req.body;
+  const patient = await Patient.findById(patientId).populate('therapists').populate('pendingTherapists');
+
+  const pendingTherapist = patient.pendingTherapists.find(p => p._id.toString() === therapistId.toString());
+  if (!pendingTherapist) {
+    return res.status(400).json({ message: 'Therapist request not found' });
+  }
+
+  patient.pendingTherapists = patient.pendingTherapists.filter((t) => t._id.toString() !== therapistId.toString());
+
+  await patient.save();
+  // console.log('declining the request')
+
+  return res.status(200).json(patient);
+});
+
+
 
 module.exports = router;
