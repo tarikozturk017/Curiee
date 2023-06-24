@@ -5,8 +5,11 @@ import { userIdAtom } from '../Layout';
 const InfoCard = ({ patientData }) => {
     const [patientId, setPatientId] = useState(patientData._id)
     const [therapistId] = useAtom(userIdAtom)
-    const [accepted, setAccepted] = useState()
-    const [pending, setPending] = useState()
+    const [accepted, setAccepted] = useState(false)
+    const [pending, setPending] = useState(false)
+
+    console.log(patientData.therapists.find(p => p._id.toString() === therapistId.toString()))
+    console.log(patientData.pendingTherapists.includes(therapistId.toString()))
 
     // const acceptedTherapist = patientData.therapists.find(p => p._id.toString() === therapist._id.toString());
     const addPatient = async () => {
@@ -21,7 +24,15 @@ const InfoCard = ({ patientData }) => {
             
         });
         if(response) {
-            console.log(response)
+            console.log(response.status)
+            if(response.status == 400) {
+                // setPending(true)
+            }
+            else if( response.status == 402) {
+                // setAccepted(true)
+            }
+            // setAccepted(patientData.therapists.find(p => p._id.toString() === therapistId.toString()))
+            // setPending(patientData.pendingTherapists.includes(therapistId.toString()));
         }
         } catch (error) {
         console.error(error);
@@ -30,13 +41,8 @@ const InfoCard = ({ patientData }) => {
 
     useEffect(() => {
         setAccepted(patientData.therapists.find(p => p._id.toString() === therapistId.toString()))
-        // setPending(patientData.pendingTherapists.find(p => p._id.toString() === therapistId.toString()))
-        // setPending(patientData.pendingTherapists.includes(therapistId.toString()));
         setPending(patientData.pendingTherapists.includes(therapistId.toString()));
-        // console.log(patientData.pendingTherapists.find(p => p._id.toString() === therapistId.toString()));
-        // console.log(patientData.pendingTherapists);
-
-    }, [patientData])
+    }, [])
 
     return (
         <>
