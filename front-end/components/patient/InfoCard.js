@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 import { useEffect, useState } from 'react';
-import { BsPersonFillAdd, BsPersonFillCheck, BsPersonFillDash } from 'react-icons/bs'
+import { BsPersonFillAdd, BsPersonFillCheck, BsPersonFillDash, BsPersonFillX } from 'react-icons/bs'
 import { userIdAtom } from '../Layout';
 const InfoCard = ({ patientData }) => {
     const [patientId, setPatientId] = useState(patientData._id)
@@ -35,7 +35,29 @@ const InfoCard = ({ patientData }) => {
             // setPending(patientData.pendingTherapists.includes(therapistId.toString()));
         }
         } catch (error) {
-        console.error(error);
+            console.error(error);
+        }
+    }
+
+    const withdrawRequest = async () => {
+        try {
+          const response = await fetch(`http://localhost:3001/patient/declineTherapistRequest`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ patientId, therapistId })
+    
+          });
+        // console.log('request canceled')
+          if (response.status === 200) {
+            const data = await response.json();
+            // setPatient(data)
+            console.log(data)
+            console.log('request withdrawn')
+          }
+        } catch (error) {
+          console.error(error);
         }
     }
 
@@ -51,11 +73,13 @@ const InfoCard = ({ patientData }) => {
                 <div className=" flex justify-around">
                     <p>Full Name: {patientData.firstName} {patientData.lastName}</p>
                     {
-                        pending ? <span> <BsPersonFillDash />
+                        pending ? <> <span> <BsPersonFillDash />
                             <span className=' italic text-xs'>Your request is pending</span> 
                             </span>
-                        : !accepted ? <span onClick={addPatient}><BsPersonFillAdd /></span>
-                        : <span onClick={addPatient}><BsPersonFillCheck /> 
+                            <span onClick={withdrawRequest}> <BsPersonFillX /></span>
+                            </>
+                        : !accepted ? <span onClick={addPatient}><BsPersonFillAdd /></span> 
+                        : <span ><BsPersonFillCheck /> 
                             <span className=' italic text-xs'>Already your patient</span> 
                         </span>
                     }
