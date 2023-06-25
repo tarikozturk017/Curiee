@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useAtom } from 'jotai'
+import { userIdAtom } from '@/components/Layout';
 
 function New() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [diseaseTreatment, setDiseaseTreatment] = useState('');
+  const [therapistId] = useAtom(userIdAtom);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +21,8 @@ function New() {
         body: JSON.stringify({
           title,
           description,
-          diseaseTreatment: [diseaseTreatment]
+          diseaseTreatment: [diseaseTreatment],
+          therapistId
         })
       });
 

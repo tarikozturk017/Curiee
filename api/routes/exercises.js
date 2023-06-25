@@ -4,7 +4,7 @@ const Exercise = require('../models/Exercise');
 
 // get all exercises
 router.get('/all', async (req, res) => {
-    const exercises = await Exercise.find();
+    const exercises = await Exercise.find().populate('creator');
     res.json(exercises);
 })
 
@@ -26,7 +26,8 @@ router.post('/new', (req, res) => {
     const exercise = new Exercise({
         title: req.body.title,
         description: req.body.description,
-        diseaseTreatment: req.body.diseaseTreatment
+        diseaseTreatment: req.body.diseaseTreatment,
+        creator: req.body.therapistId
     })
 
     exercise.save()
