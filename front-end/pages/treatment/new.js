@@ -28,6 +28,9 @@ function New() {
 
       if (response.ok) {
         console.log('Exercise created successfully');
+        setDescription('')
+        setDiseaseTreatment('')
+        setTitle('')
       } else {
         console.log('Error creating exercise');
       }
