@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </Card>
 
                 <Card>
-                    <h1 className='text-2xl underline mb-3'>Exercise Chart</h1>
+                    <h1 className='text-2xl underline mb-3'>Treatments Chart</h1>
                     <p>You created <span>{exerciseCount}</span> treatment model.</p>
                     <p>You have <span>{therapist.patients?.length ?? 0}</span> favorite treatment model.</p>
                 </Card>

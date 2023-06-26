@@ -1,6 +1,7 @@
 import {useRouter} from 'next/router';
 import useSWR from 'swr';
 import Error from 'next/error'; 
+import { BsFillHeartFill } from "react-icons/bs";
 
 const Treatment = () => {
     const router = useRouter();
@@ -10,6 +11,25 @@ const Treatment = () => {
 
     if (data == undefined || data == null)  return null
     if (data.length==0)  return(<Error statusCode={404} /> )
+
+    const handleAddFavorite = async () => {
+        try {
+            //sendTherapistRequest
+            const response = await fetch(`http://localhost:3001/patient/sendTherapistRequest`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ patientId, therapistId })
+            
+        });
+        if(response) {
+            console.log(response.status)
+        }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -27,6 +47,10 @@ const Treatment = () => {
                     </>
                 )}
             </p>
+            <div onClick={handleAddFavorite} className=' flex justify-around'>
+                <span className=' italic text text-sm'>Add to your favorite  </span>
+                <BsFillHeartFill className='flex'/>
+            </div>
         </div>
         </>
     )
