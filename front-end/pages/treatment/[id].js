@@ -9,7 +9,7 @@ const Treatment = () => {
     const [therapistId] = useAtom(userIdAtom)
     const router = useRouter();
     const { id } = router.query;
-
+    
     const { data, error } = useSWR(`http://localhost:3001/exercise/${id}`);
 
     if (data == undefined || data == null)  return null

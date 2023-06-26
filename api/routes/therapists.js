@@ -226,44 +226,48 @@ router.put('/activatePatient', async (req, res) => {
   res.json({ success: true })
 })
 
+// router.post('/addTreatmentToFav', async (req, res) => {
+//   const therapist = await Therapist.findById(req.body.therapistId);
+//   const treatment = await Exercise.findById(req.body.id);
+  
+//   if (treatment && therapist) {
+//     // Check if the treatment is already in the favorite exercises array
+//     if (!therapist.favExercises.includes(treatment._id)) {
+//       // If not, add the treatment to the array
+//       therapist.favExercises.push(treatment._id);
+//       await therapist.save(); // Save the updated therapist object
+//     }
+    
+//     return res.json({ success: true }); // Send a success response
+//   }
+  
+//   return res.json({ success: false }); // Send a failure response if either treatment or therapist is not found
+// });
 router.post('/addTreatmentToFav', async (req, res) => {
   const therapist = await Therapist.findById(req.body.therapistId);
   const treatment = await Exercise.findById(req.body.id);
   
   if (treatment && therapist) {
-    // Check if the treatment is already in the favorite exercises array
-    if (!therapist.favExercises.includes(treatment._id)) {
-      // If not, add the treatment to the array
+    const treatmentIndex = therapist.favExercises.indexOf(treatment._id);
+    
+    if (treatmentIndex !== -1) {
+      // If the treatment is already in the array, remove it
+      therapist.favExercises.splice(treatmentIndex, 1);
+      await therapist.save(); // Save the updated therapist object
+      
+      return res.json({ success: true, message: 'Treatment removed from favorites.' });
+    } else {
+      // If the treatment is not in the array, add it
       therapist.favExercises.push(treatment._id);
       await therapist.save(); // Save the updated therapist object
+      
+      return res.json({ success: true, message: 'Treatment added to favorites.' });
     }
-    
-    return res.json({ success: true }); // Send a success response
   }
   
-  return res.json({ success: false }); // Send a failure response if either treatment or therapist is not found
+  return res.json({ success: false, message: 'Treatment or therapist not found.' });
 });
 
-// router.post('/assignExerciseToPatient', async (req, res) => {
-//   const patient = await Patient.findById(req.body.patientId);
-//   const therapist = await Therapist.findById(req.body.therapistId);
-//   const exercise = await Exercise.findById(req.body.exerciseId);
-//   const repetition = req.body.repetition ? req.body.repetition : 0;
-//   const note = req.body.note ? req.body.note : 'No notes assigned';
-
-//   // This code checks if at least one Therapist instance in patient.therapists 
-//   // has the same _id as the therapist object. If the condition is true handles rest.
-//   if (patient.therapists.some(t => t._id.toString() === therapist._id.toString())) {
-//     patient.exercises.push({
-//       exercise: exercise,
-//       repetition: repetition,
-//       note: note
-//     })
-//   }
-  
-//   patient.save();
-//   res.json(patient)
-// })
 
 
 module.exports = router;
