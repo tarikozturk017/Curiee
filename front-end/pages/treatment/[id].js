@@ -6,6 +6,7 @@ import Error from 'next/error';
 import { BsFillHeartFill } from "react-icons/bs";
 
 const Treatment = () => {
+    // TODO: check if the treatment in the fav list therapist || patient -> handle
     const [therapistId] = useAtom(userIdAtom)
     const router = useRouter();
     const { id } = router.query;
@@ -14,8 +15,10 @@ const Treatment = () => {
 
     if (data == undefined || data == null)  return null
     if (data.length==0)  return(<Error statusCode={404} /> )
+    
 
-    const handleAddFavorite = async () => {
+    // TODO: Therapist and Patients fav to be handled separately 
+    const handleFavorite = async () => {
         try {
             //sendTherapistRequest
             const response = await fetch(`http://localhost:3001/therapist/addTreatmentToFav`, {
@@ -28,6 +31,7 @@ const Treatment = () => {
         });
         if(response) {
             console.log(response.status)
+
         }
         } catch (error) {
             console.error(error);
@@ -50,7 +54,7 @@ const Treatment = () => {
                     </>
                 )}
             </p>
-            <div onClick={handleAddFavorite} className=' flex justify-around'>
+            <div onClick={handleFavorite} className=' flex justify-around'>
                 <span className=' italic text text-sm'>Add to your favorite  </span>
                 <BsFillHeartFill className='flex'/>
             </div>
