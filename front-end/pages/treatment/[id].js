@@ -1,9 +1,12 @@
 import {useRouter} from 'next/router';
+import { useAtom } from 'jotai';
+import { userIdAtom } from '@/components/Layout';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 import { BsFillHeartFill } from "react-icons/bs";
 
 const Treatment = () => {
+    const [therapistId] = useAtom(userIdAtom)
     const router = useRouter();
     const { id } = router.query;
 
@@ -15,12 +18,12 @@ const Treatment = () => {
     const handleAddFavorite = async () => {
         try {
             //sendTherapistRequest
-            const response = await fetch(`http://localhost:3001/patient/sendTherapistRequest`, {
+            const response = await fetch(`http://localhost:3001/therapist/addTreatmentToFav`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ patientId, therapistId })
+            body: JSON.stringify({ therapistId, id })
             
         });
         if(response) {
