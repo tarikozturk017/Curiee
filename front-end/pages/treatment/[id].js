@@ -46,7 +46,7 @@ const Treatment = () => {
         });
         if(response) {
             console.log(response.status)
-
+            setAdded(!added);
         }
         } catch (error) {
             console.error(error);
