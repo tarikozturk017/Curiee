@@ -1,16 +1,31 @@
 import {useRouter} from 'next/router';
 import { useAtom } from 'jotai';
 import { userIdAtom } from '@/components/Layout';
+import { userAtom } from '@/components/therapist/SideBar';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 import { BsFillHeartFill } from "react-icons/bs";
+import { useEffect, useState } from 'react';
+
+
+// Patient will be able to ask permission to 
+// do exercise || or suggestion to 
+// do the exercise to the therapist
 
 const Treatment = () => {
-    // TODO: check if the treatment in the fav list therapist || patient -> handle
+    // TODO: check if the treatment in the fav list therapist -> handle
     const [therapistId] = useAtom(userIdAtom)
+    const [therapist] = useAtom(userAtom)
     const router = useRouter();
     const { id } = router.query;
-    
+    const [added, setAdded] = useState(false);
+        
+    useEffect(() => {
+        if (therapist.favExercises?.find(exercise => exercise._id === id)) {
+          setAdded(true);
+        }
+    }, [therapist.favExercises, id]);
+
     const { data, error } = useSWR(`http://localhost:3001/exercise/${id}`);
 
     if (data == undefined || data == null)  return null
@@ -55,7 +70,9 @@ const Treatment = () => {
                 )}
             </p>
             <div onClick={handleFavorite} className=' flex justify-around'>
-                <span className=' italic text text-sm'>Add to your favorite  </span>
+                {added ? <span className=' italic text text-sm'>Add to your favorite</span> :
+                <span className=' italic text text-sm'>Already Added</span>
+                }
                 <BsFillHeartFill className='flex'/>
             </div>
         </div>
