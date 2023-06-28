@@ -31,6 +31,8 @@ const InfoCard = ({ patientData }) => {
             else if( response.status == 402) {
                 // setAccepted(true)
             }
+            setAccepted(false)
+            setPending(true)
             // setAccepted(patientData.therapists.find(p => p._id.toString() === therapistId.toString()))
             // setPending(patientData.pendingTherapists.includes(therapistId.toString()));
         }
@@ -55,6 +57,8 @@ const InfoCard = ({ patientData }) => {
             // setPatient(data)
             console.log(data)
             console.log('request withdrawn')
+            setPending(false)
+            setAccepted(false)
           }
         } catch (error) {
           console.error(error);
