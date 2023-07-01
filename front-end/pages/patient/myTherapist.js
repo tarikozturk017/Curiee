@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TiTick, TiTimes } from 'react-icons/ti'
 import { useAtom } from 'jotai';
+import Link from 'next/link';
 import { userIdAtom } from '@/components/Layout';
 import useSWR from 'swr';
 
@@ -68,9 +69,10 @@ function MyTherapist() {
             <h3>Therapists:</h3>
             <ul>
               {patient.therapists.map((therapist) => (
-                <li key={therapist._id}>
-                  {therapist.firstName} {therapist.lastName}
-                </li>
+                <li key={therapist._id}> <Link href={"/therapist/" + therapist._id}>{therapist.firstName} {therapist.lastName}</Link></li>
+                // <li key={therapist._id}>
+                //   {therapist.firstName} {therapist.lastName}
+                // </li>
               ))}
             </ul>
           </>
