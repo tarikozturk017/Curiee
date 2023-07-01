@@ -15,21 +15,35 @@ import { useEffect, useState } from 'react';
 const Treatment = () => {
     // TODO: check if the treatment in the fav list therapist -> handle
     const [therapistId] = useAtom(userIdAtom)
-    const [therapist] = useAtom(userAtom)
+    // const [therapist] = useAtom(userAtom)
+    const [therapist, setTherapist] = useState()
     const router = useRouter();
     const { id } = router.query;
     const [added, setAdded] = useState(false);
+
+    useEffect(() => {
+        if (therapistId) {
+            const fetchTherapist = async () => {
+            const res = await fetch(`http://localhost:3001/therapist/${therapistId}`);
+            const data = await res.json();
+            setTherapist(data);
+          };
+    
+          fetchTherapist();
+        }
+    }, [therapistId]);
         
     useEffect(() => {
-        if (therapist.favExercises?.find(exercise => exercise._id === id)) {
+        if (therapist?.favExercises?.find(exercise => exercise._id === id)) {
           setAdded(true);
         }
-    }, [therapist.favExercises, id]);
+        
+    }, [therapist?.favExercises, id]);
 
     const { data, error } = useSWR(`http://localhost:3001/exercise/${id}`);
 
     if (data == undefined || data == null)  return null
-    if (data.length==0)  return(<Error statusCode={404} /> )
+    if (data.length==0)  return null
     
 
     // TODO: Therapist and Patients fav to be handled separately 
@@ -70,8 +84,8 @@ const Treatment = () => {
                 )}
             </p>
             <div onClick={handleFavorite} className=' flex justify-around'>
-                {added ? <span className=' italic text text-sm'>Add to your favorite</span> :
-                <span className=' italic text text-sm'>Already Added</span>
+                {!added ? <span className=' italic text text-sm'>Add to your favorite</span> :
+                <span className=' italic text text-sm'>Already favorited</span>
                 }
                 <BsFillHeartFill className='flex'/>
             </div>
