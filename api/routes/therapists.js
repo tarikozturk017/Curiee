@@ -226,23 +226,7 @@ router.put('/activatePatient', async (req, res) => {
   res.json({ success: true })
 })
 
-// router.post('/addTreatmentToFav', async (req, res) => {
-//   const therapist = await Therapist.findById(req.body.therapistId);
-//   const treatment = await Exercise.findById(req.body.id);
-  
-//   if (treatment && therapist) {
-//     // Check if the treatment is already in the favorite exercises array
-//     if (!therapist.favExercises.includes(treatment._id)) {
-//       // If not, add the treatment to the array
-//       therapist.favExercises.push(treatment._id);
-//       await therapist.save(); // Save the updated therapist object
-//     }
-    
-//     return res.json({ success: true }); // Send a success response
-//   }
-  
-//   return res.json({ success: false }); // Send a failure response if either treatment or therapist is not found
-// });
+
 router.post('/addTreatmentToFav', async (req, res) => {
   const therapist = await Therapist.findById(req.body.therapistId);
   const treatment = await Exercise.findById(req.body.id);
@@ -267,6 +251,12 @@ router.post('/addTreatmentToFav', async (req, res) => {
   
   return res.json({ success: false, message: 'Treatment or therapist not found.' });
 });
+
+// get therapist's fav treatments
+router.get('/:id/retrieveFavTreatments', async (req, res) => {
+  const therapist = await Therapist.findById(req.params.id).populate('favExercises');
+  res.json(therapist.favExercises);
+})
 
 
 

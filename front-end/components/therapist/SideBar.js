@@ -53,6 +53,7 @@ const PatientSideBar = () => {
             <ul className=" mt-10 flex flex-col gap-5">
                 <li><Link href="/therapist/dashboard">Dashboard</Link></li>
                 <li><Link href="/patients">My Patients</Link></li>
+                <li><Link href="/therapist/favoriteTreatments">My Favorite Treatments</Link></li>
                 <li><Link href="/treatments">Explore Treatments</Link></li>
                 <li><Link href="/treatment/new">Create New Treatment</Link></li>
                 <li><Link href="/therapist/findPatient">Connect Your Patient</Link></li>
