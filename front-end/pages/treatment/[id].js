@@ -2,6 +2,7 @@ import {useRouter} from 'next/router';
 import { useAtom } from 'jotai';
 import { userIdAtom } from '@/components/Layout';
 import { userAtom } from '@/components/therapist/SideBar';
+import Link from 'next/link';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 import { BsFillHeartFill } from "react-icons/bs";
@@ -73,6 +74,8 @@ const Treatment = () => {
             <h1>{data.title}</h1>
             <hr className=' border-black'/>
             <p><strong>Description: </strong> {data.description}</p>
+            {data.creator && <p><strong>Creator: </strong><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link> </p>}
+            {/* {<li key={data.creator._id}><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link></li>} */}
             <p>
                 <strong>Treatment use diseases: </strong>
                 {data.diseaseTreatment && (

@@ -11,8 +11,8 @@ router.get('/all', async (req, res) => {
 // exercise by id
 router.get('/:id', async (req, res) => {
     try {
-      const exercise = await Exercise.findById(req.params.id);
-  
+      const exercise = await Exercise.findById(req.params.id).populate('creator');
+      
       if(exercise)  res.status(200).json(exercise);
     } catch (err) {
       console.log(err);
