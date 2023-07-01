@@ -68,7 +68,7 @@ const InfoCard = ({ patientData }) => {
     useEffect(() => {
         setAccepted(patientData.therapists.find(p => p._id.toString() === therapistId.toString()))
         setPending(patientData.pendingTherapists.includes(therapistId.toString()));
-    }, [])
+    }, [patientData])
 
     return (
         <>
