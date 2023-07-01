@@ -18,7 +18,7 @@ const patientsOnlyRoutes = ['/patients'];
 
 const Layout = (props) => {
   const [userId, setUserId] = useAtom(userIdAtom);
-  const [userType, seUserType] = useAtom(userTypeAtom);
+  const [userType, setUserType] = useAtom(userTypeAtom);
   const [userToken, seUserToken] = useAtom(userTokenAtom);
   const router = useRouter();
 
@@ -32,11 +32,11 @@ const Layout = (props) => {
 
           if (patientId) {
             setUserId(patientId);
-            seUserType('patient');       
+            setUserType('patient');       
           } else {
             const therapistId = decodedToken.therapistId
             setUserId(therapistId);
-            seUserType('therapist');
+            setUserType('therapist');
           }
         } 
       } catch (error) {

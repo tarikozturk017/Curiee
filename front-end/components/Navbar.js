@@ -1,13 +1,12 @@
 import Link from "next/link";
-import Logout from "./logout";
+import Logout from "./Logout";
 import { atom, useAtom } from "jotai";
-import { userTokenAtom } from "./Layout";
+import { userTokenAtom, userTypeAtom } from "./Layout";
 
 const Navbar = () => {
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token] = useAtom(userTokenAtom)
-    // console.log(`Token in Navbar: ${token}`)
-    
+    const [type] = useAtom(userTypeAtom)
+    // console.log(`TOKEN :::: ${token}`)
     return ( 
         <>
             <nav className="bg-slate-900 text-white p-3">
@@ -16,8 +15,13 @@ const Navbar = () => {
                     <li><Link href="/therapists">Explore Therapists</Link></li>
                     {token ? <li><Logout /></li>  
                     :<li><Link href="/login">Login</Link></li>}
-                    {token ? <li>Profile</li> 
-                    :<li><Link href="/register">Register</Link></li>}
+                    {/* {token ? <li><Link href="/therapist/dashboard">Profile</Link></li> 
+                    :<li><Link href="/register">Register</Link></li>} */}
+                    {token ? (
+                        <li><Link href={type === 'therapist' ? '/therapist/dashboard' : '/patient/dashboard'}>Profile</Link></li>
+                    ) : (
+                        <li><Link href="/register">Register</Link></li>
+                    )}
                 </ul>
             </nav>
         </>    

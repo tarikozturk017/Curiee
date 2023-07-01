@@ -58,13 +58,14 @@ const Dashboard = () => {
                 <Card>
                     <h1 className='text-2xl underline mb-3'>Treatments Chart</h1>
                     <p>You created <span>{exerciseCount}</span> treatment model.</p>
-                    <p>You have <span>{therapist.patients?.length ?? 0}</span> favorite treatment model.</p>
+                    <p>You have <span>{therapist.favExercises?.length ?? 0}</span> favorite treatment model.</p>
                 </Card>
 
                 <Card>
-                    <h1 className=' text-2xl underline mb-3'>Patients Chart</h1>
-                    <p>You have <span>{therapist.patients?.length ?? 0}</span> active patients.</p>
-                    <p>asdasdsadadad</p>
+                    <h1 className=' text-2xl underline mb-3'>Performance Chart</h1>
+                    {/* TODO */}
+                    <p>You have <span>{therapist.patients?.length ?? 0}</span> ratings.</p>
+                    <p>Your exercises liked <span>{therapist.patients?.length ?? 0}</span> times</p>
                 </Card>
             </div>
         </PageCard>
