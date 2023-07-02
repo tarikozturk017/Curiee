@@ -19,6 +19,32 @@ const ExerciseSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Therapist',
   },
+  patientSatisfaction: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'Patient'
+      },
+      rating: {
+        type: Number,
+        min: 0,
+        max: 5
+      },
+    },
+  ],
+  therapistSatisfaction: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'Therapist'
+      },
+      rating: {
+        type: Number,
+        min: 0,
+        max: 5
+      },
+    },
+  ],
   timeStamp: {
     type: String,
     default: Date.now(),
