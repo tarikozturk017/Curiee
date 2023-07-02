@@ -43,7 +43,7 @@ router.delete('/:id', async (req, res) => {
 
 router.post('/patientRate', async (req, res) => {
   const {rating} = req.body;
-  const {patientId} = req.body;
+  const patientId = req.body.userId;
   const {treatmentId} = req.body;
 
   try {
@@ -54,7 +54,7 @@ router.post('/patientRate', async (req, res) => {
     }
 
     // Check if the user has already voted for the treatment
-    const existingVote = treatment.patientSatisfaction.find((vote) => vote.user.toString() === patientId);
+    const existingVote = treatment.patientSatisfaction.find((vote) => vote.user?.toString() === patientId);
     if (existingVote) {
       return res.status(400).json({ message: 'Patient has already voted for this treatment' });
     }
@@ -76,8 +76,8 @@ router.post('/patientRate', async (req, res) => {
 
 router.post('/therapistRate', async (req, res) => {
     const {rating} = req.body;
-    const {therapistId} = req.body;
-    const {treatmentId} = req.body;
+    const therapistId = req.body.userId;
+    const treatmentId = req.body.treatmentId;
 
     try {
       const treatment = await Exercise.findById(treatmentId);
@@ -87,15 +87,13 @@ router.post('/therapistRate', async (req, res) => {
       }
 
       // Check if the user has already voted for the treatment
-      const existingVote = treatment.therapistSatisfaction.find((vote) => vote?.user.toString() === therapistId);
+      const existingVote = treatment.therapistSatisfaction.find((vote) => vote?.user?.toString() === therapistId);
       if (existingVote) {
         return res.status(400).json({ message: 'Therapist has already voted for this treatment' });
       }
 
-      // Add the patient's vote to the treatment
       treatment.therapistSatisfaction.push({ user: therapistId, rating });
 
-      // Update vote count and total votes
       treatment.therapistVoteCount += rating;
       treatment.therapistTotalVotes++;
 
