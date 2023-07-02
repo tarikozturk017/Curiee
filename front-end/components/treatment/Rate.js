@@ -38,7 +38,29 @@ const Rate = ({treatmentId}) => {
               console.error('Error submitting rate:', error);
             }
         } else if (userType == 'patient'){
-            console.log('TODO: patients rate')
+            try {
+                const response = await fetch('http://localhost:3001/exercise/patientRate', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    rating,
+                    userId,
+                    treatmentId
+                  }),
+                });
+          
+                if (response.ok) {
+                  // Show success message
+                } else if (response.status == 400) {
+                  // show response accordingly
+                  console.log('already voted')
+                }
+              } catch (error) {
+                //error
+                console.error('Error submitting rate:', error);
+              }
         };
 
     };
