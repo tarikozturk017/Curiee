@@ -45,6 +45,22 @@ const ExerciseSchema = new Schema({
       },
     },
   ],
+  patientVoteCount: {
+    type: Number,
+    default: 0,
+  },
+  patientTotalVotes: {
+    type: Number,
+    default: 0,
+  },
+  therapistVoteCount: {
+    type: Number,
+    default: 0,
+  },
+  therapistTotalVotes: {
+    type: Number,
+    default: 0,
+  },
   timeStamp: {
     type: String,
     default: Date.now(),
