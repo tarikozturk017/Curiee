@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Patient = require('../models/Patient');
 const Therapist = require('../models/Therapist');
+const Exercise = require('../models/Exercise');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -241,6 +242,32 @@ router.put('/declineTherapistRequest', async (req, res) => {
   // console.log('declining the request')
 
   return res.status(200).json(patient);
+});
+
+// add patient's fav treatment
+router.post('/addTreatmentToFav', async (req, res) => {
+  const patient = await Patient.findById(req.body.userId);
+  const treatment = await Exercise.findById(req.body.id);
+  
+  if (treatment && patient) {
+    const treatmentIndex = patient.favExercises.indexOf(treatment._id);
+    
+    if (treatmentIndex !== -1) {
+      // If the treatment is already in the array, remove it
+      patient.favExercises.splice(treatmentIndex, 1);
+      await patient.save(); // Save the updated patient object
+      
+      return res.json({ success: true, message: 'Treatment removed from favorites.' });
+    } else {
+      // If the treatment is not in the array, add it
+      patient.favExercises.push(treatment._id);
+      await patient.save(); // Save the updated patient object
+      
+      return res.json({ success: true, message: 'Treatment added to favorites.' });
+    }
+  }
+  
+  return res.json({ success: false, message: 'Treatment or patient not found.' });
 });
 
 

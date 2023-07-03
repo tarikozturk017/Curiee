@@ -51,28 +51,11 @@ const Treatment = () => {
     useEffect(() => {
         console.log(`new treatment id: ${id}`)
         if (userType == 'patient'){
-            // if (!(patient?.exercises?.find(exercise => exercise.exercise._id === id))) {
-            //     console.log(exercise.exercise._id)
-            //     console.log(`NOT patient's exercise!`)
-            //     setDisplay(false)
-            // }
-            // console.log(`new treatment id111: ${id}`)
-            
 
             patient?.exercises.map((exercise) => {
-                
-                console.log(`new treatment id222: ${id}`)
-                console.log(`patient's exercise id222: ${exercise.exercise._id}`)
-                // console.log(id)
-                // console.log(exercise.exercise._id)
                 if (exercise.exercise._id == id){
-                    console.log(`treatment id: ${id}`)
-                    console.log(`patient's exercise id: ${exercise.exercise._id}`)
                     setDisplay(true)
                 }
-                if ((patient?.exercises?.find(exercise => exercise._id === id)) == false) {
-                    console.log("not found")
-                  }
             })
         }
 
@@ -90,7 +73,8 @@ const Treatment = () => {
 
     // TODO: Therapist and Patients fav to be handled separately 
     const handleFavorite = async () => {
-        try {
+        if (userType == 'therapist'){
+            try {
             //sendTherapistRequest
             const response = await fetch(`http://localhost:3001/therapist/addTreatmentToFav`, {
             method: 'POST',
@@ -106,6 +90,25 @@ const Treatment = () => {
         }
         } catch (error) {
             console.error(error);
+        }
+        } else if (userType == 'patient') {
+            try {
+                //sendTherapistRequest
+                const response = await fetch(`http://localhost:3001/patient/addTreatmentToFav`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId, id })
+                
+            });
+            if(response) {
+                console.log(response.status)
+                setAdded(!added);
+            }
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 

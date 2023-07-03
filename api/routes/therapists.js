@@ -228,7 +228,7 @@ router.put('/activatePatient', async (req, res) => {
 
 
 router.post('/addTreatmentToFav', async (req, res) => {
-  const therapist = await Therapist.findById(req.body.therapistId);
+  const therapist = await Therapist.findById(req.body.userId);
   const treatment = await Exercise.findById(req.body.id);
   
   if (treatment && therapist) {

@@ -47,7 +47,11 @@ const PatientSchema = new Schema({
         note: {
           type: String
         }
-      }],
+    }],
+    favExercises: [{ 
+        type: Schema.Types.ObjectId,
+        ref: 'Exercise' 
+    }],
     passwordHash: {
         type: String,
         // required: true,
