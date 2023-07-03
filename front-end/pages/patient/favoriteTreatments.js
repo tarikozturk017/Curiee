@@ -1,13 +1,13 @@
 
-import { userAtom } from '@/components/therapist/SideBar';
+import { userAtom } from '@/components/patient/SideBar';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
 import useSWR from 'swr'
 
 const FavoriteTreatments = () => {
-    const [therapist] = useAtom(userAtom);
+    const [patient] = useAtom(userAtom);
 
-    const { data: favTreatments, error } = useSWR(`http://localhost:3001/therapist/${therapist._id}/retrieveFavTreatments`, async (url) => {
+    const { data: favTreatments, error } = useSWR(`http://localhost:3001/patient/${patient._id}/retrieveFavTreatments`, async (url) => {
         // const res = await fetch(url)
         const res = await fetch(url);
         return res.json();

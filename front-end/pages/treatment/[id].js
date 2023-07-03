@@ -14,6 +14,8 @@ import Rate from '@/components/treatment/Rate';
 // do exercise || or suggestion to 
 // do the exercise to the therapist
 
+// Integrate OpenAI to inform about diseases!
+
 const Treatment = () => {
     // TODO: check if the treatment in the fav list therapist -> handle
     const [userId] = useAtom(userIdAtom)
@@ -49,7 +51,6 @@ const Treatment = () => {
     }, [userId]);
         
     useEffect(() => {
-        console.log(`new treatment id: ${id}`)
         if (userType == 'patient'){
 
             patient?.exercises.map((exercise) => {

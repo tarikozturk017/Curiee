@@ -270,6 +270,12 @@ router.post('/addTreatmentToFav', async (req, res) => {
   return res.json({ success: false, message: 'Treatment or patient not found.' });
 });
 
+// get patient's fav treatments
+router.get('/:id/retrieveFavTreatments', async (req, res) => {
+  const patient = await Patient.findById(req.params.id).populate('favExercises');
+  res.json(patient.favExercises);
+})
+
 
 
 module.exports = router;
