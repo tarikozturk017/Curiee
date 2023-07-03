@@ -8,6 +8,7 @@ import Error from 'next/error';
 import { BsFillHeartFill } from "react-icons/bs";
 import { useEffect, useState } from 'react';
 import Rate from '@/components/treatment/Rate';
+import TreatmentSatisfaction from '@/components/treatment/TreatmentSatisfaction';
 
 
 // Patient will be able to ask permission to 
@@ -138,6 +139,7 @@ const Treatment = () => {
                 <BsFillHeartFill className='flex'/>
             </div>
             {display && <Rate treatmentId={id} />}
+            <TreatmentSatisfaction treatment={data} />
         </div>
         </>
     )
