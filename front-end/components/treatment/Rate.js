@@ -11,6 +11,7 @@ const Rate = ({treatmentId}) => {
         setRating(parseInt(event.target.value));
     };
 
+    // patients shouldn't rate if not assigned 
 
     const handleSubmit = async () => {
         if (userType == 'therapist') {

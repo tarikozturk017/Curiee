@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router';
 import { useAtom } from 'jotai';
-import { userIdAtom } from '@/components/Layout';
+import { userIdAtom, userTypeAtom } from '@/components/Layout';
 import { userAtom } from '@/components/therapist/SideBar';
 import Link from 'next/link';
 import useSWR from 'swr';
@@ -16,31 +16,71 @@ import Rate from '@/components/treatment/Rate';
 
 const Treatment = () => {
     // TODO: check if the treatment in the fav list therapist -> handle
-    const [therapistId] = useAtom(userIdAtom)
-    // const [therapist] = useAtom(userAtom)
+    const [userId] = useAtom(userIdAtom)
+    const [userType] = useAtom(userTypeAtom)
+    
     const [therapist, setTherapist] = useState()
+    const [patient, setPatient] = useState()
+
     const router = useRouter();
     const { id } = router.query;
     const [added, setAdded] = useState(false);
+    const [display, setDisplay] = useState()
 
     useEffect(() => {
-        if (therapistId) {
+        if (userId && userType == 'therapist') {
+            setDisplay(true)
             const fetchTherapist = async () => {
-            const res = await fetch(`http://localhost:3001/therapist/${therapistId}`);
-            const data = await res.json();
-            setTherapist(data);
-          };
+                const res = await fetch(`http://localhost:3001/therapist/${userId}`);
+                const data = await res.json();
+                setTherapist(data);
+            };
     
-          fetchTherapist();
+            fetchTherapist();
+        } else if(userId && userType == 'patient') {
+            const fetchPatient = async () => {
+                const res = await fetch(`http://localhost:3001/patient/${userId}`);
+                const data = await res.json();
+                setPatient(data);
+            };
+    
+            fetchPatient();
         }
-    }, [therapistId]);
+    }, [userId]);
         
     useEffect(() => {
+        console.log(`new treatment id: ${id}`)
+        if (userType == 'patient'){
+            // if (!(patient?.exercises?.find(exercise => exercise.exercise._id === id))) {
+            //     console.log(exercise.exercise._id)
+            //     console.log(`NOT patient's exercise!`)
+            //     setDisplay(false)
+            // }
+            // console.log(`new treatment id111: ${id}`)
+            
+
+            patient?.exercises.map((exercise) => {
+                
+                console.log(`new treatment id222: ${id}`)
+                console.log(`patient's exercise id222: ${exercise.exercise._id}`)
+                // console.log(id)
+                // console.log(exercise.exercise._id)
+                if (exercise.exercise._id == id){
+                    console.log(`treatment id: ${id}`)
+                    console.log(`patient's exercise id: ${exercise.exercise._id}`)
+                    setDisplay(true)
+                }
+                if ((patient?.exercises?.find(exercise => exercise._id === id)) == false) {
+                    console.log("not found")
+                  }
+            })
+        }
+
         if (therapist?.favExercises?.find(exercise => exercise._id === id)) {
           setAdded(true);
         }
         
-    }, [therapist?.favExercises, id]);
+    }, [patient, therapist]);
 
     const { data, error } = useSWR(`http://localhost:3001/exercise/${id}`);
 
@@ -57,7 +97,7 @@ const Treatment = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ therapistId, id })
+            body: JSON.stringify({ userId, id })
             
         });
         if(response) {
@@ -93,7 +133,7 @@ const Treatment = () => {
                 }
                 <BsFillHeartFill className='flex'/>
             </div>
-            <Rate treatmentId={id} />
+            {display && <Rate treatmentId={id} />}
         </div>
         </>
     )
