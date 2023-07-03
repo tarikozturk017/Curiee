@@ -52,11 +52,11 @@ const Treatment = () => {
         
     useEffect(() => {
         if (userType == 'patient'){
-
+            if (patient?.favExercises?.find(exercise => exercise === id)) {
+                setAdded(true);
+            }
             patient?.exercises.map((exercise) => {
-                if (exercise.exercise._id == id){
-                    setDisplay(true)
-                }
+                if (exercise.exercise._id == id)  setDisplay(true)
             })
         }
 
