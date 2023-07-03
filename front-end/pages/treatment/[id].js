@@ -73,7 +73,6 @@ const Treatment = () => {
     if (data.length==0)  return null
     
 
-    // TODO: Therapist and Patients fav to be handled separately 
     const handleFavorite = async () => {
         if (userType == 'therapist'){
             try {
@@ -139,7 +138,7 @@ const Treatment = () => {
                 <BsFillHeartFill className='flex'/>
             </div>
             {display && <Rate treatmentId={id} />}
-            <TreatmentSatisfaction treatment={data} />
+            <TreatmentSatisfaction treatmentId={id} />
         </div>
         </>
     )
