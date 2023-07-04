@@ -1,4 +1,5 @@
 import {useRouter} from 'next/router';
+import { useState } from 'react';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 import Rate from '@/components/therapist/Rate';
@@ -10,6 +11,7 @@ import { useAtom } from 'jotai'
 const Therapist = () => {
     const [userType] = useAtom(userTypeAtom)
     const [patientId] = useAtom(userIdAtom)
+    const [satisfactionKey, setSatisfactionKey] = useState(0); // State to trigger re-render of TherapistSatisfaction
 
 
     const router = useRouter();
@@ -38,8 +40,10 @@ const Therapist = () => {
             <p>Number of Patients: {data.patients.length}</p>
             {/* current patient can vote if the therapist's patient */}
             {data?.patients?.some((patient) => patient._id === patientId && userType=='patient') 
-            && <Rate patientId={patientId} therapistId={id} />}
-            <TherapistSatisfaction therapistId={id}/>
+            && <Rate patientId={patientId} therapistId={id} 
+                onRateSubmitted={() => setSatisfactionKey((prevKey) => prevKey + 1)} // Update the satisfactionKey to trigger re-render
+            />}
+            <TherapistSatisfaction therapistId={id} key={satisfactionKey}/>
         </div>
         </>
     )

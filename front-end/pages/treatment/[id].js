@@ -29,6 +29,8 @@ const Treatment = () => {
     const { id } = router.query;
     const [added, setAdded] = useState(false);
     const [display, setDisplay] = useState()
+    const [satisfactionKey, setSatisfactionKey] = useState(0); // State to trigger re-render TreatmentSatisfaction
+
 
     useEffect(() => {
         if (userId && userType == 'therapist') {
@@ -137,8 +139,10 @@ const Treatment = () => {
                 }
                 <BsFillHeartFill className='flex'/>
             </div>
-            {display && <Rate treatmentId={id} />}
-            <TreatmentSatisfaction treatmentId={id} />
+            {display && <Rate treatmentId={id} 
+                onRateSubmitted={() => setSatisfactionKey((prevKey) => prevKey + 1)} // Update the satisfactionKey to trigger re-render
+            />}
+            <TreatmentSatisfaction treatmentId={id} key={satisfactionKey}/>
         </div>
         </>
     )

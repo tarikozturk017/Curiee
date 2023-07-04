@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TherapistSatisfaction = ({therapistId}) => {
+const TherapistSatisfaction = ({therapistId, key}) => {
     const [therapist, setTherapist] = useState()
 
 
@@ -14,7 +14,7 @@ const TherapistSatisfaction = ({therapistId}) => {
     
           fetchTreatment();
         }
-      }, []);    
+      }, [therapistId, key]);    
 
     return ( 
         <>

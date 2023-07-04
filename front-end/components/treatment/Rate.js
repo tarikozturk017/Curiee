@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAtom } from 'jotai'
 import { userTypeAtom, userIdAtom } from '../Layout';
 
-const Rate = ({treatmentId}) => {
+const Rate = ({ treatmentId, onRateSubmitted }) => {
     const [userType] = useAtom(userTypeAtom);
     const [rating, setRating] = useState(0);
     const [userId] = useAtom(userIdAtom); 
@@ -30,6 +30,8 @@ const Rate = ({treatmentId}) => {
         
               if (response.ok) {
                 // Show success message
+
+                onRateSubmitted()
               } else if (response.status == 400) {
                 // show response accordingly
                 console.log('already voted')
@@ -54,6 +56,8 @@ const Rate = ({treatmentId}) => {
           
                 if (response.ok) {
                   // Show success message
+
+                  onRateSubmitted()
                 } else if (response.status == 400) {
                   // show response accordingly
                   console.log('already voted')

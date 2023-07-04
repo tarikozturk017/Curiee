@@ -2,7 +2,7 @@ import { useState } from 'react';
 // import { useAtom } from 'jotai'
 // import { userIdAtom } from '../Layout';
 
-const Rate = ({therapistId, patientId}) => {
+const Rate = ({therapistId, patientId, onRateSubmitted }) => {
     // const [userType] = useAtom(userTypeAtom);
     const [rating, setRating] = useState(0);
     // const [patientId] = useAtom(userIdAtom); 
@@ -30,6 +30,8 @@ const Rate = ({therapistId, patientId}) => {
       
             if (response.ok) {
               // Show success message
+              // Call the onRateSubmitted callback to trigger the update in the parent component
+              onRateSubmitted()
             } else if (response.status == 400) {
               // show response accordingly
               console.log('already voted')

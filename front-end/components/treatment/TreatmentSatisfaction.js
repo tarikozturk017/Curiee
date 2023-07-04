@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const TreatmentSatisfaction = ({treatmentId}) => {
+const TreatmentSatisfaction = ({treatmentId, key}) => {
     const [treatment, setTreatment] = useState()
 
 
@@ -14,7 +14,7 @@ const TreatmentSatisfaction = ({treatmentId}) => {
     
           fetchTreatment();
         }
-      }, [treatmentId]);    
+      }, [treatmentId, key]);    
 
     return ( 
         <>
