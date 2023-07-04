@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
 
-const TreatmentSatisfaction = ({treatmentId}) => {
-    const [treatment, setTreatment] = useState()
+const TherapistSatisfaction = ({therapistId}) => {
+    const [therapist, setTherapist] = useState()
 
 
     useEffect(() => {
-        if (treatmentId) {
+        if (therapistId) {
             const fetchTreatment = async () => {
-            const res = await fetch(`http://localhost:3001/exercise/${treatmentId}`);
+            const res = await fetch(`http://localhost:3001/therapist/${therapistId}`);
             const data = await res.json();
-            setTreatment(data);
+            setTherapist(data);
           };
     
           fetchTreatment();
         }
-      }, [treatmentId]);    
+      }, []);    
 
     return ( 
         <>
-            <p>Rate from patients: {treatment?.patientVoteCount / treatment?.patientTotalVotes} <span>({treatment?.patientTotalVotes})</span></p>
-            <p>Rate from therapists: {treatment?.therapistVoteCount / treatment?.therapistTotalVotes}<span>({treatment?.therapistTotalVotes})</span></p>
+            <p>Therapist Satisfaction Rate: {therapist?.rateCount / therapist?.totalRates} <span>({therapist?.totalRates})</span></p>
         </>
     )
 }
 
-export default TreatmentSatisfaction;
+export default TherapistSatisfaction;

@@ -2,6 +2,7 @@ import {useRouter} from 'next/router';
 import useSWR from 'swr';
 import Error from 'next/error'; 
 import Rate from '@/components/therapist/Rate';
+import TherapistSatisfaction from '@/components/therapist/TherapistSatisfaction';
 import { userTypeAtom, userIdAtom } from '@/components/Layout';
 import { useAtom } from 'jotai'
 
@@ -38,6 +39,7 @@ const Therapist = () => {
             {/* current patient can vote if the therapist's patient */}
             {data?.patients?.some((patient) => patient._id === patientId && userType=='patient') 
             && <Rate patientId={patientId} therapistId={id} />}
+            <TherapistSatisfaction therapistId={id}/>
         </div>
         </>
     )
