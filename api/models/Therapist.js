@@ -31,6 +31,23 @@ const TherapistSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Exercise' 
     }],
+    rate: [
+        {
+          user: {
+            type: Schema.Types.ObjectId,
+            ref: 'Patient'
+          },
+          rating: {
+            type: Number,
+            min: 0,
+            max: 5
+          },
+        },
+    ],
+    rateCount: {
+        type: Number,
+        default: 0,
+    },
     patients: [{
         type: Schema.Types.ObjectId, 
         ref: 'Patient'

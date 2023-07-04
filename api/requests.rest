@@ -60,6 +60,26 @@ Content-Type: application/json
     "description": "this is to be deleted"
 }
 
+### patient satisfaction rate
+POST http://localhost:3001/exercise/patientRate
+Content-Type: application/json
+
+{
+    "rating": 4,
+    "patientId": "64026e5f90b3d644733e1f50",
+    "treatmentId": "6499a1d3389d379a5bca37ce"    
+}
+
+### therapist satisfaction rate
+POST http://localhost:3001/exercise/therapistRate
+Content-Type: application/json
+
+{
+    "rating": 5,
+    "therapistId": "640e850eed267f23b22730a0",
+    "treatmentId": "6499a1d3389d379a5bca37ce"    
+}
+
 ### add to exercise to fav
 POST http://localhost:3001/therapist/addTreatmentToFav
 Content-Type: application/json
