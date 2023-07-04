@@ -258,6 +258,36 @@ router.get('/:id/retrieveFavTreatments', async (req, res) => {
   res.json(therapist.favExercises);
 })
 
+// 
+router.post('/satisfactionRate', async (req, res) => {
+  const {rating} = req.body;
+  const therapistId = req.body.therapistId;
+  const patientId = req.body.patientId;
 
+  try {
+    const therapist = await Therapist.findById(therapistId);
+    // Check if the treatment exists
+    if (!therapist) {
+      return res.status(404).json({ message: 'therapist not found' });
+    }
+
+    // Check if the user has already voted for the treatment
+    const existingVote = therapist.rate.find((vote) => vote?.user?.toString() === patientId);
+    if (existingVote) {
+      return res.status(400).json({ message: 'Patient has already voted for this therapist' });
+    }
+
+    therapist.rate.push({ user: patientId, rating });
+
+    therapist.rateCount += rating;
+    therapist.totalRates++;
+
+    await therapist.save();
+    res.status(200).json({ message: 'Vote submitted successfully' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+})
 
 module.exports = router;

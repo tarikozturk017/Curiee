@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useAtom } from 'jotai'
-import { userTypeAtom, userIdAtom } from '../Layout';
+// import { useAtom } from 'jotai'
+// import { userIdAtom } from '../Layout';
 
-const Rate = ({treatmentId}) => {
-    const [userType] = useAtom(userTypeAtom);
+const Rate = ({therapistId, patientId}) => {
+    // const [userType] = useAtom(userTypeAtom);
     const [rating, setRating] = useState(0);
-    const [userId] = useAtom(userIdAtom); 
+    // const [patientId] = useAtom(userIdAtom); 
 
     const handleRatingChange = (event) => {
         setRating(parseInt(event.target.value));
@@ -14,56 +14,31 @@ const Rate = ({treatmentId}) => {
     // patients shouldn't rate if not assigned 
 
     const handleSubmit = async () => {
-        if (userType == 'therapist') {
-            try {
-              const response = await fetch('http://localhost:3001/exercise/therapistRate', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  rating,
-                  userId,
-                  treatmentId
-                }),
-              });
         
-              if (response.ok) {
-                // Show success message
-              } else if (response.status == 400) {
-                // show response accordingly
-                console.log('already voted')
-              }
-            } catch (error) {
-              //error
-              console.error('Error submitting rate:', error);
+          try {
+            const response = await fetch('http://localhost:3001/therapist/satisfactionRate', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                rating,
+                therapistId,
+                patientId
+              }),
+            });
+      
+            if (response.ok) {
+              // Show success message
+            } else if (response.status == 400) {
+              // show response accordingly
+              console.log('already voted')
             }
-        } else if (userType == 'patient'){
-            try {
-                const response = await fetch('http://localhost:3001/exercise/patientRate', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    rating,
-                    userId,
-                    treatmentId
-                  }),
-                });
-          
-                if (response.ok) {
-                  // Show success message
-                } else if (response.status == 400) {
-                  // show response accordingly
-                  console.log('already voted')
-                }
-              } catch (error) {
-                //error
-                console.error('Error submitting rate:', error);
-              }
-        };
-
+          } catch (error) {
+            //error
+            console.error('Error submitting rate:', error);
+          }
+        
     };
     return (
         <div>

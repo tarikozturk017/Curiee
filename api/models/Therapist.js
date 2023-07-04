@@ -48,6 +48,10 @@ const TherapistSchema = new Schema({
         type: Number,
         default: 0,
     },
+    totalRates: {
+        type: Number,
+        default: 0,
+    },
     patients: [{
         type: Schema.Types.ObjectId, 
         ref: 'Patient'
