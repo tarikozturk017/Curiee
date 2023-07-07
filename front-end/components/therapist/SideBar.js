@@ -44,8 +44,11 @@ const PatientSideBar = () => {
 
     return (
         <>
-        { therapist && !hideSideBar && (<div className=" p-10 text-white bg-slate-900 h-screen absolute min-w-min w-1/6 pt-5" >
-            <div className=" flex flex-col mb-5">
+        { therapist && !hideSideBar && (
+        // <div className=" p-10 text-white bg-slate-800 opacity-70 h-screen absolute min-w-min w-1/6 pt-5" >
+        <div className="p-10 text-white h-screen absolute min-w-min w-1/6 pt-5" style={{ backgroundColor: 'rgba(50, 67, 79, 0.5)' }}>
+
+            <div className=" text-white flex flex-col mb-5">
               <AiOutlineMenu onClick={() => setHideSideBar(true)} className=" cursor-pointer self-end text-3xl" />
             </div>
             <p className=" m-5  text-center text-xl">{therapist.firstName + ' ' + therapist.lastName}</p>

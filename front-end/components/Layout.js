@@ -79,7 +79,7 @@ const Layout = (props) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className=" h-screen bg-gradient-to-tr from-violet-100 to-blue-100">
+            <div className=" h-screen bg-gradient-to-tr from-slate-300 to-violet-400">
             <Navbar />
             {/* if user logged in, display sidebar */}
             {userToken && <SideBar />}
