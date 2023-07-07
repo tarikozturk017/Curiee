@@ -47,18 +47,20 @@ const PatientSideBar = () => {
         
         { therapist && !hideSideBar && (
         // <div className=" p-10 text-white bg-slate-800 opacity-70 h-screen absolute min-w-min w-1/6 pt-5" >
-        <div className="p-10 text-white h-screen absolute min-w-min w-1/6 pt-5" style={{ backgroundColor: 'rgba(44, 47, 72, 0.5)' }}>
+        <div className="p-10 text-white h-screen absolute min-w-min w-1/6 pt-5" 
+        style={{ backgroundColor: 'rgba(44, 47, 72, 0.5)' }}
+        >
 
             <div className=" flex flex-col mb-5">
               <AiOutlineMenu onClick={() => setHideSideBar(true)} className=" cursor-pointer self-end text-3xl" />
             </div>
             <p className=" m-5  text-center text-xl">{therapist.firstName + ' ' + therapist.lastName}</p>
             <hr />
-            <ul className=" mt-10 flex flex-col gap-5">
-                <li><Link href="/patients">My Patients</Link></li>
-                <li><Link href="/therapist/favoriteTreatments">My Favorite Treatments</Link></li>
-                <li><Link href="/treatment/new">Create New Treatment</Link></li>
-                <li><Link href="/therapist/findPatient">Connect Your Patient</Link></li>
+            <ul className=" mt-5 flex flex-col gap-5 ">
+                <li className=" hover:bg-black hover:opacity-70 rounded transition hover:cursor-pointer p-3 "><Link href="/patients">My Patients</Link></li>
+                <li className=" hover:bg-black hover:opacity-70 rounded transition hover:cursor-pointer p-3 "><Link href="/therapist/favoriteTreatments">My Favorite Treatments</Link></li>
+                <li className=" hover:bg-black hover:opacity-70 rounded transition hover:cursor-pointer p-3 "><Link href="/treatment/new">Create New Treatment</Link></li>
+                <li className=" hover:bg-black hover:opacity-70 rounded transition hover:cursor-pointer p-3 "><Link href="/therapist/findPatient">Connect Your Patient</Link></li>
             </ul>
         </div>)
         

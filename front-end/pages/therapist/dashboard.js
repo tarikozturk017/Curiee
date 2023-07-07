@@ -39,7 +39,7 @@ const Dashboard = () => {
         {therapist && 
         // <div className=' mx-auto rounded-lg p-5 text-2xl bg max-w-max text-center'>
         <PageCard>
-            <h1 className=' my-5 text-2xl font-bold'>DASHBOARD</h1>
+            <h1 className=' text-2xl font-bold'>DASHBOARD</h1>
             <Card>
                 <div className=' bg-slate-200 p-5 rounded-xl text-black'>
                     <h1 className=' text-2xl font-semibold'>{therapist.firstName} {therapist.lastName}</h1>
@@ -48,7 +48,7 @@ const Dashboard = () => {
             {/* </div> */}
             </Card>
 
-            <div className=' flex mt-10'>
+            <div className=' flex  mt-10'>
                 <Card>
                     <h1 className='text-2xl underline mb-3'>Patients Chart</h1>
                     <p>You have <span>{therapist.patients?.length ?? 0}</span> active patients.</p>

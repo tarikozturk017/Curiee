@@ -6,15 +6,17 @@ const ProfileBar = () => {
     return (
         <>
         
-        <div className="text-white flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5" style={{ backgroundColor: 'rgba(44, 47, 72, 1)' }}>
+        <div className="text-white flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5" 
+        style={{ backgroundColor: 'rgba(44, 47, 72, 1)' }}
+        >
         <div className=" flex">
             <div className=" my-5 text-center mx-auto">
                 <img
                     src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-                    class="w-32 rounded-full shadow-lg shadow-violet-400"
+                    className="w-32 rounded-full shadow-lg shadow-violet-400"
                     alt="Avatar" />
-                <h5 class="mt-5 text-xl font-medium leading-tight">therapist NAME</h5>
-                <p class="text-neutral-500 dark:text-neutral-400">Job</p>
+                <h5 className="mt-5 text-xl font-medium leading-tight">therapist NAME</h5>
+                <p className="text-neutral-500 dark:text-neutral-400">Job</p>
             </div>
         </div>
         <Card>

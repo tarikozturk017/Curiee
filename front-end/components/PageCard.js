@@ -1,8 +1,10 @@
 import React from "react";
 
+// PAGECARD SHOULD FIT THE SCREEN 
+
 const PageCard = ({ children }) => {
   return (
-    <div className=" border-2 border-opacity-30 border-slate-800 border-solid rounded-xl w-3/5 h-3/4 mx-auto px-16 mt-16  text-center">
+    <div className=" bg-slate-900 min-w-fit w-4/6 h-screen mx-auto px-16   text-center">
         {children}
     </div>
   );
