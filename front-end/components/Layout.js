@@ -7,6 +7,7 @@ import Head from 'next/head'
 import SideBar from "./SideBar";
 import Navbar from './Navbar';
 import Footer from "./Footer";
+import ProfileBar from './therapist/ProfileBar';
 
 // create the atom
 const userIdAtom = atom('');
@@ -79,10 +80,11 @@ const Layout = (props) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className=" h-screen bg-gradient-to-tr from-slate-300 to-violet-400">
+            <div className=" h-screen bg-gradient-to-tr from-violet-200 to-violet-400">
             <Navbar />
             {/* if user logged in, display sidebar */}
             {userToken && <SideBar />}
+            <ProfileBar />
                 {props.children}
             </div>
             <Footer />
