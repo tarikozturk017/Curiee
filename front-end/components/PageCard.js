@@ -4,7 +4,7 @@ import React from "react";
 
 const PageCard = ({ children }) => {
   return (
-    <div className=" bg-slate-900 min-w-fit w-4/6 h-screen mx-auto px-16   text-center">
+    <div className=" rounded mt-5 min-w-fit w-2/4 h-2/4 mx-auto px-16   text-center">
         {children}
     </div>
   );
