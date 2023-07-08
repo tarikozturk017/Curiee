@@ -57,7 +57,7 @@ const PatientSideBar = () => {
         // style={{ backgroundColor: 'rgba(44, 47, 72, 0.4)' }}
         // >
         <div className=" w-1/6 h-screen absolute bg-gradient-to-tr from-slate-200 via-purple-300 to-violet-400" style={{ display: 'inline-block' }}>
-        <div className="p-10 text-white h-screen absolute  w-full m-0 pt-5" style={{ backgroundColor: 'rgba(44, 47, 72, 0.45)' }}>
+        <div className=" border-r-2 border-blue-100/25 border-double  p-10 text-white h-screen absolute  w-full m-0 pt-5" style={{ backgroundColor: 'rgba(44, 47, 72, 0.46)' }}>
 
             {/* <div className=" flex flex-col mb-5">
               <AiOutlineMenu onClick={() => setHideSideBar(true)} className=" cursor-pointer self-end text-3xl" />

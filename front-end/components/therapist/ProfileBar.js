@@ -6,7 +6,7 @@ const ProfileBar = () => {
     return (
         <>
         
-        <div className="text-white flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5" 
+        <div className="text-white flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5 border-l-2 border-blue-100/25 border-double" 
         style={{ backgroundColor: 'rgba(44, 47, 72, 1)' }}
         >
         <div className=" flex">
