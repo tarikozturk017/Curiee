@@ -1,8 +1,8 @@
 const Header = ({headline, subtext}) => {
     return (
         <>
-             <h1 class="text-3xl font-bold tracking-widest">{headline}</h1>
-            <p>{subtext}</p>
+             <h1 className="text-3xl mb-4 font-bold tracking-widest">{headline}</h1>
+            <p className=" mb-16">{subtext}</p>
         </>
     )
 }

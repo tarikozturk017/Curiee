@@ -9,7 +9,7 @@ const Navbar = () => {
     // console.log(`TOKEN :::: ${token}`)
     return ( 
         <>
-            <nav className="bg-slate-900-800 w-full text-white p-3 border-b-4 border-blue-100/75 border-double">
+            <nav className="bg-slate-800 w-full text-white p-3 border-b-4 border-blue-100/75 border-double">
                 <ul className="container flex flex-wrap items-center justify-evenly mx-auto ">
                     <li className=" hover:text-sky-200/80 duration-300 hover:cursor-pointer flex"><Link href="/treatments">Explore Treatments</Link></li>
                     <li className=" hover:text-sky-200/80  duration-300 hover:cursor-pointer flex"><Link href="/therapists">Explore Therapists</Link></li>

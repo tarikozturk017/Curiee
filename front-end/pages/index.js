@@ -36,7 +36,11 @@ const Home = () => {
 
   return (
     <>
-      <main className=' h-screen bg-gradient-to-tr from-violet-100 to-blue-100'>
+      {/* Light Mode color : from-violet-100 to-blue-100 */}
+      {/* <main className=' h-screen bg-gradient-to-tr from-violet-100 to-blue-100'> */}
+      {/* Dark Mode Color */}
+      <main className=' h-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r'>
+
       </main>
     </>
   )
