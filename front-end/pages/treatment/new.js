@@ -67,7 +67,7 @@ function New() {
          </div>
          <div>
            {/* <label htmlFor="description">Description</label> */}
-           <textarea  placeholder='Description' className="w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-4 focus:ring-orange-500"
+           <textarea  placeholder='Description' className="w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
              id="description"
              value={description}
              onChange={(event) => setDescription(event.target.value)}

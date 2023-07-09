@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -39,64 +41,79 @@ const Register = () => {
   };
 
   return (
-    <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
-      <h1>Therapist - Register</h1>
+    <Card>
+      <Header headline={`Register - therapist`} subtext={'Please fill out the form below to create an account'}/>
+    <div className=' text-center'>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="firstName">First Name</label>
+          {/* <label htmlFor="firstName">First Name</label> */}
           <input
+            placeholder='First Name'
             type="text"
             id="firstName"
             value={firstName}
             onChange={(event) => setFirstName(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <div>
-          <label htmlFor="lastName">Last Name</label>
+          {/* <label htmlFor="lastName">Last Name</label> */}
           <textarea
+            placeholder='Last Name'
             id="lastName"
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <div>
-          <label htmlFor="email">Email address</label>
+          {/* <label htmlFor="email">Email address</label> */}
           <textarea
+            placeholder='Email address'
             id="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <div>
-          <label htmlFor="occupation">Occupation</label>
+          {/* <label htmlFor="occupation">Occupation</label> */}
           <input
+            placeholder='Occupation'
             type="text"
             id="occupation"
             value={occupation}
             onChange={(event) => setOccupation(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
+            placeholder='Password'
             type="password"
             id="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          {/* <label htmlFor="confirmPassword">Confirm Password</label> */}
           <input
+            placeholder='Confirm Password'
             type="password"
             id="confirmPassword"
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
+            className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500">Register</button>
+
       </form>
     </div>
+    </Card>
   );
 }
 
