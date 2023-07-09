@@ -45,16 +45,49 @@ function New() {
     <Card>
     <Header headline={'Create Treatment'} subtext={'Create a new treatment modal to assign or promote'}/>
 
-  <div class="flex flex-col items-center justify-center space-y-6">
+  {/* <div class="flex flex-col items-center justify-center space-y-6">
     <input type="password" id="password" name="password" placeholder="Password" class="w-80 appearance-none rounded-full 
       border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-    <div>
-      <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" 
-        class="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-      <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
-    </div>
+    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" 
+      class="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
+    <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
     <button id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"><span id="showHide">Show</span> Password</button>
-  </div>
+  </div> */}
+
+       <form onSubmit={handleSubmit}>
+        <div class="flex flex-col items-center justify-center space-y-6">
+         <div>
+           {/* <label htmlFor="title">Title</label> */}
+           <input placeholder='Title'  className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+             type="text"
+             id="title"
+             value={title}
+             onChange={(event) => setTitle(event.target.value)}
+           />
+         </div>
+         <div>
+           {/* <label htmlFor="description">Description</label> */}
+           <textarea  placeholder='Description' className="w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-4 focus:ring-orange-500"
+             id="description"
+             value={description}
+             onChange={(event) => setDescription(event.target.value)}
+           />
+         </div>
+         <div>
+           {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
+           <input  placeholder='Disease Treatment' className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+             type="text"
+             id="diseaseTreatment"
+             autocomplete="off"
+             value={diseaseTreatment}
+             onChange={(event) => setDiseaseTreatment(event.target.value)}
+           />
+         </div>
+        <button type="submit" className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500">Create Treatment</button>
+
+          </div>
+       </form>
+
     </Card>
     //   <Card class="h-screen place-content-center  text-slate-300">
     //   <div class="mb-10 text-center text-indigo-400">
@@ -62,9 +95,10 @@ function New() {
     //   <p><span class="font-bold">Subtext</p>
     // </div>
     //   <form onSubmit={handleSubmit}>
+    //    <div class="flex flex-col items-center justify-center space-y-6">
     //     <div>
     //       <label htmlFor="title">Title</label>
-    //       <input
+    //       <input   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         type="text"
     //         id="title"
     //         value={title}
@@ -73,7 +107,7 @@ function New() {
     //     </div>
     //     <div>
     //       <label htmlFor="description">Description</label>
-    //       <textarea
+    //       <textarea   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         id="description"
     //         value={description}
     //         onChange={(event) => setDescription(event.target.value)}
@@ -81,14 +115,16 @@ function New() {
     //     </div>
     //     <div>
     //       <label htmlFor="diseaseTreatment">Disease Treatment</label>
-    //       <input
+    //       <input   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         type="text"
     //         id="diseaseTreatment"
     //         value={diseaseTreatment}
     //         onChange={(event) => setDiseaseTreatment(event.target.value)}
     //       />
     //     </div>
-    //     <button type="submit">Create Exercise</button>
+    //    <button type="submit" className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500">Create Treatment</button>
+
+    //      </div>
     //   </form>
     // </Card>
 //     <section class="h-screen place-content-center  text-slate-300">
