@@ -50,100 +50,69 @@ const Patients = () => {
         button to see your ${displayActivePatients ? 'previous' : 'active'} patients`}/>
 
 
-<div className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%]" style={{ backgroundColor: 'rgba(255, 255, 255, 0.11)' }}>
-
-<table className=' w-full'>
-        <thead className=" " style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)' }}>
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    First Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Last Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Age
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Disease
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Email
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            {/* <tr className="">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    
-                </td>
-            </tr> */}
-            {displayActivePatients ? (
-        <ul>
-        {therapistData.patients.map((patient) => (
-          // instead of id, one time token can be created to avoid insecurity
-          <li key={patient._id}><Link href={"/patient/" + patient._id}>
-            <tr className="">
-                <th className="">
-                  {patient.firstName}
-                </th>
-                <td className="">
-                  {patient.lastName}
-                </td>
-                <td className="">
-                    00
-                </td>
-                <td className="">
-                {patient?.diagnosis}
-                </td>
-                <td className="">
-                  {patient.email}
-                </td>
-            </tr>
-          </Link></li>
-        ))}
-      </ul>
-      ) 
-      : (
-        <ul>
-        {therapistData.deactivatedPatients.map((patient) => (
-          // instead of id, one time token can be created to avoid insecurity
-          <li key={patient._id}><Link href={"/patient/" + patient._id}>
-            <tr className="">
-                <th className="">
-                  {patient.firstName}
-                </th>
-                <td className="">
-                  {patient.lastName}
-                </td>
-                <td className="">
-                    00
-                </td>
-                <td className="">
-                {patient?.diagnosis}
-                </td>
-                <td className="">
-                  {patient.email}
-                </td>
-            </tr>
-            </Link></li>
-        ))}
-      </ul>
+<div className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%] mb-5" style={{ backgroundColor: 'rgba(255, 255, 255, 0.11)' }}>
+<table className='w-full'>
+  <thead className="" style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)' }}>
+    <tr>
+      <th scope="col" className="px-6 py-3">
+        Name
+      </th>
+      <th scope="col" className="px-6 py-3">
+        Age
+      </th>
+      <th scope="col" className="px-6 py-3">
+        Disease
+      </th>
+      <th scope="col" className="px-6 py-3">
+        Email
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {displayActivePatients ? (
+      therapistData.patients.map((patient) => (
+        <tr key={patient._id} className="">
+          <th scope="row" className="">
+            <Link href={"/patient/" + patient._id}>
+              {patient.firstName} {patient.lastName}
+            </Link>
+          </th>
+          
+          <td className="px-6 py-4">
+            00
+          </td>
+          <td className="px-6 py-4">
+            {patient?.diagnosis}
+          </td>
+          <td className="px-6 py-4">
+            {patient.email}
+          </td>
+        </tr>
+      ))
+    ) : (
+      therapistData.deactivatedPatients.map((patient) => (
+        <tr key={patient._id} className="">
+          <th scope="row" className="">
+            <Link href={"/patient/" + patient._id}>
+              {patient.firstName} {patient.lastName}
+            </Link>
+          </th>
+          <td className="px-6 py-4">
+            00
+          </td>
+          <td className="px-6 py-4">
+            {patient?.diagnosis}
+          </td>
+          <td className="px-6 py-4">
+            {patient.email}
+          </td>
+            
+        </tr>
+      ))
     )}
-        </tbody>
-    </table>
+  </tbody>
+</table>
+
 </div>
 
     {/* <div className=' text-center'>
