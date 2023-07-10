@@ -72,18 +72,27 @@ const InfoCard = ({ patientData }) => {
 
     return (
         <>
-            <div>
-                <h2>Patient Information</h2>
+            <div className='w-1/2 m-4 text-center text-indigo-200 mx-auto'>
+                <h2 className=' font-bold underline'>Patient Found</h2>
                 <div className=" flex justify-around">
-                    <p>Full Name: {patientData.firstName} {patientData.lastName}</p>
+                    <p className=' justify-center text-lg'> Full Name: <span className=' font-bold'>{patientData.firstName} {patientData.lastName}</span></p>
                     {
-                        pending ? <> <span> <BsPersonFillDash />
-                            <span className=' italic text-xs'>Your request is pending</span> 
+                        pending ? <> 
+                            <span className=' space-x-3 flex'>
+                                <span className=' text-blue-200'> <BsPersonFillDash className=' mx-auto text-xl'/>
+                                    <p className=' italic text-xs'>Pending request</p> 
+                                </span>
+                                <span className=' cursor-pointer duration-100 text-red-200 hover:text-red-400' onClick={withdrawRequest}> 
+                                    <BsPersonFillX className='mx-auto text-xl'/>
+                                    <p className='italic text-xs'> Click to withdraw</p>
+                                </span>
                             </span>
-                            <span onClick={withdrawRequest}> <BsPersonFillX /></span>
                             </>
-                        : !accepted ? <span onClick={addPatient}><BsPersonFillAdd /></span> 
-                        : <span ><BsPersonFillCheck /> 
+                        : !accepted ? <span className=' cursor-pointer duration-100 text-blue-200 hover:text-blue-400' onClick={addPatient}>
+                                <BsPersonFillAdd className='mx-auto text-xl'/>
+                                <p className='italic text-xs'> Add</p>
+                            </span> 
+                        : <span ><BsPersonFillCheck  className=' mx-auto text-xl'/> 
                             <span className=' italic text-xs'>Already your patient</span> 
                         </span>
                     }
