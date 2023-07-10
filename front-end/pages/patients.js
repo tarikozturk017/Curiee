@@ -4,6 +4,8 @@ import { useAtom } from 'jotai'
 // import { userIdAtom } from '@/components/Layout'
 import { userAtom } from '@/components/therapist/SideBar'
 import { useState, useEffect } from 'react';
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
 // import Auth from '@/utils/auth'
 
 // getStaticProps is a Next.js function that is used to pre-render static pages at build time. 
@@ -41,8 +43,110 @@ const Patients = () => {
 
   return (
     <>
-    {therapistData.patients  && (<div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
-      <h1 className=' underline'>{displayActivePatients ? 'My Patients' : 'My Previous Patients'}</h1>
+    {therapistData.patients  && (
+      <Card>
+      <Header headline={`My Patients`} subtext={`List of your ${displayActivePatients ? 'active patients' : 
+        'previous patients'}, please click on "${displayActivePatients ? 'Previous Patients' : 'Active Patients'}" 
+        button to see your ${displayActivePatients ? 'previous' : 'active'} patients`}/>
+
+
+<div className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%]" style={{ backgroundColor: 'rgba(255, 255, 255, 0.11)' }}>
+
+<table className=' w-full'>
+        <thead className=" " style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)' }}>
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    First Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Last Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Age
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Disease
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {/* <tr className="">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Apple MacBook Pro 17"
+                </th>
+                <td class="px-6 py-4">
+                    Silver
+                </td>
+                <td class="px-6 py-4">
+                    Laptop
+                </td>
+                <td class="px-6 py-4">
+                    $2999
+                </td>
+                <td class="px-6 py-4">
+                    
+                </td>
+            </tr> */}
+            {displayActivePatients ? (
+        <ul>
+        {therapistData.patients.map((patient) => (
+          // instead of id, one time token can be created to avoid insecurity
+          <li key={patient._id}><Link href={"/patient/" + patient._id}>
+            <tr className="">
+                <th className="">
+                  {patient.firstName}
+                </th>
+                <td className="">
+                  {patient.lastName}
+                </td>
+                <td className="">
+                    00
+                </td>
+                <td className="">
+                {patient?.diagnosis}
+                </td>
+                <td className="">
+                  {patient.email}
+                </td>
+            </tr>
+          </Link></li>
+        ))}
+      </ul>
+      ) 
+      : (
+        <ul>
+        {therapistData.deactivatedPatients.map((patient) => (
+          // instead of id, one time token can be created to avoid insecurity
+          <li key={patient._id}><Link href={"/patient/" + patient._id}>
+            <tr className="">
+                <th className="">
+                  {patient.firstName}
+                </th>
+                <td className="">
+                  {patient.lastName}
+                </td>
+                <td className="">
+                    00
+                </td>
+                <td className="">
+                {patient?.diagnosis}
+                </td>
+                <td className="">
+                  {patient.email}
+                </td>
+            </tr>
+            </Link></li>
+        ))}
+      </ul>
+    )}
+        </tbody>
+    </table>
+</div>
+
+    {/* <div className=' text-center'>
       <br />
       {displayActivePatients ? (
         <ul>
@@ -60,11 +164,12 @@ const Patients = () => {
         ))}
       </ul>
       )}
+    </div> */}
     <button onClick={() => setDisplayActivePatients(!displayActivePatients)} 
-          className=" bg-red-300 rounded-xl text-white" >
-        {displayActivePatients ? 'Display My Previous Patients' : 'Display My Current Patients'}
+          className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500" >
+        {displayActivePatients ? 'Previous Patients' : 'Active Patients'}
     </button>
-    </div>)}
+    </Card>)}
     </>
   );
 }
