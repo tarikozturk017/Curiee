@@ -115,25 +115,7 @@ const Patients = () => {
 
 </div>
 
-    {/* <div className=' text-center'>
-      <br />
-      {displayActivePatients ? (
-        <ul>
-        {therapistData.patients.map((patient) => (
-          // instead of id, one time token can be created to avoid insecurity
-          <li key={patient._id}><Link href={"/patient/" + patient._id}>{patient.firstName} {patient.lastName}</Link></li>
-        ))}
-      </ul>
-      ) 
-      : (
-        <ul>
-        {therapistData.deactivatedPatients.map((patient) => (
-          // instead of id, one time token can be created to avoid insecurity
-          <li key={patient._id}><Link href={"/patient/" + patient._id}>{patient.firstName} {patient.lastName}</Link></li>
-        ))}
-      </ul>
-      )}
-    </div> */}
+    
     <button onClick={() => setDisplayActivePatients(!displayActivePatients)} 
           className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500" >
         {displayActivePatients ? 'Previous Patients' : 'Active Patients'}

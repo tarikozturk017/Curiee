@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import useSWR from 'swr'
+import Card from '@/components/page/Card'
+import Header from '@/components/page/Header'
+import TreatmentCard from '@/components/treatment/TreatmentCard'
 
 import { useAtom } from 'jotai'
 import { userIdAtom } from '@/components/Layout'
@@ -16,14 +19,17 @@ const Treatments = () => {
     if (!exercises) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
   
     return (
-      <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
-        <h1>Exercises</h1>
-        <ul>
-          {exercises.map((exercise) => (
-            <li key={exercise._id}><Link href={"/treatment/" + exercise._id}>{exercise.title}</Link></li>
-          ))}
-        </ul>
-      </div>
+      <Card>
+        <Header headline={'Treatments'} subtext={'You can explore the treatment models created by therapists.'}/>
+        <div className='text-center'>
+          <ul>
+            {exercises.map((exercise) => (
+              <TreatmentCard treatment={exercise} />
+              // <li key={exercise._id}><Link href={"/treatment/" + exercise._id}>{exercise.title}</Link></li>
+            ))}
+          </ul>
+        </div>
+      </Card>
     );
   }
   
