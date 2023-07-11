@@ -3,6 +3,9 @@ import { userAtom } from '@/components/therapist/SideBar';
 import { useAtom } from 'jotai';
 import Link from 'next/link';
 import useSWR from 'swr'
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
+import TreatmentCard from '@/components/treatment/TreatmentCard';
 
 const FavoriteTreatments = () => {
     const [therapist] = useAtom(userAtom);
@@ -18,19 +21,22 @@ const FavoriteTreatments = () => {
 
     
     return (
-        <div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
-        <h2>My Favorite Treatments</h2>
-        <div className=' mx-auto rounded-lg p-5 text-2xl bg-blue-100 max-w-max text-center'>
-        {favTreatments ? <>
-            <ul>
-                {favTreatments.map((treatment) => (
-                <li key={treatment._id}><Link href={"/treatment/" + treatment._id}>{treatment.title}</Link></li>
-                ))}
-            </ul>
-        </>
-        : <>You do not have any favorite treatment</>}
-        </div>
-        </div>
+        <Card>
+
+            <div className=' text-center'>
+            <Header headline={'Favorite Treatments'} subtext={'You can see your favorite treatment models.'}/>
+
+            <div className=' text-center'>
+            {favTreatments ? <>
+                <ul>
+                    {favTreatments.map((treatment) => (
+                        <TreatmentCard treatment={treatment} />                    ))}
+                </ul>
+            </>
+            : <>You do not have any favorite treatment</>}
+            </div>
+            </div>
+        </Card>
     );
 };
 
