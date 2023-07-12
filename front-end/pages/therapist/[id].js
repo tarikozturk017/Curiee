@@ -32,6 +32,11 @@ const Therapist = () => {
         <Header headline={'Explore Therapists'} subtext={`Occupation: ${data.occupation ? data.occupation : 'N/A'}`}/>
         
         <RegularCard>
+        <img
+            src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+            className="w-24 my-4 rounded-full shadow-xl shadow-blue-400/40 mx-auto"
+            alt="Avatar"
+          />
             <div className=' text-left m-2'>
 
                 <p><span className=' font-bold'> email:</span> {data.email}</p>
