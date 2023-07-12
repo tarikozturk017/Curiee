@@ -254,7 +254,14 @@ router.post('/addTreatmentToFav', async (req, res) => {
 
 // get therapist's fav treatments
 router.get('/:id/retrieveFavTreatments', async (req, res) => {
-  const therapist = await Therapist.findById(req.params.id).populate('favExercises');
+  // populate fav exercise, but specify the path so that it returns the Therapist object model.
+  const therapist = await Therapist.findById(req.params.id).populate('favExercises').populate({
+    path: 'favExercises',
+    populate: {
+      path: 'creator',
+      model: 'Therapist'
+    }
+  });;
   res.json(therapist.favExercises);
 })
 

@@ -83,7 +83,7 @@ const Layout = (props) => {
             {/* <div className=" h-screen bg-gradient-to-tr from-violet-200 to-violet-400"> */}
             {/* <div className=" h-screen bg-gradient-to-b from-gray-800 to-gray-600 bg-gradient-to-r"> */}
             <div className=' h-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r'>
-            {/* <div class=" h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"> */}
+            {/* <div className=" h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"> */}
 
             {/* if user logged in, display sidebar */}
             <Navbar className=' w-40'/>
