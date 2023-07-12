@@ -21,7 +21,7 @@ const TherapistCard = ({therapist}) => {
         </div>
         <div className="flex items-center ml-auto mr-4">
           <p className="">
-            <span className="font-bold">Satisfaction rate:</span>
+            <span className="font-bold">Satisfaction rate: </span>
             {!therapist?.totalRates ? ' N/A' : therapist.rateCount / therapist.totalRates}{' '}
             <span>({therapist?.totalRates})</span>
           </p>

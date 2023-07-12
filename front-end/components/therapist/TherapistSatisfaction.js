@@ -18,7 +18,11 @@ const TherapistSatisfaction = ({therapistId, key}) => {
 
     return ( 
         <>
-            <p>Therapist Satisfaction Rate: {therapist?.rateCount / therapist?.totalRates} <span>({therapist?.totalRates})</span></p>
+            <p>
+              <span className="font-bold">Satisfaction rate: </span>
+              {!therapist?.totalRates ? ' N/A' : therapist.rateCount / therapist.totalRates}{' '}
+              <span>({therapist?.totalRates})</span>
+            </p>
         </>
     )
 }

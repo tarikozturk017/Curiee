@@ -6,6 +6,9 @@ import Rate from '@/components/therapist/Rate';
 import TherapistSatisfaction from '@/components/therapist/TherapistSatisfaction';
 import { userTypeAtom, userIdAtom } from '@/components/Layout';
 import { useAtom } from 'jotai'
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
+import {default as RegularCard} from '@/components/Card';
 
 
 const Therapist = () => {
@@ -25,27 +28,29 @@ const Therapist = () => {
     if (data.length==0)  return(<Error statusCode={404} /> )
     
     return (
-        <>
-        <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
-            <h1>{data.firstName} {data.lastName}</h1>
-            <hr className=' border-black'/>
-            <p>email: {data.email}</p>
-            <p>Occupation: {data.occupation}</p>
-            <ul>
-                <p>favExercises:</p>
-                {data.favExercises.map(exercise => {
-                    <li key={exercise}>{exercise}</li>
-                })}
-            </ul>
-            <p>Number of Patients: {data.patients.length}</p>
-            {/* current patient can vote if the therapist's patient */}
-            {data?.patients?.some((patient) => patient._id === patientId && userType=='patient') 
-            && <Rate patientId={patientId} therapistId={id} 
-                onRateSubmitted={() => setSatisfactionKey((prevKey) => prevKey + 1)} // Update the satisfactionKey to trigger re-render
-            />}
-            <TherapistSatisfaction therapistId={id} key={satisfactionKey}/>
-        </div>
-        </>
+        <Card>
+        <Header headline={'Explore Therapists'} subtext={`Occupation: ${data.occupation ? data.occupation : 'N/A'}`}/>
+        
+        <RegularCard>
+            <div className=' text-left m-2'>
+
+                <p><span className=' font-bold'> email:</span> {data.email}</p>
+                <ul>
+                    <p><span className=' font-bold'>favExercises: </span> {data.favExercises.length == 0 && 'N/A'} </p>
+                    {data.favExercises.map(exercise => {
+                        <li key={exercise}>{exercise}</li>
+                    })}
+                </ul>
+                <p><span className=' font-bold'>Number of Patients: </span>{data.patients.length}</p>
+                {/* current patient can vote if the therapist's patient */}
+                {data?.patients?.some((patient) => patient._id === patientId && userType=='patient') 
+                && <Rate patientId={patientId} therapistId={id} 
+                    onRateSubmitted={() => setSatisfactionKey((prevKey) => prevKey + 1)} // Update the satisfactionKey to trigger re-render
+                />}
+                <TherapistSatisfaction therapistId={id} key={satisfactionKey}/>
+            </div>
+        </RegularCard>
+        </Card>
     )
 }
 
