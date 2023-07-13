@@ -9,7 +9,8 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { useEffect, useState } from 'react';
 import Rate from '@/components/treatment/Rate';
 import TreatmentSatisfaction from '@/components/treatment/TreatmentSatisfaction';
-
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
 
 // Patient will be able to ask permission to 
 // do exercise || or suggestion to 
@@ -116,10 +117,11 @@ const Treatment = () => {
     }
 
     return (
-        <>
-        <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
+        <Card>
+            
+        <Header headline={data.title} subtext={`Description: ${data.description}`}/>
+        <div className='text-center w-2/4 mx-auto'>
             <h1>{data.title}</h1>
-            <hr className=' border-black'/>
             <p><strong>Description: </strong> {data.description}</p>
             {data.creator && <p><strong>Creator: </strong><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link> </p>}
             {/* {<li key={data.creator._id}><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link></li>} */}
@@ -133,7 +135,7 @@ const Treatment = () => {
                     </>
                 )}
             </p>
-            <div onClick={handleFavorite} className=' flex justify-around'>
+            <div onClick={handleFavorite} className=' mx-auto w-32 flex justify-around'>
                 {!added ? <span className=' italic text text-sm'>Add to your favorite</span> :
                 <span className=' italic text text-sm'>Already favorited</span>
                 }
@@ -144,7 +146,7 @@ const Treatment = () => {
             />}
             <TreatmentSatisfaction treatmentId={id} key={satisfactionKey}/>
         </div>
-        </>
+        </Card>
     )
 }
 
