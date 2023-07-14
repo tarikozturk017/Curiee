@@ -71,10 +71,10 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
     };
     return (
         <div>
-            <h2>Satisfaction Rate</h2>
+            <h2 className=' font-bold text-lg mb-2'>Satisfaction Rate</h2>
             <label htmlFor="rating">Rating:</label>
-            <select id="rating" value={rating} onChange={handleRatingChange}>
-                <option value={0}>Select Rating</option>
+            <select className=' bg-transparent' id="rating" value={rating} onChange={handleRatingChange}>
+                <div><option value={0}>Select Rating</option></div>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>

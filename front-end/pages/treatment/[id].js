@@ -119,14 +119,12 @@ const Treatment = () => {
     return (
         <Card>
             
-        <Header headline={data.title} subtext={`Description: ${data.description}`}/>
+        <Header headline={`Title: ${data.title}`} subtext={`Description: ${data.description}`}/>
         <div className='text-center w-2/4 mx-auto'>
-            <h1>{data.title}</h1>
-            <p><strong>Description: </strong> {data.description}</p>
             {data.creator && <p><strong>Creator: </strong><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link> </p>}
             {/* {<li key={data.creator._id}><Link href={"/therapist/" + data.creator._id}>{data.creator.firstName} {data.creator.lastName}</Link></li>} */}
             <p>
-                <strong>Treatment use diseases: </strong>
+                <strong>This treatment is commonly used for the following diseases: </strong>
                 {data.diseaseTreatment && (
                     <>
                     {data.diseaseTreatment.map((disease) => (
@@ -135,16 +133,19 @@ const Treatment = () => {
                     </>
                 )}
             </p>
-            <div onClick={handleFavorite} className=' mx-auto w-32 flex justify-around'>
+            <div onClick={handleFavorite} className=' gap-2 mx-auto w-32 flex justify-around'>
+                <BsFillHeartFill className='flex'/>
                 {!added ? <span className=' italic text text-sm'>Add to your favorite</span> :
                 <span className=' italic text text-sm'>Already favorited</span>
                 }
-                <BsFillHeartFill className='flex'/>
             </div>
+            <div className=" mx-auto mt-4 rounded p-6 max-w-max shadow-2xl shadow-blue-400/20" style={{ backgroundColor: 'rgba(255, 255, 255, 0.10)' }}>
             {display && <Rate treatmentId={id} 
                 onRateSubmitted={() => setSatisfactionKey((prevKey) => prevKey + 1)} // Update the satisfactionKey to trigger re-render
             />}
-            <TreatmentSatisfaction treatmentId={id} key={satisfactionKey}/>
+
+                <TreatmentSatisfaction treatmentId={id} key={satisfactionKey}/>
+            </div>
         </div>
         </Card>
     )
