@@ -30,7 +30,8 @@ const DeactivatePatient = ({ patientData }) => {
         
     return (
         <>
-            <button onClick={handleClick} className=" bg-red-800 rounded-xl text-white" >Deactivate Patient</button>
+            <button onClick={handleClick} className="rounded-full bg-red-600 p-2 px-8 text-white hover:bg-red-900" >Deactivate Patient</button>
+            
         </>
     )
 }

@@ -59,7 +59,7 @@ const Patient = () => {
                         <>
                             <th scope="row" className="">
                                 <Link href={"/treatment/" + exercise.exercise._id}>
-                                    <span className=' float-left hover:text-slate-200'>{exercise.exercise.title}</span>
+                                    <span className='  hover:text-slate-200'>{exercise.exercise.title}</span>
                                 </Link>
                             </th>
                             <td className="p-1">
@@ -87,14 +87,18 @@ const Patient = () => {
                 <Table tableHeader={tableHeader} tableBody={tableBody} />
                 
                 {/* New treatment assignment to the patient */}
-                {!displayForm ? 
-                    <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
-                    : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
-                }
-                {data.therapists.find(p => p._id.toString() === therapistData._id.toString()) ?
-                <DeactivatePatient patientData={data}/>
-                : <ActivatePatient patientData={data}/>
-                }                
+                
+                <span className=' space-x-4'>
+                    {!displayForm ? 
+                        // <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
+                        <button onClick={handleNewTreatment} className="rounded-full bg-green-600 p-2 px-4 text-white hover:bg-green-900">Assign New Treatment</button>
+                        : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
+                    }
+                    {data.therapists.find(p => p._id.toString() === therapistData._id.toString()) ?
+                    <DeactivatePatient patientData={data}/>
+                    : <ActivatePatient patientData={data}/>
+                    }                
+                </span>
             </div>
         </Card>
     )
