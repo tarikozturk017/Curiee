@@ -12,6 +12,12 @@ import Card from '@/components/page/Card';
 import Header from '@/components/page/Header';
 import Table from '@/components/page/Table';
 
+
+// To achieve on hover extra content -> flowbite library included
+// plugins added and content added to tailwind config 
+// necessary script added to body tag
+// documantation -> https://flowbite.com/docs/getting-started/quickstart/
+
 const Patient = () => {
     const [therapistData] = useAtom(userAtom)
     const [displayForm, setDisplayForm] = useState(false);
@@ -69,6 +75,7 @@ const Patient = () => {
 
                         )}
                     </tr>
+                    
                 </>
                 ))}
             </>
@@ -83,6 +90,7 @@ const Patient = () => {
     return (
         <Card>
         <Header headline={`Patient: ${data.firstName} ${data.lastName}`} subtext={`Diagnosis: ${data.diagnosis ? data.diagnosis : 'N/A'}`}/>
+        
             <div>
                 <Table tableHeader={tableHeader} tableBody={tableBody} />
                 
