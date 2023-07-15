@@ -8,6 +8,9 @@ import DeactivatePatient from '@/components/therapist/DeactivatePatient';
 import ActivatePatient from '@/components/therapist/ActivatePatient';
 import { useAtom } from 'jotai';
 import { userAtom } from '@/components/therapist/SideBar';
+import Card from '@/components/page/Card';
+import Header from '@/components/page/Header';
+import Table from '@/components/page/Table';
 
 const Patient = () => {
     const [therapistData] = useAtom(userAtom)
@@ -34,38 +37,56 @@ const Patient = () => {
         }
       }, [displayForm, id]);
 
+      const tableHeader = (
+        <tr>
+            <th scope="col" className="px-6 py-3">
+                Treatment
+            </th>
+            <th scope="col" className="px-6 py-3">
+                Repetition
+            </th>
+        </tr>
+      )
 
+      const tableBody = (
+        <>
+            {data?.exercises.length > 0 ? (
+            <>
+                {data.exercises.map((exercise) => (
+                <>
+                    <tr className=' hover:bg-slate-500 transition ' key={exercise._id} >
+                    {exercise.exercise && (
+                        <>
+                            <th scope="row" className="">
+                                <Link href={"/treatment/" + exercise.exercise._id}>
+                                    <span className=' float-left hover:text-slate-200'>{exercise.exercise.title}</span>
+                                </Link>
+                            </th>
+                            <td className="p-1">
+                                {exercise.repetition} {!exercise.repetition && 'N/A'}
+                            </td>
+                        </>
 
-    // if(data)  {console.log(`patient id: ${data._id}, therapistID: ${therapistData._id}`)}
+                        )}
+                    </tr>
+                </>
+                ))}
+            </>
+            ) : (
+            <span className=' mx-auto'>No exercises assigned to {data?.firstName} {data?.lastName}</span>
+            )}
+        </>
+      )
+      
 
     if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
     return (
-        <>
-        <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
-            <h1>{data.firstName} {data.lastName}</h1>
-            <hr className=' border-black'/>
-            <p><strong>Diagnosis: </strong> {data.diagnosis}</p>
+        <Card>
+        <Header headline={`Patient: ${data.firstName} ${data.lastName}`} subtext={`Diagnosis: ${data.diagnosis ? data.diagnosis : 'N/A'}`}/>
             <div>
-                <strong>Exercises: </strong>
-                {data.exercises.length > 0 ? (
-                    <>
-                    {data.exercises.map((exercise) => (
-                    <li key={exercise._id}>
-                        {exercise.exercise && (
-                        <Link href={"/treatment/" + exercise.exercise._id}>
-                            <span>{exercise.exercise.title}</span>
-                        </Link>
-                        ) }
-                        {exercise.repetition && <span>Repetition: {exercise.repetition}</span>}
-                        {exercise.note && <span>Note: {exercise.note}</span>}
-                    </li>
-                    ))}
-
-                    </>
-                ) : (
-                <span>No exercises assigned to {data.firstName} {data.lastName}</span>
-                )}
-                <br />
+                <Table tableHeader={tableHeader} tableBody={tableBody} />
+                
+                {/* New treatment assignment to the patient */}
                 {!displayForm ? 
                     <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
                     : <AssignTreatment setDisplayForm={setDisplayForm} patientId={id}/>
@@ -75,8 +96,7 @@ const Patient = () => {
                 : <ActivatePatient patientData={data}/>
                 }                
             </div>
-        </div>
-        </>
+        </Card>
     )
 }
 
