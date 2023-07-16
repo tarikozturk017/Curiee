@@ -54,36 +54,28 @@ const Patient = () => {
         </tr>
       )
 
-      const tableBody = (
-        <>
-            {data?.exercises.length > 0 ? (
-            <>
-                {data.exercises.map((exercise) => (
-                <>
-                    <tr className=' hover:bg-slate-500 transition ' key={exercise._id} >
-                    {exercise.exercise && (
-                        <>
-                            <th scope="row" className="">
-                                <Link href={"/treatment/" + exercise.exercise._id}>
-                                    <span className='  hover:text-slate-200'>{exercise.exercise.title}</span>
-                                </Link>
-                            </th>
-                            <td className="p-1">
-                                {exercise.repetition} {!exercise.repetition && 'N/A'}
-                            </td>
-                        </>
-
-                        )}
-                    </tr>
-                    
-                </>
-                ))}
-            </>
-            ) : (
-            <span className=' mx-auto'>No exercises assigned to {data?.firstName} {data?.lastName}</span>
+      const tableBody = data?.exercises?.length > 0 ? (
+        data.exercises.map((exercise) => (
+          <tr className='hover:bg-slate-500 transition' key={exercise._id}>
+            {exercise.exercise && (
+              <>
+                <th scope="row" className="">
+                  <Link href={"/treatment/" + exercise.exercise._id}>
+                    <span className='hover:text-slate-200'>{exercise.exercise.title}</span>
+                  </Link>
+                </th>
+                <td className="p-1">
+                  {exercise.repetition} {!exercise.repetition && 'N/A'}
+                </td>
+              </>
             )}
-        </>
-      )
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="2">No exercises assigned to {data?.firstName} {data?.lastName}</td>
+        </tr>
+      );
       
 
     if (!data) return <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>Loading...</div>
@@ -92,7 +84,7 @@ const Patient = () => {
         <Header headline={`Patient: ${data.firstName} ${data.lastName}`} subtext={`Diagnosis: ${data.diagnosis ? data.diagnosis : 'N/A'}`}/>
         
             <div>
-                <Table tableHeader={tableHeader} tableBody={tableBody} />
+                <Table tableHeader={tableHeader} tableBody={tableBody} rowsPerPage={5}/>
                 
                 {/* New treatment assignment to the patient */}
                 
