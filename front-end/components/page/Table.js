@@ -32,7 +32,7 @@ const Table = ({ tableHeader, tableBody, rowsPerPage = 5 }) => {
                 </tbody>
             </table>
             {totalPages > 1 && (
-                <div className="flex justify-center mt-3">
+                <div className="flex justify-center my-3">
                     <button onClick={handlePrevPage} disabled={currentPage === 1} className="mr-2 px-2 py-1 bg-blue-500 text-white rounded-md">Prev</button>
                     <p className="mr-2 px-2 py-1 text-slate-400">{`Page ${currentPage} of ${totalPages}`}</p>
                     <button onClick={handleNextPage} disabled={currentPage === totalPages} className="ml-2 px-2 py-1 bg-blue-500 text-white rounded-md">Next</button>
