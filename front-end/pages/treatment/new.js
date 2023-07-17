@@ -3,6 +3,8 @@ import { useAtom } from 'jotai'
 import { userIdAtom } from '@/components/Layout';
 import Header from '@/components/page/Header';
 import Card from '@/components/page/Card';
+import { Input, Textarea, Select, Option } from '@material-tailwind/react';
+
 
 function New() {
   const [title, setTitle] = useState('');
@@ -56,19 +58,22 @@ function New() {
 
        <form onSubmit={handleSubmit}>
         <div class="flex flex-col items-center justify-center space-y-6">
-         <div>
+         <div >
            {/* <label htmlFor="title">Title</label> */}
-           <input placeholder='Title'  className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+           <Input 
+             size="lg" label="Title" 
+             className="w-80 text-blue-gray-200"
              type="text"
              id="title"
              value={title}
              onChange={(event) => setTitle(event.target.value)}
            />
+           
          </div>
-         <div>
+         <div className="w-80 mx-auto my-4">
            {/* <label htmlFor="description">Description</label> */}
-           <textarea  placeholder='Description' 
-            className="w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+           <Textarea  label='Description' 
+            className="w-80 text-blue-gray-200"
              id="description"
              value={description}
              onChange={(event) => setDescription(event.target.value)}
@@ -76,9 +81,9 @@ function New() {
          </div>
          <div>
            {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
-           <input  placeholder='Disease Treatment' 
-            className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-             type="text"
+           <Input  label='Disease Treatment' 
+            className="w-80 text-blue-gray-200"
+              type="text"
              id="diseaseTreatment"
              autocomplete="off"
              value={diseaseTreatment}
