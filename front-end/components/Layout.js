@@ -91,7 +91,11 @@ const Layout = (props) => {
             <Navbar className=' w-40'/>
             {userToken && <SideBar />}
             <ProfileBar />
+            <div className="flex-grow h-screen overflow-y-auto">
+
                 {props.children}
+            </div>
+
             </div>
             <Footer />
         </>

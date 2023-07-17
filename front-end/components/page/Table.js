@@ -7,7 +7,7 @@ const Table = ({ tableHeader, tableBody, rowsPerPage = 5 }) => {
     const totalPages = Math.ceil(tableBody.length / rowsPerPage);
     const startIndex = (currentPage - 1) * rowsPerPage;
     const endIndex = startIndex + rowsPerPage;
-    const currentTableBody = tableBody.slice(startIndex, endIndex);
+    const currentTableBody = tableBody.length > 0 ? tableBody.slice(startIndex, endIndex) : 'N/A' ;
 
     const handlePrevPage = () => {
         if (currentPage > 1) {
