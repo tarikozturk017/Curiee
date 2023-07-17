@@ -14,15 +14,15 @@ const Therapists = () => {
         return res.json()
     })
 
-    const therapistsVar = therapists.map((therapist) => (
+    const therapistsVar = therapists?.map((therapist) => (
         <TherapistCard therapist={therapist}/>
     ))
     
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(therapists.length / 5) // 5 is max rows per page
+    const totalPages = Math.ceil(therapists?.length / 5) // 5 is max rows per page
     const startIndex = (currentPage - 1) * 5;
     const endIndex = startIndex + 5;
-    const currentTherapists = therapistsVar.slice(startIndex, endIndex);
+    const currentTherapists = therapistsVar?.slice(startIndex, endIndex);
 
     const handlePrevPage = () => {
         if (currentPage > 1) {

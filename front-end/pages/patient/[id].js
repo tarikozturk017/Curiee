@@ -88,7 +88,7 @@ const Patient = () => {
                 
                 {/* New treatment assignment to the patient */}
                 
-                <span className=' space-x-4'>
+                <span className=''>
                     {!displayForm ? 
                         // <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
                         <button onClick={handleNewTreatment} className="rounded-full bg-green-600 p-2 px-4 text-white hover:bg-green-900">Assign New Treatment</button>
