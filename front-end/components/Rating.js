@@ -1,3 +1,5 @@
+// TODO: Responsive star rating
+
 const Rating = () => {
     return (
     <div class="flex items-center">
