@@ -62,7 +62,7 @@ function New() {
            {/* <label htmlFor="title">Title</label> */}
            <Input 
              size="lg" label="Title" 
-             className="w-80 text-blue-gray-200"
+             className="w-80 text-indigo-200"
              type="text"
              id="title"
              value={title}
@@ -73,7 +73,7 @@ function New() {
          <div className="w-80 mx-auto my-4">
            {/* <label htmlFor="description">Description</label> */}
            <Textarea  label='Description' 
-            className="w-80 text-blue-gray-200"
+            className="w-80 text-indigo-200"
              id="description"
              value={description}
              onChange={(event) => setDescription(event.target.value)}
@@ -82,7 +82,7 @@ function New() {
          <div>
            {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
            <Input  label='Disease Treatment' 
-            className="w-80 text-blue-gray-200"
+            className="w-80 text-indigo-200"
               type="text"
              id="diseaseTreatment"
              autocomplete="off"

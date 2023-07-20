@@ -75,13 +75,13 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
             <label htmlFor="rating">Rating:</label>
             <select className=' bg-transparent' id="rating" value={rating} onChange={handleRatingChange}>
                 <div><option value={0}>Select Rating</option></div>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
+                <option className=' bg-gray-600' value={1}>1</option>
+                <option className=' bg-gray-600' value={2}>2</option>
+                <option className=' bg-gray-600' value={3}>3</option>
+                <option className=' bg-gray-600' value={4}>4</option>
+                <option className=' bg-gray-600' value={5}>5</option>
             </select>
-            <button onClick={handleSubmit} disabled={rating === 0}>
+            <button className=" mx-4 rounded-full bg-indigo-500 p-2 px-2 text-white hover:bg-orange-500" onClick={handleSubmit} disabled={rating === 0}>
                 Submit Rate
             </button>
         </div>

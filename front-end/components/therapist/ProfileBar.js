@@ -5,6 +5,7 @@ import { useAtom } from 'jotai';
 import { userAtom } from '@/components/therapist/SideBar';
 import useSWR from 'swr'
 import { useEffect, useState } from 'react';
+import TherapistSatisfaction from './TherapistSatisfaction';
 
 
 
@@ -52,23 +53,32 @@ const ProfileBar = () => {
                 <p className="text-neutral-500 dark:text-neutral-400">{therapist?.occupation}</p>
             </div>
         </div>
-        <Card>
-            <h1 className='text-xl underline mb-3'>Patients</h1>
-            <p>You have <span>{therapist.patients?.length ?? 0}</span> active patients.</p>
-            <p>You treated <span>{therapist.deactivatedPatients?.length ?? 0}</span> patients so far.</p>
 
-        </Card>
-        <Card>
-            <h1 className='text-xl underline mb-3'>Treatments</h1>
-            <p>You created <span>{exerciseCount}</span> treatment model.</p>
-            <p>You have <span>{therapist.favExercises?.length ?? 0}</span> favorite model.</p>
-        </Card>
-        <Card>
-            <h1 className='text-xl underline mb-3'>Performance</h1>
-            <Rating />
-            <p>You have <span>{therapist.patients?.length ?? 0}</span> ratings.</p>
-            <p>Your exercises liked <span>{therapist.patients?.length ?? 0}</span> times</p>
-        </Card>
+        <div className=' mx-4'>
+        <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
+    style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+    >
+              <h1 className='text-xl underline mb-3'>Patients</h1>
+              <p>You have <span>{therapist.patients?.length ?? 0}</span> active patients.</p>
+              <p>You treated <span>{therapist.deactivatedPatients?.length ?? 0}</span> patients so far.</p>
+
+          </div>
+          <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
+    style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+    >
+              <h1 className='text-xl underline mb-3'>Treatments</h1>
+              <p>You created <span>{exerciseCount}</span> treatment model.</p>
+              <p>You have <span>{therapist.favExercises?.length ?? 0}</span> favorite model.</p>
+          </div>
+          <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
+    style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+    >
+              <h1 className='text-xl underline mb-4'>Performance</h1>
+              <Rating />
+              <TherapistSatisfaction therapistId={therapist._id} key={0}/>
+              <p>Your exercises liked <span>{therapist.patients?.length ?? 0}</span> times</p>
+          </div>
+        </div>
         </div>
         </>
     )
