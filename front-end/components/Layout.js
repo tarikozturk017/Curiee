@@ -7,7 +7,8 @@ import Head from 'next/head'
 import SideBar from "./SideBar";
 import Navbar from './Navbar';
 import Footer from "./Footer";
-import ProfileBar from './therapist/ProfileBar';
+import TherapistProfileBar from './therapist/TherapistProfileBar';
+import ProfileBar from './page/ProfileBar';
 
 // create the atom
 const userIdAtom = atom('');
@@ -90,7 +91,8 @@ const Layout = (props) => {
             {/* if user logged in, display sidebar */}
             <Navbar className=' w-40'/>
             {userToken && <SideBar />}
-            <ProfileBar />
+            {userToken && <ProfileBar />}
+            {/* <TherapistProfileBar /> */}
             <div className="flex-grow h-screen overflow-y-auto">
 
                 {props.children}
