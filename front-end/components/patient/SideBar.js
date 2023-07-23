@@ -28,14 +28,7 @@ const PatientSideBar = () => {
 
             <p className=" m-5  text-center text-xl">Explore</p>
             <hr />
-            {/* <ul className=" mt-10 flex flex-col gap-5">
-                <li><Link href="/patient/dashboard">Home</Link></li>
-                <li><Link href="/myTreatment/">My Treatment</Link></li>
-                <li><Link href="/patient/favoriteTreatments">My Favorite Treatments</Link></li>
-                <li><Link href="/treatments">Explore Treatments</Link></li>
-                <li><Link href="/patient/myTherapist">My Therapist</Link></li>
-            </ul> */}
-
+            
             <ul className=" mt-2 flex flex-col gap-5 ">
                 <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex"><BiBody className=" text-xl mr-2" /><Link href="/patient/dashboard">Home</Link></li>
                 <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex"><GiHealingShield className=" text-xl  mr-2"/><Link href="/myTreatment/">My Treatment</Link></li>

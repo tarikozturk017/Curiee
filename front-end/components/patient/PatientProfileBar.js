@@ -1,10 +1,11 @@
 // import Image from 'next/image'
 import { useAtom } from 'jotai';
-import { userAtom } from '@/components/therapist/SideBar';
+import { userAtom } from '@/components/patient/SideBar';
 
 
 const PatientProfileBar = () => {
     const [patient] = useAtom(userAtom);
+    if (patient) console.log(patient.therapists[0].firstName)
     
     return (
         <>
@@ -13,39 +14,43 @@ const PatientProfileBar = () => {
         style={{ backgroundColor: 'rgba(44, 47, 72, 1)' }}
         >
         <div className=" flex">
-            {/* <div className=" my-5 text-center mx-auto">
+            <div className=" my-5 text-center mx-auto">
                 <img
                     src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-                    className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                    className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40"
                     alt="Avatar" />
-                <h5 className="mt-5 text-xl font-medium leading-tight">{therapist.firstName} {therapist.lastName}</h5>
-                <p className="text-neutral-500 dark:text-neutral-400">{therapist?.occupation}</p>
-            </div> */}
+                <h5 className="mt-5 text-xl font-medium leading-tight">{patient.firstName} {patient.lastName}</h5>
+                <p className="text-neutral-500 dark:text-neutral-400">{patient?.email}</p>
+            </div>
         </div>
 
         <div className=' mx-4'>
         <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
     style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
     >
-              {/* <h1 className='text-xl underline mb-3'>Patients</h1>
-              <p>You have <span>{therapist.patients?.length ?? 0}</span> active patients.</p>
-              <p>You treated <span>{therapist.deactivatedPatients?.length ?? 0}</span> patients so far.</p> */}
+              <h1 className='text-xl underline mb-3'>Treatment</h1>
+              <p>You have <span>{patient.exercises?.length ?? 0}</span> treatments assigned.</p>
+              <p>You have <span>{patient.favExercises?.length ?? 0}</span> favorite treatments.</p>
 
           </div>
           <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
     style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
     >
-              {/* <h1 className='text-xl underline mb-3'>Treatments</h1>
-              <p>You created <span>{exerciseCount}</span> treatment model.</p>
-              <p>You have <span>{therapist.favExercises?.length ?? 0}</span> favorite model.</p> */}
+            <h1 className='text-xl underline mb-3'>Therapist</h1>
+            <p>Your active therapists:</p>
+            <ul>
+            {patient?.therapists?.map((therapist) => {
+                return <li>{therapist.firstName} {therapist.lastName}</li>;
+            })}
+            </ul>
+              <p>You have <span>{patient.pendingTherapists?.length ?? 0}</span> pending therapist requests.</p>
+              <p>You worked with <span>{patient.previousTherapists?.length ?? 0}</span> therapists before.</p>
           </div>
           <div className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 " 
     style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
     >
-              {/* <h1 className='text-xl underline mb-4'>Performance</h1>
-              <Rating />
-              <TherapistSatisfaction therapistId={therapist._id} key={0}/>
-              <p>Your exercises liked <span>{therapist.patients?.length ?? 0}</span> times</p> */}
+              <h1 className='text-xl underline mb-4'>Diagnosis</h1>
+              <p>Your current diagnosis: <span>{patient?.diagnosis}</span>.</p>
           </div>
         </div>
         </div>
