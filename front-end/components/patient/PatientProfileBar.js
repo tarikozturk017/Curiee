@@ -5,7 +5,7 @@ import { userAtom } from '@/components/patient/SideBar';
 
 const PatientProfileBar = () => {
     const [patient] = useAtom(userAtom);
-    if (patient) console.log(patient.therapists[0].firstName)
+    // if (patient) console.log(patient.therapists[0]?.firstName)
     
     return (
         <>
