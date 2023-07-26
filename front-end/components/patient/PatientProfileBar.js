@@ -1,7 +1,8 @@
 // import Image from 'next/image'
 import { useAtom } from 'jotai';
 import { userAtom } from '@/components/patient/SideBar';
-
+import { MdNotificationImportant } from 'react-icons/md'
+import Link from 'next/link';
 
 const PatientProfileBar = () => {
     const [patient] = useAtom(userAtom);
@@ -52,6 +53,13 @@ const PatientProfileBar = () => {
               <h1 className='text-xl underline mb-4'>Diagnosis</h1>
               <p>Your current diagnosis: <span>{patient?.diagnosis}</span>.</p>
           </div>
+
+          { patient.pendingTherapists?.length > 0 && (<div className=' bg-red-500/40 rounded p-1'>
+          <Link className='justify-around flex' href="/patient/myTherapist">
+            <MdNotificationImportant className=' text-xl'/>
+            <p>{patient.pendingTherapists?.length} pending request(s).</p>
+            </Link>
+          </div>)}
         </div>
         </div>
         </>
