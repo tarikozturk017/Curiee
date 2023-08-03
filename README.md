@@ -6,4 +6,4 @@
 * Allows both patients and professionals to keep track their treatments.
 
 # known bugs - to be fixed
-* when treatment rated, it does not update before refreshing the page.
+* 
