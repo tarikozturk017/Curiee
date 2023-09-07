@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import { userTokenAtom } from "@/components/Layout";
+import { useAtom } from "jotai";
 
 const jwt = require("jsonwebtoken");
 
 const Home = () => {
+  const [token] = useAtom(userTokenAtom);
   // const router = useRouter();
 
   // useEffect(() => {
@@ -85,26 +88,28 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <p className=" text-center text-lg text-blue-100 font-bold mt-12">
-          <span>
-            <Link
-              className="hover:text-orange-400 transition-colors"
-              href="/register"
-            >
-              Sign-up
-            </Link>
-          </span>{" "}
-          and{" "}
-          <span>
-            <Link
-              className="hover:text-orange-400 transition-colors"
-              href="/login"
-            >
-              Login
-            </Link>
-          </span>{" "}
-          to explore entire application!
-        </p>
+        {!token && (
+          <p className=" text-center text-lg text-blue-100 font-bold mt-12">
+            <span>
+              <Link
+                className="hover:text-orange-400 transition-colors"
+                href="/register"
+              >
+                Sign-up
+              </Link>
+            </span>{" "}
+            and{" "}
+            <span>
+              <Link
+                className="hover:text-orange-400 transition-colors"
+                href="/login"
+              >
+                Login
+              </Link>
+            </span>{" "}
+            to explore entire application!
+          </p>
+        )}
       </main>
     </>
   );
