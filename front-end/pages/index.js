@@ -68,6 +68,7 @@ const Home = () => {
                 <li>Find the best therapists</li>
                 <li>Connect with your therapists</li>
                 <li>Track your progress</li>
+                <li>Rate your therapists and treatments</li>
               </ul>
             </div>
             <div>
@@ -79,6 +80,7 @@ const Home = () => {
                 <li>Create & Assign treatment to your patients</li>
                 <li>Track your patients</li>
                 <li>Improve your knowledge and skills</li>
+                <li>Rate treatment models</li>
               </ul>
             </div>
           </div>
