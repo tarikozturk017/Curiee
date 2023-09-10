@@ -1,3 +1,5 @@
+import Feedback from "@/components/page/Feedback";
+
 const About = () => {
   return (
     <section className=" w-3/6 mt-12 mx-auto text-blue-100">
@@ -59,6 +61,7 @@ const About = () => {
       <p className="leading-relaxed ">Use this way...</p>
       <h2 className="text-3xl font-semibold text-orange-400 mt-8 my-4">
         Suggestions/Feedback
+        <Feedback />
       </h2>
       <p className="leading-relaxed ">Give me feedback</p>
     </section>
