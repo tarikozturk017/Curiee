@@ -1,4 +1,4 @@
-# hc-management
+# Curiee
 * This project's goal is to create an application for healthcare workers. 
 * In this app, professionals can manage their patient's treatments. 
 * Allows professionals to promote themselves in different ways.
