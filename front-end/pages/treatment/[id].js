@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useAtom } from "jotai";
 import { userIdAtom, userTypeAtom } from "@/components/Layout";
+import config from "@/src/config";
 import { userAtom } from "@/components/therapist/SideBar";
 import Link from "next/link";
 import useSWR from "swr";
@@ -37,7 +38,7 @@ const Treatment = () => {
     if (userId && userType == "therapist") {
       setDisplay(true);
       const fetchTherapist = async () => {
-        const res = await fetch(`http://localhost:3001/therapist/${userId}`);
+        const res = await fetch(`${config.apiBaseUrl}/therapist/${userId}`);
         const data = await res.json();
         setTherapist(data);
       };
@@ -45,7 +46,7 @@ const Treatment = () => {
       fetchTherapist();
     } else if (userId && userType == "patient") {
       const fetchPatient = async () => {
-        const res = await fetch(`http://localhost:3001/patient/${userId}`);
+        const res = await fetch(`${config.apiBaseUrl}/patient/${userId}`);
         const data = await res.json();
         setPatient(data);
       };
@@ -69,7 +70,7 @@ const Treatment = () => {
     }
   }, [patient, therapist]);
 
-  const { data, error } = useSWR(`http://localhost:3001/exercise/${id}`);
+  const { data, error } = useSWR(`${config.apiBaseUrl}/exercise/${id}`);
 
   if (data == undefined || data == null) return null;
   if (data.length == 0) return null;
@@ -79,7 +80,7 @@ const Treatment = () => {
       try {
         //sendTherapistRequest
         const response = await fetch(
-          `http://localhost:3001/therapist/addTreatmentToFav`,
+          `${config.apiBaseUrl}/therapist/addTreatmentToFav`,
           {
             method: "POST",
             headers: {
@@ -99,7 +100,7 @@ const Treatment = () => {
       try {
         //sendTherapistRequest
         const response = await fetch(
-          `http://localhost:3001/patient/addTreatmentToFav`,
+          `${config.apiBaseUrl}/patient/addTreatmentToFav`,
           {
             method: "POST",
             headers: {

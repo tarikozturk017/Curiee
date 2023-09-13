@@ -2,6 +2,7 @@ import { useState } from "react";
 import InfoCard from "@/components/patient/InfoCard";
 import Card from "@/components/page/Card";
 import Header from "@/components/page/Header";
+import config from "@/src/config";
 
 const FindPatient = () => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -13,7 +14,7 @@ const FindPatient = () => {
     // console.log(`email address: ${emailAddress}`)
     try {
       const response = await fetch(
-        `http://localhost:3001/patient?email=${emailAddress}`
+        `${config.apiBaseUrl}/patient?email=${emailAddress}`
       );
       const data = await response.json();
       //   console.log(`data: ${data.firstName}`)

@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import PageCard from "@/components/PageCard";
 import useSWR from "swr";
 import { useEffect, useState } from "react";
+import config from "@/src/config";
 
 const Dashboard = () => {
   const [therapist] = useAtom(userAtom);
@@ -11,7 +12,7 @@ const Dashboard = () => {
 
   // console.log(therapist._id)
   const { data: exercises, error } = useSWR(
-    "http://localhost:3001/exercise/all",
+    `${config.apiBaseUrl}/exercise/all`,
     async (url) => {
       const res = await fetch(url);
       return res.json();
