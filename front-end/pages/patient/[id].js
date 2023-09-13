@@ -36,7 +36,7 @@ const Patient = () => {
   useEffect(() => {
     if (displayForm == false && id !== undefined) {
       const fetchPatients = async () => {
-        const res = await fetch(`${config.apiBaseUrl}patient/${id}`);
+        const res = await fetch(`${config.apiBaseUrl}/patient/${id}`);
         const data = await res.json();
         setData(data);
       };

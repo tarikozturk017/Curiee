@@ -10,6 +10,7 @@ import { MdCreateNewFolder } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 
 const userAtom = atom({});
+
 const PatientSideBar = () => {
   const [patient, setPatient] = useAtom(userAtom);
   const [userId] = useAtom(userIdAtom);
@@ -28,33 +29,37 @@ const PatientSideBar = () => {
     <>
       {p && (
         <div
-          className=" w-1/6 h-screen absolute bg-gradient-to-tr from-slate-200 via-purple-300 to-violet-400"
+          className="w-1/6 h-screen absolute bg-gradient-to-tr from-slate-200 via-purple-300 to-violet-400"
           style={{ display: "inline-block" }}
         >
           <div
-            className=" border-r-2 border-blue-100/25 border-double  p-10 text-white h-screen absolute  w-full m-0 pt-5"
+            className="border-r-2 border-blue-100/25 border-double p-10 text-white h-screen absolute w-full m-0 pt-5"
             style={{ backgroundColor: "rgba(44, 47, 72, 0.46)" }}
           >
-            <p className=" m-5  text-center text-xl">Explore</p>
+            <p className="m-5 text-center text-xl">Explore</p>
             <hr />
 
-            <ul className=" mt-2 flex flex-col gap-5 ">
-              <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <BiBody className=" text-xl mr-2" />
+            <ul className="mt-2 flex flex-col gap-5 ">
+              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <BiBody className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                {/* Responsive icon size with min-width */}
                 <Link href="/patient/dashboard">Home</Link>
               </li>
-              <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <GiHealingShield className=" text-xl  mr-2" />
+              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <GiHealingShield className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                {/* Responsive icon size with min-width */}
                 <Link href="/myTreatment/">My Treatment</Link>
               </li>
-              <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <MdCreateNewFolder className=" text-xl  mr-2" />
+              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <MdCreateNewFolder className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                {/* Responsive icon size with min-width */}
                 <Link href="/patient/favoriteTreatments">
                   My Favorite Treatments
                 </Link>
               </li>
-              <li className=" hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <FaUserFriends className=" text-xl  mr-2" />
+              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <FaUserFriends className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                {/* Responsive icon size with min-width */}
                 <Link href="/patient/myTherapist">My Therapist</Link>
               </li>
             </ul>
