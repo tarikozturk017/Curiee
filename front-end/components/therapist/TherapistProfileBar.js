@@ -39,6 +39,7 @@ const TherapistProfileBar = () => {
     countExercises();
   }, [exercises, therapist._id]);
 
+  console.log(therapist?.profilePictureLink);
   return (
     <>
       <div
@@ -47,11 +48,35 @@ const TherapistProfileBar = () => {
       >
         <div className=" flex">
           <div className=" my-5 text-center mx-auto">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
-              className="w-32 rounded-full shadow-xl shadow-blue-400/40"
-              alt="Avatar"
-            />
+            {/* {therapist?.profilePictureLink ? (
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+                className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            ) : (
+              <img
+                src={therapist?.profilePictureLink}
+                className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            )} */}
+
+            {therapist?.profilePictureLink && (
+              <img
+                src={therapist?.profilePictureLink}
+                className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            )}
+            {therapist?.profilePictureLink == "" && (
+              <img
+                src={therapist?.profilePictureLink}
+                className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            )}
+
             <h5 className="mt-5 text-xl font-medium leading-tight">
               {therapist.firstName} {therapist.lastName}
             </h5>
