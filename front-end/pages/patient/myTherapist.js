@@ -116,12 +116,17 @@ function MyTherapist() {
             </table>
           </div>
         )}
-
+        <div className=" mt-16">
+          <Header
+            headline={`Pending List`}
+            subtext={"The therapists want to connect with you"}
+          />
+        </div>
         {patient?.pendingTherapists.length > 0 && (
           // <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
           <div
-            className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%] mb-5"
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.11)" }}
+            className=" bg-blue-gray-600  shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full  m-0 pt-5 max-w-[30%] mb-5"
+            // style={{ backgroundColor: "rgba(255, 25, 25, 0.21)" }}
           >
             <table className="w-full">
               <thead
@@ -145,10 +150,10 @@ function MyTherapist() {
                     <td className="px-6 py-1 flex">
                       <span className="mx-auto flex gap-2">
                         <span onClick={() => handleAccept(therapist._id)}>
-                          <TiTick className="hover:cursor-pointer hover:text-green-200 transition" />
+                          <TiTick className="hover:cursor-pointer hover:text-green-800 transition" />
                         </span>
                         <span onClick={() => handleDecline(therapist._id)}>
-                          <TiTimes className="hover:cursor-pointer hover:text-red-200 transition" />
+                          <TiTimes className="hover:cursor-pointer hover:text-red-800 transition" />
                         </span>
                       </span>
                     </td>

@@ -105,7 +105,7 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
         </option>
       </select>
       <button
-        className=" mx-4 rounded-full bg-indigo-500 p-2 px-2 text-white hover:bg-orange-500"
+        className=" mx-4 rounded-full bg-indigo-500 p-2 px-2 text-white hover:bg-orange-500 hover:cursor-pointer"
         onClick={handleSubmit}
         disabled={rating === 0}
       >
