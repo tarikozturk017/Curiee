@@ -13,6 +13,7 @@ import TreatmentSatisfaction from "@/components/treatment/TreatmentSatisfaction"
 import Card from "@/components/page/Card";
 import Header from "@/components/page/Header";
 import IFrame from "@/components/page/IFrame";
+import IFrameNull from "@/components/page/IFrameNull";
 
 // Patient will be able to ask permission to
 // do exercise || or suggestion to
@@ -126,7 +127,11 @@ const Treatment = () => {
         subtext={`Description: ${data.description}`}
       />
       <div className="text-center w-2/4 mx-auto">
-        <IFrame />
+        {data?.link && data?.link != "" ? (
+          <IFrame link={data.link} />
+        ) : (
+          <IFrameNull />
+        )}
         {data.creator && (
           <p>
             <strong>Creator: </strong>

@@ -9,6 +9,7 @@ import config from "@/src/config";
 function New() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
   const [diseaseTreatment, setDiseaseTreatment] = useState("");
   const [therapistId] = useAtom(userIdAtom);
 
@@ -26,6 +27,7 @@ function New() {
           description,
           diseaseTreatment: [diseaseTreatment],
           therapistId,
+          link,
         }),
       });
 
@@ -34,6 +36,7 @@ function New() {
         setDescription("");
         setDiseaseTreatment("");
         setTitle("");
+        setLink("");
       } else {
         console.log("Error creating exercise");
       }
@@ -92,6 +95,18 @@ function New() {
               autocomplete="off"
               value={diseaseTreatment}
               onChange={(event) => setDiseaseTreatment(event.target.value)}
+            />
+          </div>
+          <div>
+            {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
+            <Input
+              label="Video link"
+              className="w-80 bg-gray-700 text-indigo-200"
+              type="text"
+              id="videoLink"
+              autocomplete="off"
+              value={link}
+              onChange={(event) => setLink(event.target.value)}
             />
           </div>
           <button
