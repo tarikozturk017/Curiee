@@ -61,8 +61,12 @@ const About = () => {
       <p className="leading-relaxed ">Use this way...</p>
       <h2 className="text-3xl font-semibold text-orange-400 mt-8 my-4">
         Suggestions/Feedback
-        <Feedback />
       </h2>
+      <p className="leading-relaxed ">
+        If you want to contribute to this project, or you have any feedback,
+        please reach out to me!
+      </p>
+      <Feedback />
       <p className="leading-relaxed ">Give me feedback</p>
     </section>
   );

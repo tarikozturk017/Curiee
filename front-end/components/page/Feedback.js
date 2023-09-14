@@ -1,8 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const Feedback = () => {
   const form = useRef();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    feedback: "",
+  });
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -10,13 +15,20 @@ const Feedback = () => {
     emailjs
       .sendForm(
         "service_m16d0uj",
-        "YOUR_TEMPLATE_ID",
+        "template_orgx027",
         form.current,
-        "YOUR_PUBLIC_KEY"
+        "a3fO_vAMQm2O1ye9t"
       )
       .then(
         (result) => {
           console.log(result.text);
+
+          // Clear the form data after successful submission
+          setFormData({
+            name: "",
+            email: "",
+            feedback: "",
+          });
         },
         (error) => {
           console.log(error.text);
@@ -24,15 +36,46 @@ const Feedback = () => {
       );
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
     <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="user_name" />
-      <label>Email</label>
-      <input type="email" name="user_email" />
-      <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
+      <div className="gap-2 flex flex-col my-8 text-md text-blue-200">
+        <label>Name</label>
+        <input
+          className="w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+        />
+        <label>Email</label>
+        <input
+          className="w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+        />
+        <label>Feedback</label>
+        <textarea
+          className="w-1/2 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          name="feedback"
+          value={formData.feedback}
+          onChange={handleInputChange}
+        />
+        <input
+          className="w-32 my-4  hover:cursor-pointer rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"
+          type="submit"
+          value="Send"
+        />
+      </div>
     </form>
   );
 };

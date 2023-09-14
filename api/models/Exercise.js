@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ExerciseSchema = new Schema({
@@ -17,18 +17,18 @@ const ExerciseSchema = new Schema({
   ],
   creator: {
     type: Schema.Types.ObjectId,
-    ref: 'Therapist',
+    ref: "Therapist",
   },
   patientSatisfaction: [
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: 'Patient'
+        ref: "Patient",
       },
       rating: {
         type: Number,
         min: 0,
-        max: 5
+        max: 5,
       },
     },
   ],
@@ -36,12 +36,12 @@ const ExerciseSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId,
-        ref: 'Therapist'
+        ref: "Therapist",
       },
       rating: {
         type: Number,
         min: 0,
-        max: 5
+        max: 5,
       },
     },
   ],
@@ -65,8 +65,12 @@ const ExerciseSchema = new Schema({
     type: String,
     default: Date.now(),
   },
+  link: {
+    type: String,
+    // required: true
+  },
 });
 
-const Exercise = mongoose.model('Exercise', ExerciseSchema);
+const Exercise = mongoose.model("Exercise", ExerciseSchema);
 
 module.exports = Exercise;
