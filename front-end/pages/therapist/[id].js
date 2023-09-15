@@ -35,7 +35,11 @@ const Therapist = () => {
 
       <RegularCard>
         <img
-          src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
+          src={
+            data?.profilePictureLink
+              ? data?.profilePictureLink
+              : `https://mdbcdn.b-cdn.net/img/new/avatars/1.webp`
+          }
           className="w-24 my-4 rounded-full shadow-xl shadow-blue-400/40 mx-auto"
           alt="Avatar"
         />

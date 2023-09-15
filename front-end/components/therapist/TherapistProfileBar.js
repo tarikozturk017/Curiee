@@ -39,7 +39,6 @@ const TherapistProfileBar = () => {
     countExercises();
   }, [exercises, therapist._id]);
 
-  console.log(therapist?.profilePictureLink);
   return (
     <>
       <div
@@ -69,9 +68,9 @@ const TherapistProfileBar = () => {
                 alt="Avatar"
               />
             )}
-            {therapist?.profilePictureLink == "" && (
+            {!therapist?.profilePictureLink && (
               <img
-                src={therapist?.profilePictureLink}
+                src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
                 className="w-32 rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
@@ -120,7 +119,7 @@ const TherapistProfileBar = () => {
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
             <h1 className="text-xl underline mb-4">Performance</h1>
-            <Rating />
+            {/* <Rating /> */}
             <TherapistSatisfaction therapistId={therapist._id} key={0} />
             <p>
               Your exercises liked{" "}

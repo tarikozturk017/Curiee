@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import config from "@/src/config";
+import Rating from "../Rating";
 
 const TherapistSatisfaction = ({ therapistId, key }) => {
   const [therapist, setTherapist] = useState();
@@ -21,12 +22,20 @@ const TherapistSatisfaction = ({ therapistId, key }) => {
   return (
     <>
       <p>
-        <span className="font-bold">Satisfaction rate: </span>
-        {!therapist?.totalRates
+        <span className="font-bold">Satisfaction rate</span>
+        {/* {!therapist?.totalRates
           ? " N/A"
           : therapist.rateCount / therapist.totalRates}{" "}
-        <span>({therapist?.totalRates})</span>
+        <span>({therapist?.totalRates})</span> */}
       </p>
+      <span className=" flex">
+        <span className=" mx-auto my-2">
+          {therapist?.totalRates && (
+            <Rating rating={therapist.rateCount / therapist.totalRates} />
+          )}
+          {!therapist?.totalRates && <Rating rating={0} />}
+        </span>
+      </span>
     </>
   );
 };
