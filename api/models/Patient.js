@@ -1,79 +1,93 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require('bcryptjs');
-
+const bcrypt = require("bcryptjs");
 
 const PatientSchema = new Schema({
-    firstName: {
-        type: String,
-        required: true,
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    // required: true,
+    // unique: true,
+    // lowercase: true,
+    // trim: true,
+    // match: [/.+@.+\..+/, 'Please enter a valid email address'],
+  },
+  diagnosis: {
+    type: String,
+    // required: true
+  },
+  profilePictureLink: {
+    type: String,
+    // required: true
+  },
+  pendingTherapists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Therapist",
     },
-    lastName: {
-        type: String,
-        required: true
+  ],
+  therapists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Therapist",
     },
-    email: {
-        type: String,
-        // required: true,
-        // unique: true,
-        // lowercase: true,
-        // trim: true,
-        // match: [/.+@.+\..+/, 'Please enter a valid email address'],
+  ],
+  previousTherapists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Therapist",
     },
-    diagnosis: {
-        type: String,
-        // required: true
-    },
-    pendingTherapists: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Therapist' 
-    }],
-    therapists: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Therapist' 
-    }],
-    previousTherapists: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Therapist' 
-    }],
-    exercises: [{ 
-        exercise: {
-          type: Schema.Types.ObjectId, 
-          ref: 'Exercise' 
-        },
-        repetition: {
-          type: Number,
-        },
-        note: {
-          type: String
-        }
-    }],
-    favExercises: [{ 
+  ],
+  exercises: [
+    {
+      exercise: {
         type: Schema.Types.ObjectId,
-        ref: 'Exercise' 
-    }],
-    passwordHash: {
+        ref: "Exercise",
+      },
+      repetition: {
+        type: Number,
+      },
+      note: {
         type: String,
-        // required: true,
+      },
     },
-   timeStamp: {
-        type: String,
-        default: Date.now()
+  ],
+  favExercises: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Exercise",
     },
-})
-  
-// this is a middleware function that runs before saving the document to the DB
-// check if the passwordHash field has been modified
-PatientSchema.pre('save', async function (next) {
-    const patient = this;
-    if (!patient.isModified('passwordHash')) { // checking to avoid unnecessary hashing.
-        return next();
-    }
-    const salt = await bcrypt.genSalt(10);
-    patient.passwordHash = await bcrypt.hash(patient.passwordHash, salt);
-    next(); // these 'next's skips to the 'save'
+  ],
+  passwordHash: {
+    type: String,
+    // required: true,
+  },
+  timeStamp: {
+    type: String,
+    default: Date.now(),
+  },
 });
 
-const Patient = mongoose.model('Patient', PatientSchema);
+// this is a middleware function that runs before saving the document to the DB
+// check if the passwordHash field has been modified
+PatientSchema.pre("save", async function (next) {
+  const patient = this;
+  if (!patient.isModified("passwordHash")) {
+    // checking to avoid unnecessary hashing.
+    return next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  patient.passwordHash = await bcrypt.hash(patient.passwordHash, salt);
+  next(); // these 'next's skips to the 'save'
+});
+
+const Patient = mongoose.model("Patient", PatientSchema);
 
 module.exports = Patient;

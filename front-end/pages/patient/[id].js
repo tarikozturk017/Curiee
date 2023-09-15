@@ -92,6 +92,21 @@ const Patient = () => {
     );
   return (
     <Card>
+      {!data?.profilePictureLink && (
+        <img
+          src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+          className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40 mb-8"
+          alt="Avatar"
+        />
+      )}
+
+      {data?.profilePictureLink && (
+        <img
+          src={data?.profilePictureLink}
+          className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+          alt="Avatar"
+        />
+      )}
       <Header
         headline={`Patient: ${data.firstName} ${data.lastName}`}
         subtext={`Diagnosis: ${data.diagnosis ? data.diagnosis : "N/A"}`}

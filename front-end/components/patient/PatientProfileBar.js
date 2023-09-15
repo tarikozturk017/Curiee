@@ -16,11 +16,21 @@ const PatientProfileBar = () => {
       >
         <div className=" flex">
           <div className=" my-5 text-center mx-auto">
-            <img
-              src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-              className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40"
-              alt="Avatar"
-            />
+            {!patient?.profilePictureLink && (
+              <img
+                src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            )}
+
+            {patient?.profilePictureLink && (
+              <img
+                src={patient?.profilePictureLink}
+                className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                alt="Avatar"
+              />
+            )}
             <h5 className="mt-5 text-xl font-medium leading-tight">
               {patient.firstName} {patient.lastName}
             </h5>

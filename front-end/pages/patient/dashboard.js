@@ -13,11 +13,27 @@ const Dashboard = () => {
           {/* <h1 className=" text-2xl font-bold">DASHBOARD</h1> */}
           <Card>
             <div className=" bg-slate-200 p-5 rounded-xl text-black">
+              {!patient?.profilePictureLink && (
+                <img
+                  src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                  className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40 mb-8"
+                  alt="Avatar"
+                />
+              )}
+
+              {patient?.profilePictureLink && (
+                <img
+                  src={patient?.profilePictureLink}
+                  className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                  alt="Avatar"
+                />
+              )}
               <h1 className=" text-2xl  text-blue-100 font-burtons">
                 {patient.firstName} {patient.lastName}
               </h1>
             </div>
-            <p className=" m-5 text-center text-blue-100 text-base italic">
+
+            <p className=" m-2 text-center text-blue-100 text-base italic">
               Welcome to your dashboard!
             </p>
             {/* </div> */}

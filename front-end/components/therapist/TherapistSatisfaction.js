@@ -30,9 +30,12 @@ const TherapistSatisfaction = ({ therapistId, key }) => {
       </p>
       <span className=" flex">
         <span className=" mx-auto my-2">
-          {therapist?.totalRates && (
+          {therapist?.totalRates ? (
             <Rating rating={therapist.rateCount / therapist.totalRates} />
+          ) : (
+            <></>
           )}
+
           {!therapist?.totalRates && <Rating rating={0} />}
         </span>
       </span>

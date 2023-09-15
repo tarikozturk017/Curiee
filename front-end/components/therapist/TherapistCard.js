@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Rating from "../Rating";
 
 const TherapistCard = ({ therapist }) => {
   return (
@@ -31,11 +32,23 @@ const TherapistCard = ({ therapist }) => {
             </div>
             <div className="flex items-center ml-auto mr-4">
               <p className="">
-                <span className="font-bold">Satisfaction rate: </span>
+                {/* <span className="font-bold">Satisfaction rate: </span>
                 {!therapist?.totalRates
                   ? " N/A"
                   : therapist.rateCount / therapist.totalRates}{" "}
-                <span>({therapist?.totalRates})</span>
+                <span>({therapist?.totalRates})</span> */}
+                <span className=" flex">
+                  <span className=" mx-auto my-2">
+                    {therapist?.totalRates ? (
+                      <Rating
+                        rating={therapist.rateCount / therapist.totalRates}
+                      />
+                    ) : (
+                      <></>
+                    )}
+                    {!therapist?.totalRates && <Rating rating={0} />}
+                  </span>
+                </span>
               </p>
             </div>
           </div>
