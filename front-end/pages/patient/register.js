@@ -8,6 +8,7 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [diagnosis, setDiagnosis] = useState("");
+  const [profilePictureLink, setProfilePictureLink] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -30,6 +31,7 @@ const Register = () => {
           lastName,
           email,
           diagnosis,
+          profilePictureLink,
           password,
         }),
       });
@@ -95,6 +97,16 @@ const Register = () => {
               id="diagnosis"
               value={diagnosis}
               onChange={(event) => setDiagnosis(event.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Profile Picture Link"
+              type="text"
+              id="profilePicture"
+              value={profilePictureLink}
+              onChange={(event) => setProfilePictureLink(event.target.value)}
+              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>

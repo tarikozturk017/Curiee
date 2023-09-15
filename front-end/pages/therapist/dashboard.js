@@ -50,6 +50,21 @@ const Dashboard = () => {
                 {therapist.firstName} {therapist.lastName}
               </h1>
             </div>
+            {!therapist?.profilePictureLink && (
+              <img
+                src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
+                className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40 mb-8"
+                alt="Avatar"
+              />
+            )}
+
+            {therapist?.profilePictureLink && (
+              <img
+                src={therapist?.profilePictureLink}
+                className="w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40 mb-8"
+                alt="Avatar"
+              />
+            )}
             <p className=" m-5 text-center text-blue-100 text-base italic">
               Welcome to your dashboard!
             </p>

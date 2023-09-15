@@ -24,7 +24,7 @@ const Dashboard = () => {
               {patient?.profilePictureLink && (
                 <img
                   src={patient?.profilePictureLink}
-                  className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+                  className="w-32 rounded-full mx-auto shadow-xl shadow-blue-400/40 mb-8"
                   alt="Avatar"
                 />
               )}
