@@ -11,11 +11,11 @@ const PatientProfileBar = () => {
   return (
     <>
       <div
-        className="text-white flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5 border-l-2 border-blue-100/25 border-double"
+        className="text-white text-sm flex-col h-screen absolute right-0 min-w-min w-1/6 pt-5 border-l-2 border-blue-100/25 border-double"
         style={{ backgroundColor: "rgba(44, 47, 72, 1)" }}
       >
         <div className=" flex">
-          <div className=" my-5 text-center mx-auto">
+          <div className=" text-center mx-auto">
             {!patient?.profilePictureLink && (
               <img
                 src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
@@ -31,7 +31,7 @@ const PatientProfileBar = () => {
                 alt="Avatar"
               />
             )}
-            <h5 className="mt-5 text-xl font-medium leading-tight">
+            <h5 className="mt-5 text-md font-bold leading-tight">
               {patient.firstName} {patient.lastName}
             </h5>
             <p className="text-neutral-500 dark:text-neutral-400">
@@ -45,7 +45,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-xl underline mb-3">Treatment</h1>
+            <h1 className="text-md underline mb-3">Treatment</h1>
             <p>
               You have <span>{patient.exercises?.length ?? 0}</span> treatments
               assigned.
@@ -59,7 +59,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-xl underline mb-3">Therapist</h1>
+            <h1 className="text-md underline mb-3">Therapist</h1>
             <p>Your active therapists:</p>
             <ul>
               {patient?.therapists?.map((therapist) => {
@@ -84,7 +84,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-xl underline mb-4">Diagnosis</h1>
+            <h1 className="text-md underline mb-4">Diagnosis</h1>
             <p>
               Your current diagnosis: <span>{patient?.diagnosis}</span>.
             </p>
@@ -93,7 +93,7 @@ const PatientProfileBar = () => {
           {patient.pendingTherapists?.length > 0 && (
             <div className=" bg-red-500/40 rounded p-1">
               <Link className="justify-around flex" href="/patient/myTherapist">
-                <MdNotificationImportant className=" text-xl" />
+                <MdNotificationImportant className=" text-md" />
                 <p>{patient.pendingTherapists?.length} pending request(s).</p>
               </Link>
             </div>

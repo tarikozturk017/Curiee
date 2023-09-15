@@ -41,24 +41,24 @@ const PatientSideBar = () => {
 
             <ul className="mt-2 flex flex-col gap-5 ">
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <BiBody className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                <BiBody className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />{" "}
                 {/* Responsive icon size with min-width */}
                 <Link href="/patient/dashboard">Home</Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <GiHealingShield className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                <GiHealingShield className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />{" "}
                 {/* Responsive icon size with min-width */}
                 <Link href="/myTreatment/">My Treatment</Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <MdCreateNewFolder className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                <MdCreateNewFolder className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />{" "}
                 {/* Responsive icon size with min-width */}
                 <Link href="/patient/favoriteTreatments">
                   My Favorite Treatments
                 </Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <FaUserFriends className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />{" "}
+                <FaUserFriends className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />{" "}
                 {/* Responsive icon size with min-width */}
                 <Link href="/patient/myTherapist">My Therapist</Link>
               </li>

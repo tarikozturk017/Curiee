@@ -53,21 +53,21 @@ const PatientSideBar = () => {
             <hr />
             <ul className="mt-2 flex flex-col gap-5 ">
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <BiBody className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />
+                <BiBody className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
                 <Link href="/patients">My Patients</Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <GiHealingShield className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />
+                <GiHealingShield className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
                 <Link href="/therapist/favoriteTreatments">
                   My Favorite Treatments
                 </Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <MdCreateNewFolder className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />
+                <MdCreateNewFolder className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
                 <Link href="/treatment/new">Create New Treatment</Link>
               </li>
               <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <FaUserFriends className="text-xl md:text-2xl lg:text-3xl mr-2 min-w-[20px]" />
+                <FaUserFriends className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
                 <Link href="/therapist/findPatient">Connect Your Patient</Link>
               </li>
             </ul>
