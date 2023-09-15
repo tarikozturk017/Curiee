@@ -1,17 +1,21 @@
-import '@/styles/globals.css'
-import Layout from '@/components/Layout'
-import { SWRConfig } from 'swr'
+import "@/styles/globals.css";
+import Layout from "@/components/Layout";
+import { SWRConfig } from "swr";
 
-import { ThemeProvider } from '@material-tailwind/react'
+import { ThemeProvider } from "@material-tailwind/react";
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider>
-      <Layout >
-        <SWRConfig value={{ fetcher: (...args) => fetch(...args).then((res) => res.json()) }}>
+      <SWRConfig
+        value={{
+          fetcher: (...args) => fetch(...args).then((res) => res.json()),
+        }}
+      >
+        <Layout>
           <Component {...pageProps} />
-        </SWRConfig>
-      </Layout>
+        </Layout>
+      </SWRConfig>
     </ThemeProvider>
-  )
+  );
 }

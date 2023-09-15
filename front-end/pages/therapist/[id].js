@@ -38,7 +38,7 @@ const Therapist = () => {
           src={
             data?.profilePictureLink
               ? data?.profilePictureLink
-              : `https://mdbcdn.b-cdn.net/img/new/avatars/1.webp`
+              : `https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg`
           }
           className="w-24 my-4 rounded-full shadow-xl shadow-blue-400/40 mx-auto"
           alt="Avatar"

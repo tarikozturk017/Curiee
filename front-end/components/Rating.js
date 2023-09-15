@@ -9,7 +9,7 @@ const Rating = ({ rating }) => {
 
   const fullStar = (
     <svg
-      class="w-4 h-4 text-yellow-300 mr-1"
+      className="w-4 h-4 text-yellow-300 mr-1"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -21,7 +21,7 @@ const Rating = ({ rating }) => {
 
   const emptyStar = (
     <svg
-      class="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500"
+      className="w-4 h-4 text-gray-300 mr-1 dark:text-gray-500"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -39,10 +39,10 @@ const Rating = ({ rating }) => {
     stars.push(emptyStar);
   }
   return (
-    <div class="flex items-center">
+    <div className="flex items-center">
       {stars}
 
-      <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
+      <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
         {rating}/5
       </p>
     </div>
