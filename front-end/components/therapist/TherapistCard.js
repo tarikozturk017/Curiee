@@ -4,12 +4,12 @@ import Rating from "../Rating";
 const TherapistCard = ({ therapist }) => {
   return (
     <div
-      className="shadow-lg shadow-blue-300/20 mx-auto rounded-lg py-0 max-w-[40%] mb-5"
+      className="  shadow-lg shadow-blue-300/20 mx-auto rounded-lg py-0 lg:w-2/5 md:w-2/3 lg:max-w-[40%] mb-5"
       style={{ backgroundColor: "rgba(255, 255, 255, 0.11)" }}
     >
       <li key={therapist._id}>
         <Link href={"/therapist/" + therapist._id}>
-          <div className="flex">
+          <div className="md:flex-row flex-col flex">
             <div className="my-4 text-center  flex items-center ml-4">
               <img
                 // src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp"
@@ -21,16 +21,14 @@ const TherapistCard = ({ therapist }) => {
                 className="w-16 rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
-              <div className="text-left ml-3">
-                <h5 className="mt-5 text-xl font-medium leading-tight">
+              <div className="text-left  ml-3">
+                <h5 className="mt-5 xl:text-lg lg:text-base md:text-base text-sm font-medium leading-tight">
                   {therapist.firstName} {therapist.lastName}
                 </h5>
-                <p className="text-neutral-500 ">
-                  {therapist?.occupation} occupation
-                </p>
+                <p className="text-neutral-500 ">{therapist?.occupation}</p>
               </div>
             </div>
-            <div className="flex items-center ml-auto mr-4">
+            <div className="float-left flex items-center ml-4 md:ml-auto mr-4">
               <p className="">
                 {/* <span className="font-bold">Satisfaction rate: </span>
                 {!therapist?.totalRates
