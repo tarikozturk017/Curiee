@@ -61,9 +61,9 @@ const Navbar = () => {
         </ul>
       </nav>
       {/* Render the mobile menu when isOpen is true */}
-      <div className="bg-slate-800 w-full p-4 text-white  lg:hidden block">
+      <span className="bg-slate-800 w-full p-4 text-white  lg:hidden inline-flex">
         {!isMobileNavbarOpen && (
-          <li className="hover:text-orange-400 transition-colors hover:text-sky-200/80 duration-300 hover:cursor-pointer flex">
+          <li className="hover:text-orange-400 transition-colors hover:text-sky-200/80 duration-300 hover:cursor-pointer inline-flex">
             <button onClick={toggleMobileNavbar}>
               <span className=" text-3xl md:text-4xl">&#9776;</span>
             </button>
@@ -77,7 +77,7 @@ const Navbar = () => {
             type={type}
           />
         )}
-      </div>
+      </span>
     </>
   );
 };

@@ -12,7 +12,7 @@ const MobileNavbar = ({ isOpen, onClose, token, type }) => {
       <div className="fixed top-0 right-0 h-full w-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r p-4 shadow-lg">
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-gray-700"
+          className="absolute top-2 left-2 text-gray-700"
         >
           <span className="text-3xl md:text-4xl text-white">&times;</span>
         </button>

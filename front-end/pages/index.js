@@ -47,15 +47,15 @@ const Home = () => {
       {/* Dark Mode Color */}
       <main className=" h-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r">
         <div className="flex items-center mt-16">
-          <div className="flex mx-auto h-auto w-24 md:w-28 lg:w-36 xl:w-40">
+          <div className="flex-row md:flex mx-auto mt-12 h-auto w-28 md:w-32 lg:w-36 xl:w-40">
             <Image
               src="/curie-home-guy.png"
-              className=" w"
+              className=" mb-4"
               width={200}
               height={200}
               alt="doctor"
             />
-            <p className="text-xl md:text-2xl lg:text-3xl xl:text-5xl my-auto text-blue-100 font-burtons font-bold ml-4">
+            <p className="text-xl text-center md:text-2xl lg:text-3xl xl:text-5xl my-auto text-blue-100 font-burtons font-bold ml-4">
               Welcome to Curiee!
             </p>
           </div>
