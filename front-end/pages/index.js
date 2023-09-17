@@ -62,7 +62,7 @@ const Home = () => {
         </div>
 
         <div className="flex items-center mt-16">
-          <div className=" grid grid-cols-1 lg:grid-cols-2  mx-auto gap-2 md:gap-4 lg:gap-6 xl:gap-8">
+          <div className=" grid grid-cols-1 md:grid-cols-2  mx-auto gap-2 md:gap-4 lg:gap-6 xl:gap-8">
             <div
               className="  px-2 md:px-2 lg:px-2 xl:px-4 py-2 my-5 rounded-md text-white  shadow-2xl shadow-blue-400/20 "
               style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
@@ -96,7 +96,7 @@ const Home = () => {
           </div>
         </div>
         {!token && (
-          <p className=" text-center text-sm md:text-base lg:text-lg text-white font-bold mt-12">
+          <p className=" text-center mx-2 md:mx-6 text-sm md:text-base lg:text-lg text-white font-bold my-6 md:mt-12">
             <span>
               <Link
                 className="hover:text-orange-400 transition-colors"

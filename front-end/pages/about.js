@@ -2,8 +2,8 @@ import Feedback from "@/components/page/Feedback";
 
 const About = () => {
   return (
-    <section className=" w-3/6 mt-12 mx-auto text-blue-100">
-      <h2 className="text-3xl font-semibold text-orange-400 mb-4">
+    <section className=" text-sm lg:text-base w-11/12 md:w-3/4 lg:w-3/6 mt-12 mx-auto text-blue-100">
+      <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mb-4">
         About Curie
       </h2>
       <p className="leading-relaxed ">
@@ -28,7 +28,7 @@ const About = () => {
         </li>
         <li>Avoids misunderstanding between patients & therapist</li>
       </ul>
-      <h2 className="text-3xl font-semibold text-orange-400 mt-8 my-4">
+      <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mt-8 my-4">
         Development
       </h2>
       <p className="leading-relaxed ">
@@ -55,11 +55,11 @@ const About = () => {
           </li>
         </ul>
       </p>
-      <h2 className="text-3xl font-semibold text-orange-400 mt-8 my-4">
+      <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mt-8 my-4">
         Demo Instructions
       </h2>
       <p className="leading-relaxed ">Use this way...</p>
-      <h2 className="text-3xl font-semibold text-orange-400 mt-8 my-4">
+      <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mt-8 my-4">
         Suggestions/Feedback
       </h2>
       <p className="leading-relaxed ">

@@ -49,7 +49,7 @@ const Feedback = () => {
       <div className="gap-2 flex flex-col my-8 text-md text-blue-200">
         <label>Name</label>
         <input
-          className="w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-52 lg:w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
           type="text"
           name="name"
           value={formData.name}
@@ -57,7 +57,7 @@ const Feedback = () => {
         />
         <label>Email</label>
         <input
-          className="w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-52 lg:w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
           type="email"
           name="email"
           value={formData.email}
@@ -65,7 +65,7 @@ const Feedback = () => {
         />
         <label>Feedback</label>
         <textarea
-          className="w-1/2 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-60 lg:w-1/2 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
           name="feedback"
           value={formData.feedback}
           onChange={handleInputChange}

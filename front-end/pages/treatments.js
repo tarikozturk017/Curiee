@@ -37,8 +37,8 @@ const Treatments = () => {
         headline={"Treatments"}
         subtext={"You can explore the treatment models created by therapists."}
       />
-      <div className="text-center">
-        <ul>
+      <div className="text-center ">
+        <ul className=" space-y-5 ">
           {exercises.map((exercise) => (
             <TreatmentCard treatment={exercise} />
             // <li key={exercise._id}><Link href={"/treatment/" + exercise._id}>{exercise.title}</Link></li>

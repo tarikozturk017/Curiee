@@ -39,7 +39,7 @@ const Dashboard = () => {
             {/* </div> */}
           </Card>
 
-          <div className=" flex gap-2  mt-10">
+          <div className=" grid grid-cols-1  md:grid-cols-3 text-sm xl:text-base  gap-1 md:gap-2 mt-4 lg:mt-10">
             <Card>
               <h1 className="text-xl p-5 text-orange-400 font-burtons mb-3">
                 Treatment Chart
