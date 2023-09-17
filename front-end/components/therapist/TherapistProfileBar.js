@@ -42,7 +42,7 @@ const TherapistProfileBar = () => {
   return (
     <>
       <div
-        className="text-white flex-col h-screen max-h-screen absolute right-0 min-w-min w-1/6 pt-5 border-l-2 border-blue-100/25 border-double"
+        className="text-white flex-col text-xs md:text-sm lg:text-base h-screen max-h-screen absolute right-0 min-w-min w-1/6 pt-5 border-l-2 border-blue-100/25 border-double"
         style={{ backgroundColor: "rgba(44, 47, 72, 1)" }}
       >
         <div className=" flex">
@@ -64,19 +64,19 @@ const TherapistProfileBar = () => {
             {therapist?.profilePictureLink && (
               <img
                 src={therapist?.profilePictureLink}
-                className="w-32 rounded-full shadow-xl mx-auto shadow-blue-400/40"
+                className="w-20 md:w-28 lg:w-32 rounded-full shadow-xl mx-auto shadow-blue-400/40"
                 alt="Avatar"
               />
             )}
             {!therapist?.profilePictureLink && (
               <img
                 src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-                className="w-32 rounded-full shadow-xl mx-auto shadow-blue-400/40"
+                className="w-20 md:w-28 lg:w-32 rounded-full shadow-xl mx-auto shadow-blue-400/40"
                 alt="Avatar"
               />
             )}
 
-            <h5 className="mt-5 text-md font-medium leading-tight">
+            <h5 className="mt-5 text-sm md:text-base lg:text-lg font-bold leading-tight">
               {therapist.firstName} {therapist.lastName}
             </h5>
             <p className="text-neutral-500 dark:text-neutral-400">
@@ -90,7 +90,9 @@ const TherapistProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-md underline mb-3">Patients</h1>
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-3">
+              Patients
+            </h1>
             <p>
               You have <span>{therapist.patients?.length ?? 0}</span> active
               patients.
@@ -105,7 +107,9 @@ const TherapistProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-md underline mb-3">Treatments</h1>
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-3">
+              Treatments
+            </h1>
             <p>
               You created <span>{exerciseCount}</span> treatment model.
             </p>
@@ -118,7 +122,9 @@ const TherapistProfileBar = () => {
             className=" mx-auto min-w-full px-4 py-2 my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-md underline mb-4">Performance</h1>
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-4">
+              Performance
+            </h1>
             {/* <Rating /> */}
             <TherapistSatisfaction therapistId={therapist._id} key={0} />
             <p>

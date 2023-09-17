@@ -42,8 +42,8 @@ const PatientSideBar = () => {
     <>
       {therapist && !hideSideBar && (
         <div
-          className="w-1/6 h-screen absolute bg-gradient-to-tr from-slate-200 via-purple-300 to-violet-400"
-          style={{ display: "inline-block" }}
+          className="w-1/6 h-screen absolute bg-gradient-to-tr from-slate-200 via-purple-300 to-violet-400 lg:inline-block hidden"
+          // style={{ display: "inline-block" }}
         >
           <div
             className="border-r-2 border-blue-100/25 border-double p-10 text-white h-screen absolute w-full m-0 pt-5"
@@ -52,22 +52,22 @@ const PatientSideBar = () => {
             <p className="m-5 text-center text-xl">Explore</p>
             <hr />
             <ul className="mt-2 flex flex-col gap-5 ">
-              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <BiBody className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
+              <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
+                <BiBody className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />
                 <Link href="/patients">My Patients</Link>
               </li>
-              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <GiHealingShield className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
+              <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
+                <GiHealingShield className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />
                 <Link href="/therapist/favoriteTreatments">
                   My Favorite Treatments
                 </Link>
               </li>
-              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <MdCreateNewFolder className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
+              <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
+                <MdCreateNewFolder className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />
                 <Link href="/treatment/new">Create New Treatment</Link>
               </li>
-              <li className="hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
-                <FaUserFriends className="text-md md:text-xl lg:text-2xl mr-2 min-w-[20px]" />
+              <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
+                <FaUserFriends className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />
                 <Link href="/therapist/findPatient">Connect Your Patient</Link>
               </li>
             </ul>
