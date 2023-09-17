@@ -122,7 +122,7 @@ const PatientProfileBar = () => {
       </div>
 
       {!isRightPanelOpen ? (
-        <div className=" absolute top-2 right-2 p-4 lg:hidden">
+        <div className=" absolute top-10 md:top-16 right-2 p-4 lg:hidden">
           <div
             className=" text-center mx-auto cursor-pointer"
             onClick={toggleRightPanel}
@@ -250,7 +250,10 @@ const PatientProfileBar = () => {
             </div>
 
             {patient.pendingTherapists?.length > 0 && (
-              <div className=" bg-red-500/40 mx-auto rounded p-1 w-fit">
+              <div
+                onClick={toggleRightPanel}
+                className=" bg-red-500/40 mx-auto rounded p-1 w-fit"
+              >
                 <Link
                   className="justify-around flex"
                   href="/patient/myTherapist"
