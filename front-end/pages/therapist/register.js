@@ -59,7 +59,7 @@ const Register = () => {
               id="firstName"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -69,7 +69,7 @@ const Register = () => {
               id="lastName"
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -79,7 +79,7 @@ const Register = () => {
               id="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -90,7 +90,7 @@ const Register = () => {
               id="occupation"
               value={occupation}
               onChange={(event) => setOccupation(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -101,7 +101,7 @@ const Register = () => {
               id="profilePicture"
               value={profilePictureLink}
               onChange={(event) => setProfilePictureLink(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -112,7 +112,7 @@ const Register = () => {
               id="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
@@ -123,7 +123,7 @@ const Register = () => {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(event) => setConfirmPassword(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <button

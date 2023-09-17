@@ -37,10 +37,10 @@ const FindPatient = () => {
         subtext={"Please enter your patient email address to connect."}
       />
 
-      <div className=" text-center">
+      <div className=" text-center ">
         <form className=" space-x-5" onSubmit={handleSubmit}>
           <input
-            className=" mb-5 space w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+            className=" mb-5 space w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             placeholder="Email"
             type="text"
             value={emailAddress}

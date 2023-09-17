@@ -59,7 +59,7 @@ const LoginForm = (props) => {
             {/* <label htmlFor="email">Email</label> */}
             <input
               placeholder="Email"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="email"
               id="email"
               value={email}
@@ -70,7 +70,7 @@ const LoginForm = (props) => {
             {/* <label htmlFor="password">Password</label> */}
             <input
               placeholder="Password"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5  w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="password"
               id="password"
               value={password}

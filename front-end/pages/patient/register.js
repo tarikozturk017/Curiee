@@ -61,7 +61,7 @@ const Register = () => {
             {/* <label htmlFor="firstName">First Name</label> */}
             <input
               placeholder="First Name"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="text"
               id="firstName"
               value={firstName}
@@ -72,7 +72,7 @@ const Register = () => {
             {/* <label htmlFor="lastName">Last Name</label> */}
             <input
               placeholder="Last Name"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               id="lastName"
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
@@ -82,7 +82,7 @@ const Register = () => {
             {/* <label htmlFor="email">Email address</label> */}
             <textarea
               placeholder="Email"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               id="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
@@ -92,7 +92,7 @@ const Register = () => {
             {/* <label htmlFor="diagnosis">Diagnosis</label> */}
             <input
               placeholder="Diagnosis"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="text"
               id="diagnosis"
               value={diagnosis}
@@ -106,14 +106,14 @@ const Register = () => {
               id="profilePicture"
               value={profilePictureLink}
               onChange={(event) => setProfilePictureLink(event.target.value)}
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
             />
           </div>
           <div>
             {/* <label htmlFor="password">Password</label> */}
             <input
               placeholder="Password"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="password"
               id="password"
               value={password}
@@ -124,7 +124,7 @@ const Register = () => {
             {/* <label htmlFor="confirmPassword">Confirm Password</label> */}
             <input
               placeholder="Confirm Password"
-              className=" mb-5 w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+              className=" mb-5 w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
               type="password"
               id="confirmPassword"
               value={confirmPassword}
