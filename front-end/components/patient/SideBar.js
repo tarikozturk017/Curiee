@@ -47,24 +47,24 @@ const PatientSideBar = () => {
               <hr />
 
               <ul className="mt-2 flex flex-col gap-5 ">
-                <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
+                <li className="text-sm md:text-base lg:text-base xl:text-lg hover:bg-black hover:opacity-70  rounded duration-300 hover:cursor-pointer p-3 flex">
                   <BiBody className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />{" "}
                   {/* Responsive icon size with min-width */}
                   <Link href="/patient/dashboard">Dashboard</Link>
                 </li>
-                <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <li className="text-sm md:text-base lg:text-base xl:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
                   <GiHealingShield className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />{" "}
                   {/* Responsive icon size with min-width */}
                   <Link href="/myTreatment/">My Treatment</Link>
                 </li>
-                <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <li className="text-sm md:text-base lg:text-base xl:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
                   <MdCreateNewFolder className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />{" "}
                   {/* Responsive icon size with min-width */}
                   <Link href="/patient/favoriteTreatments">
                     My Favorite Treatments
                   </Link>
                 </li>
-                <li className="text-sm md:text-base lg:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
+                <li className="text-sm md:text-base lg:text-base xl:text-lg hover:bg-black hover:opacity-70 rounded duration-300 hover:cursor-pointer p-3 flex">
                   <FaUserFriends className="text-base md:text-lg lg:text-xl mr-2 min-w-[20px]" />{" "}
                   {/* Responsive icon size with min-width */}
                   <Link href="/patient/myTherapist">My Therapist</Link>

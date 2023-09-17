@@ -31,7 +31,7 @@ const MobileNavbar = ({ isOpen, onClose, token, type }) => {
           </li>
           {token ? (
             <li
-              onClick={onClose}
+              //   onClick={onClose}
               className=" mb-4 hover:text-orange-400 transition-colors hover:text-sky-200/80  duration-300 hover:cursor-pointer"
             >
               <Logout />

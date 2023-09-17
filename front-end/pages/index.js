@@ -87,7 +87,7 @@ const Home = () => {
               </p>
               <ul className=" text-sm md:text-base lg:text-base xl:text-base text-white">
                 <li>Promote your treatment models</li>
-                <li>Create & Assign treatment to your patients</li>
+                <li>Create & Assign treatment to patients</li>
                 <li>Track your patients</li>
                 <li>Improve your knowledge and skills</li>
                 <li>Rate treatment models</li>
