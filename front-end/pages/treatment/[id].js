@@ -126,7 +126,7 @@ const Treatment = () => {
         headline={`Title: ${data.title}`}
         subtext={`Description: ${data.description}`}
       />
-      <div className="text-center w-2/4 mx-auto">
+      <div className="text-center w-11/12 md:w-2/4 mx-auto">
         {data?.link && data?.link != "" ? (
           <IFrame link={data.link} />
         ) : (
