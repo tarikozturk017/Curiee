@@ -11,13 +11,14 @@ const therapistsRouter = require("./routes/therapists");
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://deploy-mern-1wh1.vercel.app"], // to be changed to real one
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-); // avoid cross origin errors
+// app.use(
+//   cors({
+//     origin: ["https://curiee.vercel.app"], // to be changed to real one
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// ); // avoid cross origin errors
+app.use(cors());
 
 const uri = process.env.API_URI;
 
@@ -30,6 +31,10 @@ mongoose
   .catch(console.error);
 
 // app.use('/api/auth', authRoutes);
+
+app.get("/", function (req, res) {
+  res.send("App is running");
+});
 
 app.use("/patient", patientsRouter);
 app.use("/exercise", exercisesRouter);

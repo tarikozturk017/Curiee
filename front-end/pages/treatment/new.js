@@ -52,17 +52,8 @@ function New() {
         subtext={"Create a new treatment modal to assign or promote"}
       />
 
-      {/* <div class="flex flex-col items-center justify-center space-y-6">
-    <input type="password" id="password" name="password" placeholder="Password" class="w-52 lg:w-80 appearance-none rounded-full 
-      border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" 
-      class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-    <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
-    <button id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"><span id="showHide">Show</span> Password</button>
-  </div> */}
-
       <form onSubmit={handleSubmit}>
-        <div class="flex flex-col items-center justify-center space-y-6">
+        <div className="flex flex-col items-center justify-center space-y-6">
           <div>
             {/* <label htmlFor="title">Title</label> */}
             <Input
@@ -118,58 +109,6 @@ function New() {
         </div>
       </form>
     </Card>
-    //   <Card class="h-screen place-content-center  text-slate-300">
-    //   <div class="mb-10 text-center text-indigo-400">
-    // <h1 class="text-3xl font-bold tracking-widest">Header</h1>
-    //   <p><span class="font-bold">Subtext</p>
-    // </div>
-    //   <form onSubmit={handleSubmit}>
-    //    <div class="flex flex-col items-center justify-center space-y-6">
-    //     <div>
-    //       <label htmlFor="title">Title</label>
-    //       <input   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-    //         type="text"
-    //         id="title"
-    //         value={title}
-    //         onChange={(event) => setTitle(event.target.value)}
-    //       />
-    //     </div>
-    //     <div>
-    //       <label htmlFor="description">Description</label>
-    //       <textarea   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-    //         id="description"
-    //         value={description}
-    //         onChange={(event) => setDescription(event.target.value)}
-    //       />
-    //     </div>
-    //     <div>
-    //       <label htmlFor="diseaseTreatment">Disease Treatment</label>
-    //       <input   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
-    //         type="text"
-    //         id="diseaseTreatment"
-    //         value={diseaseTreatment}
-    //         onChange={(event) => setDiseaseTreatment(event.target.value)}
-    //       />
-    //     </div>
-    //    <button type="submit" className="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500">Create Treatment</button>
-
-    //      </div>
-    //   </form>
-    // </Card>
-    //     <section class="h-screen place-content-center  text-slate-300">
-    //   <div class="mb-10 text-center text-indigo-400">
-    //     <h1 class="text-3xl font-bold tracking-widest">JQUERY</h1>
-    //     <p><span class="font-bold">Password</span> and <span class="font-bold">Confirm</span> validation.</p>
-    //   </div>
-    //   <div class="flex flex-col items-center justify-center space-y-6">
-    //     <input type="password" id="password" name="password" placeholder="Password" class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-    //     <div>
-    //       <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
-    //       <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
-    //     </div>
-    //     <button id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"><span id="showHide">Show</span> Password</button>
-    //   </div>
-    // </section>
   );
 }
 
