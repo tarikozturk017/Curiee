@@ -12,11 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: ["https://curiee.vercel.app"], // to be changed to real one
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
+  cors()
 ); // avoid cross origin errors
 
 const uri = process.env.API_URI;
