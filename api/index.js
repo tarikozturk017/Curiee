@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["https://curiee-app.vercel.app", "http://localhost:3000"], // to be changed to real one
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET", "PUT"],
     credentials: true,
   })
 ); // avoid cross origin errors
