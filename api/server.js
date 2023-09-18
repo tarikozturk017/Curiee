@@ -13,7 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://deploy-mern-1wh1.vercel.app"], // to be changed to real one
+    origin: ["https://curiee.vercel.app"], // to be changed to real one
     methods: ["POST", "GET"],
     credentials: true,
   })
