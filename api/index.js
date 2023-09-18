@@ -11,14 +11,14 @@ const therapistsRouter = require("./routes/therapists");
 const app = express();
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: ["https://curiee.vercel.app"], // to be changed to real one
-//     methods: ["POST", "GET"],
-//     credentials: true,
-//   })
-// ); // avoid cross origin errors
-app.use(cors()); // avoid cross origin errors
+app.use(
+  cors({
+    origin: ["https://curiee.vercel.app"], // to be changed to real one
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+); // avoid cross origin errors
+// app.use(cors()); // avoid cross origin errors
 
 const uri = process.env.API_URI;
 
