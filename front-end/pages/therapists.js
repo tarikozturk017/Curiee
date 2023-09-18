@@ -70,7 +70,7 @@ const Therapists = () => {
           {currentTherapists}
         </ul>
         {totalPages > 1 && (
-          <div className="flex justify-center mt-3">
+          <div className="flex justify-center mb-24">
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}

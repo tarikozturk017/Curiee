@@ -81,7 +81,7 @@ function MyTherapist() {
         {patient?.exercises && (
           // <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
           <div
-            className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%] mb-5"
+            className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 lg:w-2/5 md:w-2/3 lg:max-w-[50%] mb-5"
             style={{ backgroundColor: "rgba(255, 255, 255, 0.11)" }}
           >
             <table className="w-full">
@@ -125,7 +125,7 @@ function MyTherapist() {
         {patient?.pendingTherapists.length > 0 && (
           // <div className=' mx-auto rounded-lg p-5 bg-blue-100 max-w-max text-center'>
           <div
-            className=" bg-blue-gray-600  shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full  m-0 pt-5 max-w-[30%] mb-5"
+            className=" bg-blue-gray-600  shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full  m-0 pt-5  lg:w-2/5 md:w-2/3 lg:max-w-[30%] mb-5"
             // style={{ backgroundColor: "rgba(255, 25, 25, 0.21)" }}
           >
             <table className="w-full">
@@ -133,12 +133,12 @@ function MyTherapist() {
                 className=""
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.45)" }}
               >
-                <tr>
+                <tr className=" ">
                   <th className="px-6 py-3">Pending Therapist</th>
                   <th className="px-6 py-3">Accept/Decline</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className=" ">
                 {patient.pendingTherapists.map((therapist) => (
                   // <li key={therapist._id}> <Link href={"/therapist/" + therapist._id}>{therapist.firstName} {therapist.lastName}</Link></li>
                   <tr key={therapist._id} className="">

@@ -38,7 +38,7 @@ const ActivatePatient = ({ patientData }) => {
     <>
       <button
         onClick={handleClick}
-        className=" bg-green-800 rounded-xl text-white"
+        className=" bg-green-800 rounded-full text-white p-2 px-8"
       >
         Activate Patient
       </button>

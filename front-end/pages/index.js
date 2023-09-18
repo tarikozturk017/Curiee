@@ -117,6 +117,7 @@ const Home = () => {
             to explore entire application!
           </p>
         )}
+        <div className=" lg:hidden h-24"></div>
       </main>
     </>
   );

@@ -180,6 +180,7 @@ const Treatment = () => {
           <TreatmentSatisfaction treatmentId={id} key={satisfactionKey} />
         </div>
       </div>
+      <div className=" lg:hidden h-24"></div>
     </Card>
   );
 };

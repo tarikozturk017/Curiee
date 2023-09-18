@@ -122,7 +122,7 @@ const PatientProfileBar = () => {
       </div>
 
       {!isRightPanelOpen ? (
-        <div className=" absolute top-10 md:top-16 right-2 p-4 lg:hidden">
+        <div className=" absolute top-4  right-2  lg:hidden">
           <div
             className=" text-center mx-auto cursor-pointer"
             onClick={toggleRightPanel}
@@ -130,7 +130,7 @@ const PatientProfileBar = () => {
             {!patient?.profilePictureLink && (
               <img
                 src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-                className=" w-16 md:w-20 lg:w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40"
+                className=" w-12 md:w-16 lg:w-24 mx-auto rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
             )}
@@ -138,7 +138,7 @@ const PatientProfileBar = () => {
             {patient?.profilePictureLink && (
               <img
                 src={patient?.profilePictureLink}
-                className="w-16 md:w-28 lg:w-32 rounded-full shadow-xl shadow-blue-400/40"
+                className="w-12 md:w-16 lg:w-24 rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
             )}

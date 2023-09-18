@@ -44,7 +44,7 @@ const FavoriteTreatments = () => {
         <div className=" text-center">
           {favTreatments ? (
             <>
-              <ul>
+              <ul className=" space-y-5">
                 {favTreatments.map((treatment) => (
                   <TreatmentCard treatment={treatment} />
                 ))}
@@ -55,6 +55,7 @@ const FavoriteTreatments = () => {
           )}
         </div>
       </div>
+      <div className=" lg:hidden h-24"></div>
     </Card>
   );
 };

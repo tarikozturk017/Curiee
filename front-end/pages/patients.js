@@ -60,7 +60,7 @@ const Patients = () => {
           />
 
           <div
-            className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 max-w-[50%] mb-5"
+            className=" shadow-lg shadow-blue-300/20 mx-auto rounded-lg p-1 w-full m-0 pt-5 lg:w-3/5 md:w-5/6 lg:max-w-[50%] mb-5"
             style={{ backgroundColor: "rgba(255, 255, 255, 0.11)" }}
           >
             <table className="w-full">
@@ -69,16 +69,16 @@ const Patients = () => {
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.45)" }}
               >
                 <tr>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="md:px-6 px-2 py-3">
                     Name
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  {/* <th scope="col" className="px-6 py-3">
                     Age
-                  </th>
-                  <th scope="col" className="px-6 py-3">
+                  </th> */}
+                  <th scope="col" className="md:px-6 px-2 py-3">
                     Disease
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="md:px-6 px-2 py-3">
                     Email
                   </th>
                 </tr>
@@ -93,9 +93,11 @@ const Patients = () => {
                           </Link>
                         </th>
 
-                        <td className="px-6 py-4">00</td>
-                        <td className="px-6 py-4">{patient?.diagnosis}</td>
-                        <td className="px-6 py-4">{patient.email}</td>
+                        {/* <td className="px-6 py-4">00</td> */}
+                        <td className="md:px-6 px-2 py-4">
+                          {patient?.diagnosis}
+                        </td>
+                        <td className="md:px-6 px-2 py-4">{patient.email}</td>
                       </tr>
                     ))
                   : therapistData.deactivatedPatients.map((patient) => (
@@ -105,9 +107,11 @@ const Patients = () => {
                             {patient.firstName} {patient.lastName}
                           </Link>
                         </th>
-                        <td className="px-6 py-4">00</td>
-                        <td className="px-6 py-4">{patient?.diagnosis}</td>
-                        <td className="px-6 py-4">{patient.email}</td>
+                        {/* <td className="px-6 py-4">00</td> */}
+                        <td className="md:px-6 px-2 py-4">
+                          {patient?.diagnosis}
+                        </td>
+                        <td className="md:px-6 px-2 py-4">{patient.email}</td>
                       </tr>
                     ))}
               </tbody>

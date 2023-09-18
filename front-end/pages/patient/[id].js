@@ -121,7 +121,7 @@ const Patient = () => {
 
         {/* New treatment assignment to the patient */}
 
-        <span className="">
+        <span className=" md:space-x-2 space-y-2">
           {!displayForm ? (
             // <button className=' bg-green-300 rounded-xl' onClick={handleNewTreatment}>Assign New Treatment</button>
             <button
@@ -142,6 +142,7 @@ const Patient = () => {
           )}
         </span>
       </div>
+      <div className=" lg:hidden h-24"></div>
     </Card>
   );
 };

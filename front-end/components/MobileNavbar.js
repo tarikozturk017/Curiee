@@ -5,18 +5,18 @@ import Logout from "./Logout";
 const MobileNavbar = ({ isOpen, onClose, token, type }) => {
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 ${
+      className={`z-10 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 ${
         isOpen ? "block" : "hidden"
       }`}
     >
-      <div className="fixed top-0 right-0 h-full w-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r p-4 shadow-lg">
+      <div className=" fixed top-0 right-0 h-full w-screen from-gray-800 via-gray-600 to-gray-800 bg-gradient-to-r p-4 shadow-lg">
         <button
           onClick={onClose}
           className="absolute top-2 left-2 text-gray-700"
         >
-          <span className="text-3xl md:text-4xl text-white">&times;</span>
+          <span className="text-3xl md:text-4xl text-white ">&times;</span>
         </button>
-        <ul className="text-center mt-12">
+        <ul className="text-center mt-20">
           <li onClick={onClose} className="mb-4">
             <Link href="/">Home</Link>
           </li>

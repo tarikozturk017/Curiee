@@ -44,6 +44,7 @@ const Treatments = () => {
             // <li key={exercise._id}><Link href={"/treatment/" + exercise._id}>{exercise.title}</Link></li>
           ))}
         </ul>
+        <div className=" md:h-hidden  h-24"></div>
       </div>
     </Card>
   );

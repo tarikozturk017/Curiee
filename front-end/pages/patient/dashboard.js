@@ -87,6 +87,7 @@ const Dashboard = () => {
                   </p> */}
             </Card>
           </div>
+          <div className=" lg:hidden h-24"></div>
         </PageCard>
       )}
     </>

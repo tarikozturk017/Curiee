@@ -73,22 +73,29 @@ const AssignTreatment = ({ patientId, setDisplayForm }) => {
     <form className=" " onSubmit={handleSubmit}>
       <label htmlFor="exerciseId">Select Exercise:</label>
       <select
+        className=" bg-inherit"
         id="exerciseId"
         name="exerciseId"
         value={exerciseId}
         onChange={(event) => setExerciseId(event.target.value)}
         required
       >
-        <option value="">Select an exercise</option>
+        <option disabled value="" className=" bg-gray-600">
+          Select an exercise
+        </option>
         {exercises.map((exercise) => (
-          <option key={exercise._id} value={exercise._id}>
+          <option
+            className=" bg-gray-600"
+            key={exercise._id}
+            value={exercise._id}
+          >
             {exercise.title}
           </option>
         ))}
       </select>
       <br />
 
-      <div className="flex flex-col w-72 my-4 items-end gap-6 mx-auto">
+      <div className="flex flex-col w-52 lg:w-80 my-4 items-end gap-6 mx-auto">
         <Input
           size="md"
           label="Repetition"
@@ -113,7 +120,7 @@ const AssignTreatment = ({ patientId, setDisplayForm }) => {
         required
       /> */}
 
-      <div className="w-80 mx-auto my-4">
+      <div className="w-52 lg:w-80 mx-auto my-4">
         <Textarea
           className="text-blue-gray-200"
           label="Note"
@@ -125,7 +132,7 @@ const AssignTreatment = ({ patientId, setDisplayForm }) => {
       </div>
       {/* <label htmlFor="note">Note:</label>
       <textarea
-        className="w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+        className="w-52 lg:w-80 appearance-none rounded-3xl border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
 
         id="note"
         name="note"

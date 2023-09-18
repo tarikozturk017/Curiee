@@ -3,7 +3,7 @@ import { userIdAtom } from "../Layout";
 import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { BiBody } from "react-icons/bi";
+import { BiBody, BiDownArrowAlt } from "react-icons/bi";
 import { GiHealingShield } from "react-icons/gi";
 import { MdCreateNewFolder } from "react-icons/md";
 import { FaUserFriends, FaLongArrowAltLeft } from "react-icons/fa";
@@ -51,8 +51,8 @@ const PatientSideBar = () => {
             // style={{ display: "inline-block" }}
           >
             <div
-              className="border-r-2 border-blue-100/25 border-double lg:p-2 xl:p-6 text-white h-screen absolute w-full m-0 pt-5"
-              style={{ backgroundColor: "rgba(44, 47, 72, 0.46)" }}
+              className="text-sm md:text-base w-20 inline-block my-4  hover:cursor-pointer rounded-full  pt-1 pb-0 text-white bg-gradient-to-t from-gray-700 via-gray-800 to-gray-800 shadow-xl shadow-blue-400/40 "
+              // style={{ backgroundColor: "rgba(44, 47, 72, 0.46)" }}
             >
               <p className="m-5 text-center text-xl">My Panel</p>
               <hr />
@@ -82,12 +82,15 @@ const PatientSideBar = () => {
           </div>
 
           {!isSidebarOpen && (
-            <button className="lg:hidden absolute top-4 right-0 text-gray-700">
+            <button className="lg:hidden absolute top-0 right-0 left-0 ml-0 mr-0 text-gray-700">
               <span
                 onClick={toggleSidebar}
-                className="text-base md:text-xl w-32 my-4  hover:cursor-pointer rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"
+                className="text-sm md:text-base w-20 inline-block my-4  hover:cursor-pointer rounded-full  pt-1 pb-0 text-white bg-gradient-to-t from-gray-700 via-gray-800 to-gray-800 shadow-xl shadow-blue-400/40 "
               >
                 Expand Panel
+                <span className=" flex">
+                  <BiDownArrowAlt className=" text-base md:text-lg mx-auto" />
+                </span>
               </span>
             </button>
           )}

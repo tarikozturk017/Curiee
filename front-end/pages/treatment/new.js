@@ -53,10 +53,10 @@ function New() {
       />
 
       {/* <div class="flex flex-col items-center justify-center space-y-6">
-    <input type="password" id="password" name="password" placeholder="Password" class="w-80 appearance-none rounded-full 
+    <input type="password" id="password" name="password" placeholder="Password" class="w-52 lg:w-80 appearance-none rounded-full 
       border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
     <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" 
-      class="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
+      class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
     <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
     <button id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"><span id="showHide">Show</span> Password</button>
   </div> */}
@@ -68,18 +68,18 @@ function New() {
             <Input
               size="lg"
               label="Title"
-              className="w-80 bg-gray-700 text-indigo-200"
+              className="w-52 lg:w-80 bg-gray-700 text-indigo-200"
               type="text"
               id="title"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
           </div>
-          <div className="w-80  mx-auto my-4">
+          <div className="w-52 lg:w-80  mx-auto my-4">
             {/* <label htmlFor="description">Description</label> */}
             <Textarea
               label="Description"
-              className="w-80 bg-gray-700 text-indigo-200"
+              className="w-52 lg:w-80 bg-gray-700 text-indigo-200"
               id="description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
@@ -89,7 +89,7 @@ function New() {
             {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
             <Input
               label="Disease Treatment"
-              className="w-80 bg-gray-700 text-indigo-200"
+              className="w-52 lg:w-80 bg-gray-700 text-indigo-200"
               type="text"
               id="diseaseTreatment"
               autocomplete="off"
@@ -101,7 +101,7 @@ function New() {
             {/* <label htmlFor="diseaseTreatment">Disease Treatment</label> */}
             <Input
               label="Video link"
-              className="w-80 bg-gray-700 text-indigo-200"
+              className="w-52 lg:w-80 bg-gray-700 text-indigo-200"
               type="text"
               id="videoLink"
               autocomplete="off"
@@ -127,7 +127,7 @@ function New() {
     //    <div class="flex flex-col items-center justify-center space-y-6">
     //     <div>
     //       <label htmlFor="title">Title</label>
-    //       <input   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+    //       <input   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         type="text"
     //         id="title"
     //         value={title}
@@ -136,7 +136,7 @@ function New() {
     //     </div>
     //     <div>
     //       <label htmlFor="description">Description</label>
-    //       <textarea   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+    //       <textarea   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         id="description"
     //         value={description}
     //         onChange={(event) => setDescription(event.target.value)}
@@ -144,7 +144,7 @@ function New() {
     //     </div>
     //     <div>
     //       <label htmlFor="diseaseTreatment">Disease Treatment</label>
-    //       <input   className="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
+    //       <input   className="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500"
     //         type="text"
     //         id="diseaseTreatment"
     //         value={diseaseTreatment}
@@ -162,9 +162,9 @@ function New() {
     //     <p><span class="font-bold">Password</span> and <span class="font-bold">Confirm</span> validation.</p>
     //   </div>
     //   <div class="flex flex-col items-center justify-center space-y-6">
-    //     <input type="password" id="password" name="password" placeholder="Password" class="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
+    //     <input type="password" id="password" name="password" placeholder="Password" class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
     //     <div>
-    //       <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
+    //       <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="w-52 lg:w-80 appearance-none rounded-full border-0 bg-slate-800/50 p-2 px-4 focus:bg-slate-800 focus:ring-2 focus:ring-orange-500" />
     //       <p id="validation" class="text-center text-orange-500 italic text-sm"></p>
     //     </div>
     //     <button id="showPw" class="rounded-full bg-indigo-500 p-2 px-4 text-white hover:bg-orange-500"><span id="showHide">Show</span> Password</button>
