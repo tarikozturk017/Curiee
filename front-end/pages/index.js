@@ -61,6 +61,22 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Demo instruction */}
+        {/* <div
+          class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3"
+          role="alert"
+        >
+          <p class="font-bold">Test Full Feature with:</p>
+          <p class="text-sm">
+            {" "}
+            For <span className=" font-bold">Therapist:</span>email password
+          </p>
+          <p class="text-sm">
+            For<span className=" font-bold">Patient</span>email password
+          </p>
+        </div>
+ */}
+
         <div className="flex items-center mt-16">
           <div className=" grid grid-cols-1 md:grid-cols-2  mx-auto gap-2 md:gap-4 lg:gap-6 xl:gap-8">
             <div
@@ -117,7 +133,39 @@ const Home = () => {
             to explore entire application!
           </p>
         )}
-        <div className=" lg:hidden h-24"></div>
+        <div className="flex">
+          <div
+            class="flex mx-auto flex-col md:w-1/2 lg:h-1/3 xl:w-1/4 p-4 mb-16 my-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+            role="alert"
+          >
+            <div className=" flex flex-row">
+              <svg
+                class="flex-shrink-0 inline w-4 h-4 mr-3 "
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+              </svg>
+              <div class="font-medium block">Test Full Feature with:</div>
+            </div>
+            <ul class="mt-1.5 ml-4 list-disc list-inside">
+              <li>
+                <span className=" font-bold">Therapist email: </span>
+                david.smith@gmail.com{" "}
+                <span className=" font-bold">password:</span> 123
+              </li>
+              <li>
+                <span className=" font-bold">Patient email: </span>
+                sarah.johnson@gmail.com{" "}
+                <span className=" font-bold">password:</span> 123
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className=" xl:hidden h-36"></div>
       </main>
     </>
   );

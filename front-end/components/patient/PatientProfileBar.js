@@ -25,7 +25,7 @@ const PatientProfileBar = () => {
             {!patient?.profilePictureLink && (
               <img
                 src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
-                className=" w-20 md:w-28 lg:w-32 mx-auto rounded-full shadow-xl shadow-blue-400/40"
+                className=" w-20 md:w-24 lg:w-28 mx-auto rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
             )}
@@ -33,7 +33,7 @@ const PatientProfileBar = () => {
             {patient?.profilePictureLink && (
               <img
                 src={patient?.profilePictureLink}
-                className="w-20 md:w-28 lg:w-32 rounded-full shadow-xl shadow-blue-400/40"
+                className="w-20 md:w-24 lg:w-28 rounded-full shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
             )}
@@ -51,7 +51,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-1 xl:px-4 py-2 my-2 xl:my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-sm md:text-base lg:text-lg underline mb-3">
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-2">
               Treatment
             </h1>
             <p>
@@ -71,7 +71,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-1 xl:px-4 py-2 my-2 lg:my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-sm md:text-base lg:text-lg underline mb-3">
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-2">
               Therapist
             </h1>
             <p>Active therapists:</p>
@@ -101,7 +101,7 @@ const PatientProfileBar = () => {
             className=" mx-auto min-w-full px-1 xl:px-4 py-2 my-2 lg:my-5 rounded-md text-white  max-w-max text-center shadow-2xl shadow-blue-400/20 "
             style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
           >
-            <h1 className="text-sm md:text-base lg:text-lg underline mb-4">
+            <h1 className="text-sm md:text-base lg:text-lg underline mb-2">
               Diagnosis
             </h1>
             <p>
