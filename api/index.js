@@ -18,7 +18,7 @@ app.use(express.json());
 //     credentials: true,
 //   })
 // ); // avoid cross origin errors
-app.use(cors());
+app.use(cors()); // avoid cross origin errors
 
 const uri = process.env.API_URI;
 
@@ -29,6 +29,10 @@ mongoose
   })
   .then(() => console.log("Connected to DB"))
   .catch(console.error);
+
+app.get("/", (req, res) => {
+  res.json("Hello World!");
+});
 
 // app.use('/api/auth', authRoutes);
 
