@@ -68,6 +68,7 @@ const About = () => {
       </p>
       <Feedback />
       <p className="leading-relaxed ">Give me feedback</p>
+      <div className=" md:hidden h-24"></div>
     </section>
   );
 };

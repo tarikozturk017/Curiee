@@ -157,7 +157,7 @@ const TherapistProfileBar = () => {
             {therapist?.profilePictureLink && (
               <img
                 src={therapist?.profilePictureLink}
-                className="w-12 md:w-16 lg:w-24 rounded-full shadow-xl shadow-blue-400/40"
+                className="w-12 md:w-16 lg:w-24 rounded-full mx-auto shadow-xl shadow-blue-400/40"
                 alt="Avatar"
               />
             )}

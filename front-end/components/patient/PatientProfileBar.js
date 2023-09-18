@@ -21,7 +21,7 @@ const PatientProfileBar = () => {
         style={{ backgroundColor: "rgba(44, 47, 72, 1)" }}
       >
         <div className=" flex">
-          <div className=" text-center mx-auto">
+          <div className=" text-center mx-auto ">
             {!patient?.profilePictureLink && (
               <img
                 src="https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg"
@@ -33,7 +33,7 @@ const PatientProfileBar = () => {
             {patient?.profilePictureLink && (
               <img
                 src={patient?.profilePictureLink}
-                className="w-20 md:w-24 lg:w-28 rounded-full shadow-xl shadow-blue-400/40"
+                className="w-20 md:w-24 lg:w-28 rounded-full shadow-xl mx-auto shadow-blue-400/40"
                 alt="Avatar"
               />
             )}

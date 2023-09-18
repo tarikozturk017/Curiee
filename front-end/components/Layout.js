@@ -101,6 +101,7 @@ const Layout = (props) => {
         <div className="flex-grow mb-6 h-screen overflow-y-auto">
           {props.children}
         </div>
+        {/* <div className=" md:hidden h-24"></div> */}
       </div>
       <Footer />
     </>

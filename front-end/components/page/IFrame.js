@@ -20,7 +20,7 @@ const IFrame = ({ link }) => {
 
   return (
     <iframe
-      className="mx-auto my-12 rounded-2xl shadow-2xl shadow-blue-gray-300"
+      className="mx-auto max-w-min my-12 rounded-2xl shadow-2xl shadow-blue-gray-300"
       width="560"
       height="315"
       src={embedLink}
