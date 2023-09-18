@@ -25,6 +25,10 @@ mongoose
   .then(() => console.log("Connected to DB"))
   .catch(console.error);
 
+app.get('/', (req, res) => {
+  res.json('Hello World!')
+})
+
 // app.use('/api/auth', authRoutes);
 
 app.use("/patient", patientsRouter);
