@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Rating from "../Rating";
 
 const TreatmentCard = ({ treatment }) => {
   return (
@@ -22,20 +23,55 @@ const TreatmentCard = ({ treatment }) => {
               : "N/A"}
           </p>
           <>
-            <p>
-              <span className=" font-bold">Rate by patients:</span>{" "}
-              {!treatment?.patientVoteCount}
-              {treatment?.patientVoteCount &&
-                treatment?.patientVoteCount / treatment?.patientTotalVotes}{" "}
-              <span>({treatment?.patientTotalVotes})</span>
+            <p className="">
+              {/* Rate from patients:{" "}
+        {treatment?.patientVoteCount
+          ? treatment?.patientVoteCount / treatment?.patientTotalVotes
+          : "0"}{" "} */}
+              Rate from{" "}
+              <span className=" font-bold">
+                ({treatment?.patientTotalVotes}){" "}
+              </span>
+              patients:{" "}
+              <span className=" flex">
+                <span className=" mx-auto my-2">
+                  {treatment?.patientTotalVotes ? (
+                    <Rating
+                      rating={
+                        treatment?.patientVoteCount /
+                        treatment?.patientTotalVotes
+                      }
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {!treatment?.patientTotalVotes && <Rating rating={0} />}
+                </span>
+              </span>
+              {/* <span>({treatment?.patientTotalVotes})</span> */}
             </p>
             <p>
-              <span className=" font-bold">Rate by therapists:</span>{" "}
-              {!treatment?.therapistVoteCount}{" "}
-              {treatment?.therapistVoteCount &&
-                treatment?.therapistVoteCount /
-                  treatment?.therapistTotalVotes}{" "}
-              <span>({treatment?.therapistTotalVotes})</span>
+              Rate from{" "}
+              <span className=" font-bold">
+                ({treatment?.therapistTotalVotes})
+              </span>{" "}
+              therapists:{" "}
+              {/* {treatment?.therapistVoteCount / treatment?.therapistTotalVotes} */}
+              <span className=" flex">
+                <span className=" mx-auto my-2">
+                  {treatment?.therapistTotalVotes ? (
+                    <Rating
+                      rating={
+                        treatment?.therapistVoteCount /
+                        treatment?.therapistTotalVotes
+                      }
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {!treatment?.therapistTotalVotes && <Rating rating={0} />}
+                </span>
+              </span>
             </p>
           </>
           <p>

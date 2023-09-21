@@ -5,6 +5,7 @@ import useSWR from "swr";
 import Card from "@/components/page/Card";
 import Header from "@/components/page/Header";
 import config from "@/src/config";
+import Rating from "@/components/Rating";
 
 const FavoriteTreatments = () => {
   const [patient] = useAtom(userAtom);
@@ -63,8 +64,65 @@ const FavoriteTreatments = () => {
                   </th>
 
                   <td className="px-6 py-1">
-                    {treatment.patientVoteCount / treatment.patientTotalVotes} (
-                    {treatment.patientTotalVotes})
+                    <p className="">
+                      {/* Rate from patients:{" "}
+        {treatment?.patientVoteCount
+          ? treatment?.patientVoteCount / treatment?.patientTotalVotes
+          : "0"}{" "} */}
+                      Rate from{" "}
+                      <span className=" font-bold">
+                        ({treatment?.patientTotalVotes}){" "}
+                      </span>
+                      patients and{" "}
+                      <span className=" font-bold">
+                        ({treatment?.therapistTotalVotes})
+                      </span>{" "}
+                      therapists:{" "}
+                      <span className=" flex">
+                        <span className=" mx-auto my-2">
+                          {treatment?.patientTotalVotes ? (
+                            <Rating
+                              rating={
+                                (treatment?.patientVoteCount +
+                                  treatment?.therapistVoteCount) /
+                                (treatment?.patientTotalVotes +
+                                  treatment?.therapistTotalVotes)
+                              }
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          {!treatment?.patientTotalVotes && (
+                            <Rating rating={0} />
+                          )}
+                        </span>
+                      </span>
+                      {/* <span>({treatment?.patientTotalVotes})</span> */}
+                    </p>
+                    {/* <p>
+                      Rate from{" "}
+                      <span className=" font-bold">
+                        ({treatment?.therapistTotalVotes})
+                      </span>{" "}
+                      therapists:{" "}
+                      <span className=" flex">
+                        <span className=" mx-auto my-2">
+                          {treatment?.therapistTotalVotes ? (
+                            <Rating
+                              rating={
+                                treatment?.therapistTotalVotes /
+                                treatment?.therapistVoteCount
+                              }
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          {!treatment?.therapistTotalVotes && (
+                            <Rating rating={0} />
+                          )}
+                        </span>
+                      </span>
+                    </p> */}
                   </td>
                 </tr>
               ))}

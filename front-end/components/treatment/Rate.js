@@ -9,6 +9,7 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
   const [rating, setRating] = useState(0);
   const [userId] = useAtom(userIdAtom);
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopupThanks, setShowPopupThanks] = useState(false);
 
   const handleRatingChange = (event) => {
     setRating(parseInt(event.target.value));
@@ -38,9 +39,11 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
           // Show success message
 
           onRateSubmitted();
+          setShowPopupThanks(true);
         } else if (response.status == 400) {
           // show response accordingly
           console.log("already voted");
+          setShowPopup(true);
         }
       } catch (error) {
         //error
@@ -67,6 +70,7 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
           // Show success message
 
           onRateSubmitted();
+          setShowPopupThanks(true);
         } else if (response.status == 400) {
           // show response accordingly
           console.log("already voted");
@@ -81,7 +85,10 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
   return (
     <div
       onClick={() => {
-        if (showPopup) setShowPopup(false);
+        if (showPopup || showPopupThanks) {
+          setShowPopupThanks(false);
+          setShowPopup(false);
+        }
       }}
     >
       <h2 className=" font-bold text-lg mb-2">Satisfaction Rate</h2>
@@ -119,6 +126,9 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
         Submit Rate
       </button>
       {showPopup && <PopUp message={"You already voted for this treatment!"} />}
+      {showPopupThanks && (
+        <PopUp message={"Thank you for rating this treatment!"} />
+      )}
     </div>
   );
 };

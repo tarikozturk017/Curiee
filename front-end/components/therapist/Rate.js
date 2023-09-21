@@ -2,10 +2,13 @@ import { useState } from "react";
 import config from "@/src/config";
 // import { useAtom } from 'jotai'
 // import { userIdAtom } from '../Layout';
+import PopUp from "../page/PopUp";
 
 const Rate = ({ therapistId, patientId, onRateSubmitted }) => {
   // const [userType] = useAtom(userTypeAtom);
   const [rating, setRating] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+  const [showPopupThanks, setShowPopupThanks] = useState(false);
   // const [patientId] = useAtom(userIdAtom);
 
   const handleRatingChange = (event) => {
@@ -35,9 +38,11 @@ const Rate = ({ therapistId, patientId, onRateSubmitted }) => {
         // Show success message
         // Call the onRateSubmitted callback to trigger the update in the parent component
         onRateSubmitted();
+        setShowPopupThanks(true);
       } else if (response.status == 400) {
         // show response accordingly
-        console.log("already voted");
+        setShowPopup(true);
+        console.log("already voted this therapist!");
       }
     } catch (error) {
       //error
@@ -45,7 +50,14 @@ const Rate = ({ therapistId, patientId, onRateSubmitted }) => {
     }
   };
   return (
-    <div>
+    <div
+      onClick={() => {
+        if (showPopup || showPopupThanks) {
+          setShowPopupThanks(false);
+          setShowPopup(false);
+        }
+      }}
+    >
       <h2>Satisfaction Rate</h2>
       <label htmlFor="rating">Rating:</label>
       <select
@@ -80,6 +92,10 @@ const Rate = ({ therapistId, patientId, onRateSubmitted }) => {
       >
         Submit Rate
       </button>
+      {showPopup && <PopUp message={"You already voted for your therapist!"} />}
+      {showPopupThanks && (
+        <PopUp message={"Thank you for rating your therapist!"} />
+      )}
     </div>
   );
 };

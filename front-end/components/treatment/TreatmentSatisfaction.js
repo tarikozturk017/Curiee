@@ -53,8 +53,7 @@ const TreatmentSatisfaction = ({ treatmentId, key }) => {
             {treatment?.therapistTotalVotes ? (
               <Rating
                 rating={
-                  treatment?.therapistTotalVotes /
-                  treatment?.therapistTotalVotes
+                  treatment?.therapistVoteCount / treatment?.therapistTotalVotes
                 }
               />
             ) : (
