@@ -7,6 +7,7 @@ import useSWR from "swr";
 import Card from "@/components/page/Card";
 import Header from "@/components/page/Header";
 import config from "@/src/config";
+import Rating from "@/components/Rating";
 
 function MyTherapist() {
   const [patientId] = useAtom(userIdAtom);
@@ -104,8 +105,21 @@ function MyTherapist() {
                       </Link>
                     </th>
                     <td className="px-6 py-1">
-                      {therapist.rateCount / therapist.totalRates} (
-                      {therapist.totalRates})
+                      <span className=" flex">
+                        <span className=" mx-auto my-2">
+                          {therapist?.totalRates ? (
+                            <Rating
+                              rating={
+                                therapist.rateCount / therapist.totalRates
+                              }
+                            />
+                          ) : (
+                            <></>
+                          )}
+                          {!therapist?.totalRates && <Rating rating={0} />}
+                        </span>
+                      </span>{" "}
+                      {/* ({therapist.totalRates}) */}
                     </td>
                     {patient.therapists.length == 0 && (
                       <th key={therapist._id} className=""></th>

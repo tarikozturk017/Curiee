@@ -46,10 +46,10 @@ const Feedback = () => {
 
   return (
     <form ref={form} onSubmit={sendEmail}>
-      <div className="gap-2 flex flex-col my-8 text-md text-blue-200">
+      <div className="gap-2 flex flex-col my-8 text-md">
         <label>Name</label>
         <input
-          className="w-52 lg:w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-52 lg:w-80 rounded-2xl mb-2 text-black "
           type="text"
           name="name"
           value={formData.name}
@@ -57,7 +57,7 @@ const Feedback = () => {
         />
         <label>Email</label>
         <input
-          className="w-52 lg:w-80 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-52 lg:w-80 rounded-2xl mb-2 text-black"
           type="email"
           name="email"
           value={formData.email}
@@ -65,7 +65,7 @@ const Feedback = () => {
         />
         <label>Feedback</label>
         <textarea
-          className="w-60 lg:w-1/2 rounded-2xl mb-2 bg-gray-700 text-indigo-200"
+          className="w-60 lg:w-1/2 rounded-2xl mb-2 text-black"
           name="feedback"
           value={formData.feedback}
           onChange={handleInputChange}

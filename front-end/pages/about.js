@@ -58,7 +58,11 @@ const About = () => {
       <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mt-8 my-4">
         Demo Instructions
       </h2>
-      <p className="leading-relaxed ">Use this way...</p>
+      <p className="leading-relaxed ">
+        Please use the patients or therapists credentials provided on the
+        Homepage for the full features. If you wish to create one, please click
+        on register.{" "}
+      </p>
       <h2 className="text-2xl lg:text-3xl font-semibold text-orange-400 mt-8 my-4">
         Suggestions/Feedback
       </h2>

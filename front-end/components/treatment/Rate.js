@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useAtom } from "jotai";
 import { userTypeAtom, userIdAtom } from "../Layout";
 import config from "@/src/config";
+import PopUp from "../page/PopUp";
 
 const Rate = ({ treatmentId, onRateSubmitted }) => {
   const [userType] = useAtom(userTypeAtom);
   const [rating, setRating] = useState(0);
   const [userId] = useAtom(userIdAtom);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleRatingChange = (event) => {
     setRating(parseInt(event.target.value));
@@ -68,6 +70,7 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
         } else if (response.status == 400) {
           // show response accordingly
           console.log("already voted");
+          setShowPopup(true);
         }
       } catch (error) {
         //error
@@ -76,7 +79,11 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
     }
   };
   return (
-    <div>
+    <div
+      onClick={() => {
+        if (showPopup) setShowPopup(false);
+      }}
+    >
       <h2 className=" font-bold text-lg mb-2">Satisfaction Rate</h2>
       <label htmlFor="rating">Rating:</label>
       <select
@@ -111,6 +118,7 @@ const Rate = ({ treatmentId, onRateSubmitted }) => {
       >
         Submit Rate
       </button>
+      {showPopup && <PopUp message={"You already voted for this treatment!"} />}
     </div>
   );
 };
