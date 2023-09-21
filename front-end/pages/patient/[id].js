@@ -103,7 +103,7 @@ const Patient = () => {
       {data?.profilePictureLink && (
         <img
           src={data?.profilePictureLink}
-          className="w-32 rounded-full shadow-xl shadow-blue-400/40"
+          className="w-32 rounded-full shadow-xl mx-auto shadow-blue-400/40"
           alt="Avatar"
         />
       )}

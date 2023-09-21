@@ -19,16 +19,30 @@ const IFrame = ({ link }) => {
   }
 
   return (
-    <iframe
-      className="mx-auto max-w-min my-12 rounded-2xl shadow-2xl shadow-blue-gray-300"
-      width="560"
-      height="315"
-      src={embedLink}
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-    ></iframe>
+    <div>
+      <iframe
+        className=" hidden xl:block mx-auto my-12 rounded-2xl shadow-2xl shadow-blue-gray-300"
+        width="560"
+        height="315"
+        src={embedLink}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
+      {/* small screen */}
+
+      <iframe
+        className="xl:hidden block mx-auto max-w-min my-12 rounded-2xl shadow-2xl shadow-blue-gray-300"
+        width="560"
+        height="315"
+        src={embedLink}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      ></iframe>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div
       id="box"
-      className=" p-7 lg:p-4 bg-black  bottom-0 w-full clear-both absolute"
+      className=" hidden lg:block p-7 lg:p-4 bg-black  bottom-0 w-full clear-both absolute"
       style={{
         clear: "both",
         position: "relative",
